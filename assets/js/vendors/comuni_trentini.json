@@ -1,0 +1,16 @@
+[
+  {
+    "name": "read_data",
+    "file_name": "./source/some-folder/some-file.shp"
+  },
+  {
+    "name": "write_data",
+    "format": "jqvmap",
+    "file_name": "./output/jquery.vmap.my-map.js",
+    "params": {
+      "code_field": "iso_column",
+      "name_field": "name_column",
+      "name": "my-map"
+    }
+  }
+]
