@@ -8,22 +8,36 @@ var urlcodicicomuni = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdZ7yQhx
 var tablecodicicomuni = "";
 var urlsituazionecomuni = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoP79r_KG6CSuIF6Woik3c8o54B_K8EPDYgI_zpPehuYydjNztNzLAPqGwpAoHn6uGLE2_J7zy1Lwa/pub?gid=1484863998&single=true&output=csv';
 var tablesituazionecomuni = "";
+var downloadandamentocasi;
 
 function parseStatoclinico(indata) {
 	idxtoday = indata[0].length - 1;
 	oggi = indata[0][idxtoday];
-	var oggi = 0;
-	var domicilio = 0;
-	var infettive = 0;
-	var intesita = 0;
-	var intensiva = 0;
-	var deceduti = 0;
-	var dimessi = 0;
+  var totale = "n/d"
+  var totale_ieri = 0;
+	var oggi = -1;
+	var domicilio = -1;
+  var domicilio_ieri = 0;
+	var infettive = -1;
+  var infettive_ieri = -1;
+	var intesita = -1;
+  var intesita_ieri = -1;
+	var intensiva = -1;
+  var intensiva_ieri = -1;
+	var deceduti = -1;
+  var deceduti_ieri = -1;
+	var dimessi = -1;
+  var dimessi_ieri = -1;
+
 	if(typeof(indata[0]) === 'undefined') {
         return null;
     } else {
 		$.each(indata, function( index, row ) {
 			v = row[idxtoday];
+      if (idxtoday > 0) {
+        vi = row[idxtoday-1];
+      } 
+
 			if ( v=="") { v = 0}
 			switch(index) {
 	        case 0:
@@ -31,21 +45,45 @@ function parseStatoclinico(indata) {
 	        	break;
 	        case 1:
 	        	domicilio = v;
+            domicilio_ieri = parseInt(vi);
+            if (domicilio == -1) {
+              domicilio = 'n/d'
+            } 
 	        	break;
 	        case 2:
 	        	infettive = v;
+            infettive_ieri = parseInt(vi);
+            if (infettive == -1) {
+              infettive = 'n/d'
+            }
 	        	break;
 	        case 3:
 	        	intesita = v;
+            intesita_ieri = parseInt(vi);
+            if (intesita == -1) {
+              intesita = 'n/d'
+            } 
 	        	break;
 	        case 4:
 	        	intensiva = v;
+            intensiva_ieri = parseInt(vi);
+            if (intensiva == -1) {
+              intensiva = 'n/d'
+            }
 	        	break;
 	        case 5:
 	        	deceduti = v;
+            deceduti_ieri = parseInt(vi);
+            if (deceduti == -1) {
+              deceduti = 'n/d'
+            } 
 	        	break;
 	        case 6:
 	        	dimessi = v;
+            dimessi_ieri = parseInt(vi)
+            if (dimessi == -1) {
+              dimessi = 'n/d'
+            } 
 	        	break;
 			} 
 		})
@@ -57,8 +95,24 @@ function parseStatoclinico(indata) {
    $("#intensiva").text(intensiva);
    $("#deceduti").text(deceduti);
    $("#dimessi").text(dimessi);
-   totale = parseInt(domicilio) + parseInt(infettive) + parseInt(intensiva) + parseInt(intesita) + parseInt(deceduti) + parseInt(dimessi);
+   if (domicilio != "n/d") {
+      totale = parseInt(domicilio) + parseInt(infettive) + parseInt(intensiva) + parseInt(intesita) + parseInt(deceduti) + parseInt(dimessi);
+    } 
+  totale_ieri = domicilio_ieri + infettive_ieri + intesita_ieri + intensiva_ieri + deceduti_ieri + dimessi_ieri;
    $("#totale").text(totale);
+   var difftotale = 0;;
+
+   difftotale = totale - totale_ieri;
+   if (totale > totale_ieri) {
+      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-red");
+      $("#difftotaletext").text(difftotale);
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-trending-up");
+   } 
+   if (totale < totale_ieri) {
+      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-green");
+      $("#difftotaletext").text(difftotale);
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-trending-down");
+   }
 
 }
 
@@ -77,7 +131,7 @@ require(['csv','jquery'], function(csv,$) {
    	parseStatoclinico(tablestatoclinico);
 
     $.ajax({
-		async: false,
+		async: true,
         type: "GET",  
         url: urlelencocomuni,
         dataType: "text",       
@@ -113,7 +167,57 @@ require(['csv','jquery'], function(csv,$) {
         success: function(response) {
             tablesituazionecomuni = $.csv.toArrays(response);
             }
-        });
+        }); 
+
+      $("#downloadandamentocasi").click(function() {
+          var downloadLink = document.createElement("a");
+          var fname = "covid19_andamento_casi_trentino.csv";
+          var csvContent = "data:text/csv;charset=utf-8,";
+          dataandamentocasi.forEach(function(infoArray, index){
+              dataString = infoArray.join(",");
+              csvContent += dataString + "\n";
+          });
+          downloadandamentocasi = encodeURI(csvContent); 
+          downloadLink.href = downloadandamentocasi;
+          downloadLink.download = fname;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+      });
+
+      $("#downloadstatoclinico").click(function() {
+          var downloadLink = document.createElement("a");
+          var fname = "covid19_stato_clinico_trentino.csv";
+          var csvContent = "data:text/csv;charset=utf-8,";
+          dataandamentocasi.forEach(function(infoArray, index){
+              dataString = infoArray.join(",");
+              csvContent += dataString + "\n";
+          });
+          downloadandamentocasi = encodeURI(csvContent); 
+          downloadLink.href = tablestatoclinico;
+          downloadLink.download = fname;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+      });
+
+      $("#downloadstatoclinico").click(function() {
+          var downloadLink = document.createElement("a");
+          var fname = "covid19_stato_clinico_trentino.csv";
+          var csvContent = "data:text/csv;charset=utf-8,";
+          dataandamentocasi.forEach(function(infoArray, index){
+              dataString = infoArray.join(",");
+              csvContent += dataString + "\n";
+          });
+          downloadandamentocasi = encodeURI(csvContent); 
+          downloadLink.href = tablestatoclinico;
+          downloadLink.download = fname;
+          document.body.appendChild(downloadLink);
+          downloadLink.click();
+          document.body.removeChild(downloadLink);
+      });
+
+
 	});
 });
 

@@ -30,6 +30,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
 
         $('#map-trentino-svg').vectorMap({
             map: 'comuni_trentini',
+            legend: {
+              horizontal: true,
+              cssClass: 'jvectormap-legend-icons',
+              title: 'Business type'
+            },
             zoomButtons : false,
             zoomOnScroll: false,
             panOnDrag: false,
