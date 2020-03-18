@@ -1,6 +1,5 @@
-# covid19apssdashboard
-dashboard to show the data of covid-19 in Provincia Autonoma di Trento
-This work is based on tabler
+# Covid-19 APSS Dashboard
+Questa dashboard mostra i dati di diffusione in Trentino che la Provincia Autonoma di Trento,attraverso APSS - Azienda Provinciale per i Servizi Sanitari pubblica ad ogni conferenza stampa durante l'emergenza
 
-You can visit the dashboard here
+La dashboard è visitabile qui
 https://napo.github.io/covid19apssdashboard/
