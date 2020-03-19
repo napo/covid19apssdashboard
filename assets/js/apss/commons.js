@@ -104,14 +104,14 @@ function parseStatoclinico(indata) {
 
    difftotale = totale - totale_ieri;
    if (totale > totale_ieri) {
-      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-red");
+      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-gray");
       $("#difftotaletext").text(difftotale);
-      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-trending-up");
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-chevron-up");
    } 
    if (totale < totale_ieri) {
-      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-green");
+      $("#variazionecasi").removeClass("h1 text-right text-gray").addClass("h1 text-right text-gray");
       $("#difftotaletext").text(difftotale);
-      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-trending-down");
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-chevron-down");
    }
 
 }
