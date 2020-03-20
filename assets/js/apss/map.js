@@ -38,15 +38,6 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             zoomOnScroll: false,
             panOnDrag: false,
             backgroundColor: 'transparent',
-            /*markers: markers,
-            markerStyle: {
-                initial: {
-                    fill: tabler.colors.orange,
-                    stroke: '#fff',
-                    "stroke-width": 2,
-                    r: 5
-                },
-            },*/
             onRegionTipShow: function(e, el, code, f){
                 el.html(el.html() + (dataformap[code] ? ':' + dataformap[code]+'' : ''));
             },
