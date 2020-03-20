@@ -107,6 +107,7 @@
             </div>
         </div>
         <div class="my-3 my-md-5">
+<!-- situazione sanitaria -->
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -182,32 +183,47 @@
                 </div>
               </div>
             </div>
+            <div class='row'>
+               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="card" id="andamento">
+                    <div class="card-header">
+                      <h3 class="card-title"><strong>Storico contagi</strong></h3>
+                    </div>
+                    <div class="card-body">
+                      <div id="chart-bar-stacked" style="height: 16rem"></div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+<!-- mappe -->
             <div class="row">
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-header">
+                      <h3 class="card-title"><strong>Numero di contagi per Comune</strong></h3>
+                    </div>
+                    <div class="card-body">
+                      <div class="map map-square">
+                        <div class="map-content" id="map-trentino-svg-points"></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <div class="col-sm-6">
                   <div class="card">
                     <div class="card-header">
                       <h3 class="card-title"><strong>Diffusione attuale nei comuni del Trentino</strong></h3>
                     </div>
                     <div class="card-body">
-                      <span class="text-muted">L'indice mostra il numero di contagi ogni 1.000 persone</span>
-                      <div class="map map-square">
+                        <span class="text-muted" id="mapindicator"></span>
+                        <div class="map map-square">
                         <div class="map-content" id="map-trentino-svg"></div>
                       </div>
                     </div>
                   </div>
-                  </div>
-                  <div class="col-sm-6">
-                <div class="card" id="andamento">
-                  <div class="card-header">
-                    <h3 class="card-title"><strong>Storico contagi</strong></h3>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-bar-stacked" style="height: 16rem"></div>
-                  </div>
-                </div>
-                  </div>
                 </div>
             </div>
+<!-- tabella -->
             <div class="row">
               <div class="col-sm-12">
                 <div class="container">
@@ -237,6 +253,7 @@
                 </div>
               </div>
             </div>
+<!-- opendata -->
             <!--
             <div class="row">
               <div class="col-sm-12">
@@ -275,6 +292,7 @@
       </footer>
     <script src="assets/js/apss/commons.js"></script>
     <script src="assets/js/apss/chart.js"></script>
+    <script src="assets/js/apss/map_points.js"></script>
     <script src="assets/js/apss/map.js"></script>
     <script src="assets/js/apss/table.js"></script>
   </body>

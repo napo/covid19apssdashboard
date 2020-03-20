@@ -55,9 +55,15 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             },
             regionStyle: {
                 initial: {
-                    fill: '#F4F4F4'
+                    fill: '#F4F4F4',
+                    stroke: "bfbfbf"
                 }
-            }
+            },
+            onRegionTipShow: function(event, label, index){
+                label.html(
+                  '<b>'+label[index]+'</b><br/>'+
+                  '<b>contagi: </b>'+label[index].r+'</br>'
+            )},
         });
     });
 });

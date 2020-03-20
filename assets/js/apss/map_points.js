@@ -54,7 +54,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             hoverColor: false,
             regionStyle: {
                 initial: {
-                    fill: '#F4F4F4'
+                    fill: '#F4F4F4',
+                    stroke: "bfbfbf",
                 }
             },
             markerStyle: {
@@ -81,10 +82,10 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     values: vv //markersValue
                 }]
             },
-          onMarkerTipShow: function(event, label, index){
-            label.html(
-              '<b>'+markersValue[index].name+'</b><br/>'+
-              '<b>contagi: </b>'+markersValue[index].r+'</br>'
+            onMarkerTipShow: function(event, label, index){
+                label.html(
+                  '<b>'+markersValue[index].name+'</b><br/>'+
+                  '<b>contagi: </b>'+markersValue[index].r+'</br>'
             );
           },
         });
