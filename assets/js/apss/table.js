@@ -26,7 +26,6 @@ function preparedatatable() {
                 ok = codicicomuni.hasOwnProperty(nomecomune);
                 if (ok) {
                     if (index==1) {
-                        console.log("songhe qui");
                         allcomuni.push(nomecomune);
                         casi = parseInt(colData)
                         allcasi.push(casi)
@@ -38,13 +37,6 @@ function preparedatatable() {
                         //cc.push([allcomuni,allcasi,ogni1000])
                     }
                 }
-                /*
-                if (index = dataelencocomuni[0].length -1) {
-                    data4table.push(cc)
-                }*/
-                console.log(index);
-                k++;
-                console.log("----")
             });
           }
         });
