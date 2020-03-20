@@ -39,7 +39,8 @@
     <div class="page">
       <div class="flex-fill">
         <div class="my-3 my-md-5">
-          <div class="container-fluid">
+          <div class="container">
+<!-- TITOLO -->
               <div><strong>Situazione al giorno <span id="oggi"></span></strong><br/></div>
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -50,6 +51,7 @@
                 </div>
               </div>
             </div>
+<!-- Situazione contagi -->
             <div class="row row-cards" id="statoclinico">
               <div class="col-6 col-sm-4 col-lg-2">
                 <div class="card">
@@ -100,35 +102,62 @@
                 </div>
               </div>
             </div>
+<!-- grafico storico contagi -->
             <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
+              <div class="container">
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="card" id="andamento">
                     <div class="card-header">
-                      <h3 class="card-title"><strong>Diffusione attuale nei comuni del Trentino</strong></h3>
+                      <h3 class="card-title"><strong>Storico contagi</strong></h3>
                     </div>
                     <div class="card-body">
-                      <span class="text-muted" id="mapindicator"></span>
-                      <div class="map map-square">
-                        <div class="map-content" id="map-trentino-svg"></div>
-                      </div>
+                        <div id="chart-bar-stacked" style="height: 16rem"></div>
                     </div>
                   </div>
                   </div>
-                  <div class="col-sm-6">
-                <div class="card" id="andamento">
-                  <div class="card-header">
-                    <h3 class="card-title"><strong>Storico contagi</strong></h3>
-                  </div>
-                  <div class="card-body">
-                    <div id="chart-bar-stacked" style="height: 16rem"></div>
-                  </div>
                 </div>
-                  </div>
-                </div>
+              </div>
             </div>
+<!-- mappa coloropletica -->
+            <div class="row">
+              <div class="container">
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title"><strong>Diffusione attuale nei comuni del Trentino</strong></h3>
+                      </div>
+                      <div class="card-body">
+                        <span class="text-muted" id="mapindicator"></span>
+                        <div class="map map-square">
+                          <div class="map-content" id="map-trentino-svg"></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+<!-- mappa coloropletica -->
+            <div class="row">
+              <div class="container">
+                <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                      <div class="card-header">
+                        <h3 class="card-title"><strong>Numero di contatti</strong></h3>
+                      </div>
+                      <div class="card-body">
+                        <span class="text-muted" id="mapindicator"></span>
+                        <div class="map map-square">
+                          <div class="map-content" id="map-trentino-svg-points"></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+<!-- tabella -->
             <div class="row">
               <div class="col-sm-12">
-                <div class="container-fluid">
+                <div class="container">
                   <div class="card" id="datixcomune">
                     <div class="card-header">
                     <h3 class="card-title"><strong>Contagi per comune</strong></h3>
@@ -192,6 +221,7 @@
     <script src="assets/js/apss/commons.js"></script>
     <script src="assets/js/apss/chart.js"></script>
     <script src="assets/js/apss/map.js"></script>
+    <script src="assets/js/apss/map_points.js"></script>
     <script src="assets/js/apss/table.js"></script>
   </body>
 </html>

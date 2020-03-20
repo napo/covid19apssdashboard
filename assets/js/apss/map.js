@@ -34,16 +34,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
         //console.log(dataformap);
         $('#map-trentino-svg').vectorMap({
             map: 'comuni_trentini',
-            legend: {
-              horizontal: true,
-              cssClass: 'jvectormap-legend-icons',
-              title: 'Business type'
-            },
             zoomButtons : false,
             zoomOnScroll: false,
             panOnDrag: false,
             backgroundColor: 'transparent',
-            /*markers: markers,*/
+            /*markers: markers,
             markerStyle: {
                 initial: {
                     fill: tabler.colors.orange,
@@ -51,7 +46,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     "stroke-width": 2,
                     r: 5
                 },
-            },
+            },*/
             onRegionTipShow: function(e, el, code, f){
                 el.html(el.html() + (dataformap[code] ? ':' + dataformap[code]+'' : ''));
             },
@@ -59,7 +54,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 regions: [{
                     values: dataformap,
                     scale: ['#EFF3F6', tabler.colors.orange],
-                    normalizeFunction: 'polynomial'
+                    normalizeFunction: 'polynomial',
+                    legend: {
+                      horizontal: true,
+                      cssClass: 'jvectormap-legend-icons'
+                    }
                 }]
             },
             regionStyle: {
