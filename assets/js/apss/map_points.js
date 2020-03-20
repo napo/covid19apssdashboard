@@ -36,13 +36,12 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                             lon = lon + lons[i];
                         }
                     }      
-                    m = {latLng: [lat, lon], name: nomecomune}; //, r:v};
+                    m = {latLng: [lat, lon], name: nomecomune, r:v};
                     markersValue.push(m);
                     vv.push(v);
                 } 
             }
         });
-        console.log(markersValue.latLng);
         $('#map-trentino-svg-points').vectorMap({
             map: 'comuni_trentini',
             zoomButtons : false,
@@ -60,14 +59,14 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             },
             markerStyle: {
               initial: {
-                    fill: '#01a04e',
-                    stroke: '#01a04e',
+                    fill: '#ef5d68',
+                    stroke: '#ef5d68',
                     "fill-opacity": 0.6,
                     "stroke-width": 1,
                     "stroke-opacity": 1,
                   },
                 hover: {
-                    stroke: '#01a04e',
+                    stroke: '#ef5d68',
                     "stroke-width": 2,
                     cursor: 'pointer'
                   }
@@ -78,10 +77,16 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     attribute: 'fill',
                 },{
                     attribute: 'r',
-                    //scale: [5, 15],
+                    scale: [3, 25],
                     values: vv //markersValue
                 }]
             },
+          onMarkerTipShow: function(event, label, index){
+            label.html(
+              '<b>'+markersValue[index].name+'</b><br/>'+
+              '<b>contagi: </b>'+markersValue[index].r+'</br>'
+            );
+          },
         });
     });
 });
