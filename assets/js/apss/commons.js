@@ -9,6 +9,7 @@ var urlandamentocasi = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdZ7yQh
 /* csv */
 var urlelencocomuni = 'data/elenco_comuni.csv'
 var urlandamentocasi = 'data/andamento_casi.csv'
+var urlsituazionecomuni = 'data/sitauzione_comuni.csv'
 var urlstatoclinico = 'data/stato_clinico.csv'
 var urlcodicicomuni = 'data/codici_comuni.csv'
 var urlandamentocomuni = 'data/andamento_comuni.csv'
