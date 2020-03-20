@@ -9,6 +9,19 @@ var tablecodicicomuni = "";
 var urlsituazionecomuni = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoP79r_KG6CSuIF6Woik3c8o54B_K8EPDYgI_zpPehuYydjNztNzLAPqGwpAoHn6uGLE2_J7zy1Lwa/pub?gid=1484863998&single=true&output=csv';
 var tablesituazionecomuni = "";
 var downloadandamentocasi;
+var codicicomuni = {};
+var abitanticomuni = {};
+var choosemapindicator = "assoluto"; //assoluto = totali per comune, relativo = ogni 1.000 abitanti
+var labelassoluto = ""
+var labelrelativo = "L'indice mostra il numero di contagi ogni 1.000 persone"
+function each1000people(idc,m) {
+    c = 1000;
+    p = abitanticomuni[idc] 
+    n =(m*c)/p
+    n= Math.round(n * 10) / 10;
+    return(n)
+}
+
 
 function parseStatoclinico(indata) {
 	idxtoday = indata[0].length - 1;
@@ -216,7 +229,13 @@ require(['csv','jquery'], function(csv,$) {
           downloadLink.click();
           document.body.removeChild(downloadLink);
       });
-
+      $.each(tablecodicicomuni, function( index, row ) {
+        if (index !=0) {
+          codicicomuni[row[1].toUpperCase()] = row[0];
+          abitanticomuni[row[0]]=parseInt(row[2]);
+              //dataformap[row[0]] = 0;
+        }
+      });
 
 	});
 });

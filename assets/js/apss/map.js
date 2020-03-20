@@ -2,19 +2,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     $(document).ready(function(){
         var markers = []
         var dataformap = {};
-        codicicomuni = {};
-        abitanticomuni = {};
-        function each1000people(idc,m) {
-            c = 1000;
-            p = abitanticomuni[idc] 
-            n =(m*c)/p
-            return(n)
-        }
 
         $.each(tablecodicicomuni, function( index, row ) {
             if (index !=0) {
-                codicicomuni[row[1].toUpperCase()] = row[0];
-                abitanticomuni[row[0]]=parseInt(row[2]);
+               // codicicomuni[row[1].toUpperCase()] = row[0];
+               // abitanticomuni[row[0]]=parseInt(row[2]);
                 dataformap[row[0]] = 0;
             }
         });
@@ -25,9 +17,12 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 v = parseInt(row[1]);
                 if (codicicomuni.hasOwnProperty(nomecomune)) {
                     v1 = each1000people(codicicomuni[nomecomune],v);
-                    v1= Math.round(v1 * 10) / 10;
-                    dataformap[codicicomuni[nomecomune]]=v1;
-                    console.log(v1);
+                    showdata = v;
+                    if (choosemapindicator == "relativo") {
+                        showdata = v1;
+                        $("#mapindicator").text(labelrelativo);
+                    }
+                    dataformap[codicicomuni[nomecomune]]= showdata;
                     m = {latLng: [row[2], row[3]], name: nomecomune};
                     markers.push(m);
                 } 
