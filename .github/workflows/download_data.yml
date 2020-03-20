@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '0/5 * * * *' # 8am daily. Ref https://crontab.guru/examples.html
+    - cron:  '0/30 * * * *' # 8am daily. Ref https://crontab.guru/examples.html
 jobs:
   build:
     runs-on: ubuntu-latest
