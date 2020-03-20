@@ -46,10 +46,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     values: dataformap,
                     scale: ['#EFF3F6', tabler.colors.orange],
                     normalizeFunction: 'polynomial',
+                    /*
                     legend: {
                       horizontal: true,
                       cssClass: 'jvectormap-legend-icons'
-                    }
+                    }*/
                 }]
             },
             regionStyle: {

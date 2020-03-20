@@ -48,7 +48,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             zoomOnScroll: false,
             panOnDrag: false,
             backgroundColor: 'transparent',
-            scaleColors: ['#C8EEFF', '#0071A4'],
+            scaleColors: ['#fd9644', '#653c1b'],
             normalizeFunction: 'polynomial',
             hoverOpacity: 0.7,
             hoverColor: false,
@@ -60,13 +60,13 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             markerStyle: {
               initial: {
                     fill: '#ef5d68',
-                    stroke: '#ef5d68',
-                    "fill-opacity": 0.6,
+                    stroke: '#fd9644',
+                    "fill-opacity": 0.7,
                     "stroke-width": 1,
                     "stroke-opacity": 1,
                   },
                 hover: {
-                    stroke: '#ef5d68',
+                    stroke: '#653c1b',
                     "stroke-width": 2,
                     cursor: 'pointer'
                   }
