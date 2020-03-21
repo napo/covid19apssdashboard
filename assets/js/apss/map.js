@@ -42,7 +42,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 regions: [{
                     values: dataformap,
                     scale: ['#EFF3F6', tabler.colors.orange],
-                    normalizeFunction: 'polynomial',
+                    normalizeFunction: 'lineaer', //polynomial',
                     /*
                     legend: {
                       horizontal: true,
