@@ -37,7 +37,6 @@ function each1000people(idc,m) {
 
 
 function parseStatoclinico(indata) {
-  console.log(indata);
 	idxtoday = indata[0].length - 1;
 	oggi = indata[0][idxtoday];
   var totale = "n/d"
