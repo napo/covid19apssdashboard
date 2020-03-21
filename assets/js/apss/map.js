@@ -38,8 +38,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             zoomOnScroll: false,
             panOnDrag: false,
             backgroundColor: 'transparent',
-            onRegionTipShow: function(e, el, code, f){
-                el.html(el.html() + (dataformap[code] ? ':' + dataformap[code]+'' : ''));
+            onRegionTipShow: function(event, label, index, f){
+                label.html(label.html() + (dataformap[index] ? '<br/>indicatore: ' + dataformap[index]+'' : ''));
             },
             series: {
                 regions: [{
@@ -58,12 +58,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     fill: '#F4F4F4',
                     stroke: "bfbfbf"
                 }
-            },
-            onRegionTipShow: function(event, label, index){
-                label.html(
-                  '<b>'+label[index]+'</b><br/>'+
-                  '<b>contagi: </b>'+label[index].r+'</br>'
-            )},
+            }
         });
     });
 });

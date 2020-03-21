@@ -62,7 +62,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
               initial: {
                     fill: '#ef5d68',
                     stroke: '#fd9644',
-                    "fill-opacity": 0.7,
+                    "fill-opacity": 0.8,
                     "stroke-width": 1,
                     "stroke-opacity": 1,
                   },
@@ -78,7 +78,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     attribute: 'fill',
                 },{
                     attribute: 'r',
-                    scale: [3, 25],
+                    scale: [3, 50],
                     values: vv //markersValue
                 }]
             },
@@ -86,8 +86,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 label.html(
                   '<b>'+markersValue[index].name+'</b><br/>'+
                   '<b>contagi: </b>'+markersValue[index].r+'</br>'
-            );
-          },
+                );
+            },
+            onRegionLabelShow: function(e, el, code){
+                    e.preventDefault();
+            },
         });
     });
 });
