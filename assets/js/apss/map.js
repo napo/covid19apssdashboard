@@ -2,11 +2,13 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     $(document).ready(function(){
         var markers = []
         var dataformap = {};
-
+    	var indicatore = "contagi ogni 1.000 abitanti";
+    	if (choosemapindicator == "assoluto") {
+    		indicatore = "totale contagi";
+    	}
+        console.log(indicatore);
         $.each(tablecodicicomuni, function( index, row ) {
             if (index !=0) {
-               // codicicomuni[row[1].toUpperCase()] = row[0];
-               // abitanticomuni[row[0]]=parseInt(row[2]);
                 dataformap[row[0]] = 0;
             }
         });
@@ -27,19 +29,15 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     markers.push(m);
                 } 
             }
-        });
-        //work around perche' carano si e' fuso con Ville di Fiemem
-
-        //dataformap["254"] = dataformap["254"] + addcarano;
-        //console.log(dataformap);
+        });    
         $('#map-trentino-svg').vectorMap({
             map: 'comuni_trentini',
-            zoomButtons : false,
-            zoomOnScroll: false,
-            panOnDrag: false,
+            zoomButtons : true,
+            zoomOnScroll: true,
+            panOnDrag: true,
             backgroundColor: 'transparent',
             onRegionTipShow: function(event, label, index, f){
-                label.html(label.html() + (dataformap[index] ? '<br/>indicatore: ' + dataformap[index]+'' : ''));
+                label.html(label.html() + (dataformap[index] ? '<br/>'+ indicatore +':<br/>' + dataformap[index]+'' : ''));
             },
             series: {
                 regions: [{
