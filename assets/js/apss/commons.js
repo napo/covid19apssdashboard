@@ -151,11 +151,10 @@ require(['csv','jquery'], function(csv,$) {
             tablestatoclinico = $.csv.toArrays(response);
             }
         });
-
-   	parseStatoclinico(tablestatoclinico);
+  parseStatoclinico(tablestatoclinico);
 
     $.ajax({
-		async: true,
+		  async: false,
         type: "GET",  
         url: urlelencocomuni,
         dataType: "text",       
