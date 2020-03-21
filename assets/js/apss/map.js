@@ -6,7 +6,6 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     	if (choosemapindicator == "assoluto") {
     		indicatore = "totale contagi";
     	}
-        console.log(indicatore);
         $.each(tablecodicicomuni, function( index, row ) {
             if (index !=0) {
                 dataformap[row[0]] = 0;
