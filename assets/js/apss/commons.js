@@ -12,8 +12,9 @@ var urlelencocomuni = 'data/elenco_comuni.csv'
 var urlandamentocasi = 'data/andamento_casi.csv'
 var urlcodicicomuni = 'data/codici_comuni.csv'
 var urlsituazionecomuni = 'data/situazione_comuni.csv'
-var urlstatoclinico = 'data/stato_clinico.csv'
 */
+var urlstatoclinico = 'data/stato_clinico.csv'
+
 
 
 var dataelencocomuni = "";
