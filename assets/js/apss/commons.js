@@ -1,18 +1,16 @@
-/* g*/
+/* google
 var urlelencocomuni = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoP79r_KG6CSuIF6Woik3c8o54B_K8EPDYgI_zpPehuYydjNztNzLAPqGwpAoHn6uGLE2_J7zy1Lwa/pub?gid=1484863998&single=true&output=csv';
 var urlandamentocasi = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdZ7yQhx38EsaR05DRprb0YkaRf5eK6cfrrOGMfFnDKq-P-g8q-HMRv76UnTkoRYvCMrgkQkX-xJOE/pub?gid=0&single=true&output=csv';
-/*
 var urlstatoclinico = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vQdZ7yQhx38EsaR05DRprb0YkaRf5eK6cfrrOGMfFnDKq-P-g8q-HMRv76UnTkoRYvCMrgkQkX-xJOE/pub?gid=1231542924&single=true&output=csv';
-*/
 var urlcodicicomuni = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQdZ7yQhx38EsaR05DRprb0YkaRf5eK6cfrrOGMfFnDKq-P-g8q-HMRv76UnTkoRYvCMrgkQkX-xJOE/pub?gid=1576237135&single=true&output=csv"; 
 var urlsituazionecomuni = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSoP79r_KG6CSuIF6Woik3c8o54B_K8EPDYgI_zpPehuYydjNztNzLAPqGwpAoHn6uGLE2_J7zy1Lwa/pub?gid=1484863998&single=true&output=csv';
+*/
 
-/* csv 
+/* csv */ 
 var urlelencocomuni = 'data/elenco_comuni.csv'
 var urlandamentocasi = 'data/andamento_casi.csv'
 var urlcodicicomuni = 'data/codici_comuni.csv'
 var urlsituazionecomuni = 'data/situazione_comuni.csv'
-*/
 var urlstatoclinico = 'data/stato_clinico.csv'
 
 
