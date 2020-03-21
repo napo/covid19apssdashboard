@@ -5,6 +5,9 @@ function showtotal() {
     span.appendChild(txt);
 }
 
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
 function preparedatatable() {
     var allcasi = []
@@ -31,9 +34,13 @@ function preparedatatable() {
                         allcasi.push(casi)
                         total = total + casi
                         v1000 = each1000people(codicicomuni[nomecomune],casi);
+                        people = parseInt(abitanticomuni[codicicomuni[nomecomune]]);
+                        percontagi = ((casi / people) * 100).toPrecision(2); 
+                        percontagi = percontagi + '%'
                         ogni1000.push(v1000);
                         //cc = [nomecomune,casi,v1000];
-                        data4table.push([nomecomune,casi,v1000]);
+                        people = numberWithCommas(people);
+                        data4table.push([nomecomune,casi,people,percontagi]);
                         //cc.push([allcomuni,allcasi,ogni1000])
                     }
                 }
