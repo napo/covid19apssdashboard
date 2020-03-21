@@ -45,7 +45,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
         $('#map-trentino-svg-points').vectorMap({
             map: 'comuni_trentini',
             zoomButtons : true,
-            zoomOnScroll: true,
+            zoomOnScroll: false,
             panOnDrag: true,
             backgroundColor: 'transparent',
             scaleColors: ['#fd9644', '#653c1b'],
