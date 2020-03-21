@@ -21,9 +21,9 @@ var tablesituazionecomuni = "";
 var downloadandamentocasi;
 var codicicomuni = {};
 var abitanticomuni = {};
-var choosemapindicator = "assoluto"; //assoluto = totali per comune, relativo = ogni 1.000 abitanti
+var choosemapindicator = "relativo"; //assoluto = totali per comune, relativo = ogni 1.000 abitanti
 var labelassoluto = ""
-var labelrelativo = "L'indice mostra il numero di contagi ogni 1.000 persone"
+var labelrelativo = "";//L'indice mostra il numero di contagi ogni 1.000 persone"
 
 function each1000people(idc,m) {
     c = 1000;
