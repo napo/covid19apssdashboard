@@ -61,7 +61,10 @@
                     <a href="#statoclinico" class="nav-link active"><i class="fe fe-activity"></i> Stato clinico</a>
                   </li>
                   <li class="nav-item">
-                    <a href="#map-trentino-svg-points" class="nav-link"><i class="fe fe-bar-chart"></i> Mappe</a>
+                    <a href="#storico" class="nav-link"><i class="fe fe-bar-chart"></i> Andamento</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#maps" class="nav-link"><i class="fe fe-map"></i> Mappe</a>
                   </li>
                   <li class="nav-item">
                     <a href="#datixcomune" class="nav-link"><i class="fe fe-file-text"></i> Dati per Comune</a>
@@ -73,7 +76,6 @@
                 -->
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#infoModal"><i class="fe fe-info"></i> Info</a>
-                    </div>
                   </li>
                 </ul>
               </div>
@@ -103,11 +105,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="my-3 my-md-5">
-<!-- situazione sanitaria -->
-          <div class="container">
-            <div class="row">
+      </div>
+      <div class="my-3 my-md-5">
+        <div class="container-fluid">
+<!-- menu -->
+          <div class="row">
               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="card">
                   <div class="card-body">
@@ -118,181 +120,207 @@
                 </div>
               </div>
             </div>
-            <div class="row">
-              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                  <div class="card-body p-3 text-left">
-                    <div id="variazionecasi" class="h1 text-right text-gray">
-                      <span id="difftotaletext"></span>
-                      <i id="iconavariazionecasi" class="fe"></i>
-                    </div>
-                    <div class="display-4 m-0">Totale contagi <strong><span id="totale">n/d</span></strong></div>
+          </div>
+<!-- stato clinico -->
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card">
+                <div class="card-body p-3 text-left">
+                  <div id="variazionecasi" class="h1 text-right text-gray">
+                    <span id="difftotaletext"></span>
+                    <i id="iconavariazionecasi" class="fe"></i>
+                  </div>
+                  <div class="display-4 m-0">
+                    Totale contagi
+                    <strong><span id="totale">n/d</span></strong>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row row-cards" id="statoclinico">
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-yellow"><span id="domicilio">N/D</span></div>
-                    <div class="text-muted mb-4"><br/>Domicilio</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-orange"><span id="infettive">N/D</span></div>
-                    <div class="text-muted mb-4">Ricovero<br/>Malattie infettive</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-orange"><span id="intesita">N/D</span></div>
-                    <div class="text-muted mb-4">Ricovero<br>alta intesità</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-orange"><span id="intensiva">N/D</span></div>
-                    <div class="text-muted mb-4">Ricovero<br/>Terapia intensiva</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-red"><span id="deceduti">N/D</span></div>
-                    <div class="text-muted mb-4"><br/>Deceduti</div>
-                  </div>
-                </div>
-              </div>
-              <div class="col-6 col-sm-4 col-lg-2">
-                <div class="card">
-                  <div class="card-body p-3 text-center">
-                    <div class="h1 m-0 text-green"><span id="dimessi">N/D</span></div>
-                    <div class="text-muted mb-4"><br/>Dimessi</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-<!-- stackedbar -->
-            <div class="row">
-              <div class="col-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                  <div class="card-header">
-                    <h3 class="card-title"><strong>Contagi per comune Trentino</strong></h3>
-                  </div>
-                  <div class="card-body">
-                      <div id="chart-bar-stacked" style="height: 16rem"></div>
-                  </div>
-                  <small style="font-size: xx-small;" class="text-right">
-                      <strong>dati</strong>strong> <a href="https://www.apss.tn.it/-/covid19"/>APSS</a></stronga> - realizzazione di <a href="http://www.fbk.eu">FBK</a> - <a href="http://covid19trentino.fbk.eu">vista completa</a> - info <a href="http://twitter.com/napo">@napo</a>
-                  </small>
-                </div>
-              </div>
-            </div>
-<!-- mappe -->
-            <div class="row">
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"><strong>Numero di contagi per Comune</strong></h3>
-                    </div>
-                    <div class="card-body">
-                      <div class="map map-square">
-                        <div class="map-content" id="map-trentino-svg-points"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="card">
-                    <div class="card-header">
-                      <h3 class="card-title"><strong>Diffusione attuale nei comuni del Trentino</strong></h3>
-                    </div>
-                    <div class="card-body">
-                        <span class="text-muted" id="mapindicator"></span>
-                        <div class="map map-square">
-                        <div class="map-content" id="map-trentino-svg"></div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-<!-- tabella -->
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="container">
-                  <div class="card" id="datixcomune">
-                    <div class="card-header">
-                    <h3 class="card-title"><strong>Contagi per comune</strong></h3>
-                  </div>
-                      <div class="card-body">
-                        <div class="table-responsive">
-                          <table id="data-table" class="table card-table table-vcenter text-nowrap datatable display">
-                            <thead>
-                              <tr>
-                                <th>COMUNE</th>
-                                <th>CONTAGI</th>
-                                <TH>OGNI 1.000 abitati</TH>
-                              </tr>
-                            </thead>
-                            <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                            </tr>
-                          </table>
-                        </div>
-                      </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-<!-- opendata -->
-            <!--
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="container-fluid">
-                  <div class="card" id="download">
-                    <div class="card-header">
-                      <img src="assets/images/logo/logo_datitrentino.png"/>
-                    </div>
-                    <div class="card-body">
-                      Sono disponibili i seguenti dataset in formato CSV
-                      <ul>
-                        <li><a href="#" id="downloadandamentocasi">andamento casi di contagio</a></li>
-                        <li>
-                        <a href="#" id="downloadstatoclinico">andamento stato clinico</a>
-                        </li>
-                        <li>
-                        <a href="#" id="downloadcasicomunitrentini">ultima distribuzione casi per il Trentino</a>
-                        </li>
-                      </ul>
-                      Licenza di rilascio: CC-BY 4.0 - maggiori informazioni sulle politiche open data della PaT su <a href="http://dati.trentino.it">http://dati.trentino.it</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            -->
             </div>
           </div>
-        </div>
-      </div>
-      <footer class="footer">
-        <div class="container-fluid">
-            <div class="text-right">
-            <img src="assets/images/logo/logofbk.jpg"/>
+          <div class="row row-cards" id="statoclinico">
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-yellow">
+                    <span id="domicilio">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    <br/>Domicilio</div>
+                </div>
+              </div>
             </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-orange">
+                    <span id="infettive">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    Ricovero<br/>Malattie infettive
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-orange">
+                    <span id="intesita">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    Ricovero<br>alta intesità
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-orange">
+                    <span id="intensiva">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    Ricovero<br/>Terapia intensiva
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-red">
+                    <span id="deceduti">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    <br/>Deceduti
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-sm-4 col-lg-2">
+              <div class="card">
+                <div class="card-body p-3 text-center">
+                  <div class="h1 m-0 text-green">
+                    <span id="dimessi">N/D</span>
+                  </div>
+                  <div class="text-muted mb-4">
+                    <br/>Dimessi
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- grafico -->
+          <div class="row" id="storico">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <strong>Contagi per comune Trentino</strong>
+                </h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart-bar-stacked" style="height: 16rem"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- mappe -->
+          <div class="row" id="maps">
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <strong>Numero di contagi per Comune</strong>
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <div class="map map-square">
+                    <div class="map-content" id="map-trentino-svg-points">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <strong>Diffusione attuale nei comuni del Trentino</strong>
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <span class="text-muted" id="mapindicator"></span>
+                  <div class="map map-square">
+                    <div class="map-content" id="map-trentino-svg"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="container-fluid">
+                <div class="card" id="datixcomune">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <strong>Contagi per comune</strong>
+                    </h3>
+                  </div>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table id="data-table" class="table card-table table-vcenter text-nowrap datatable display">
+                        <thead>
+                          <tr><th>COMUNE</th><th>CONTAGI</th><th>OGNI 1.000 abitati</th></tr>
+                        </thead>
+                        <tr>
+                          <td></td>
+                          <td></td>
+                          <td></td>
+                        </tr>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- open data 
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="container-fluid">
+                <div class="card" id="download">
+                  <div class="card-header">
+                    <img src="assets/images/logo/logo_datitrentino.png" alt="logo opendata"/>
+                  </div>
+                  <div class="card-body">
+                    Sono disponibili i seguenti dataset in formato CSV
+                    <ul>
+                      <li><a href="#" id="downloadandamentocasi">andamento casi di contagio</a></li>
+                      <li><a href="#" id="downloadstatoclinico">andamento stato clinico</a></li>
+                      <li><a href="#" id="downloadcasicomunitrentini">ultima distribuzione casi per il Trentino</a></li>
+                    </ul>
+                    Licenza di rilascio: CC-BY 4.0 - maggiori informazioni sulle politiche open data della PaT su <a href="http://dati.trentino.it">http://dati.trentino.it</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+-->
         </div>
-      </footer>
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="text-right">
+              <img src="assets/images/logo/logofbk.jpg" alt='FBK'/>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
     <script src="assets/js/apss/commons.js"></script>
+    <script src="assets/js/apss/chart.js"></script>
+
     <script src="assets/js/apss/table.js"></script>
     <script src="assets/js/apss/map_points.js"></script>
     <script src="assets/js/apss/map.js"></script>
