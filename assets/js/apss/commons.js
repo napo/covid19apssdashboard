@@ -128,7 +128,6 @@ function parseStatoclinico(indata) {
   totale_ieri = domicilio_ieri + infettive_ieri + intesita_ieri + intensiva_ieri + deceduti_ieri + dimessi_ieri;
    $("#totale").text(totale);
    var difftotale = 0;;
-
    difftotale = totale - totale_ieri;
    if (totale > totale_ieri) {
       $("#variazionecasi").removeClass("h1 text-right text-red").addClass("h1 text-left text-red");
