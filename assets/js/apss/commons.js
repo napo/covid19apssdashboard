@@ -31,7 +31,8 @@ function each1000people(idc,m) {
     c = 1000;
     p = abitanticomuni[idc] 
     n =(m*c)/p
-    n= Math.round(n * 10) / 10;
+    //n= Math.round(n * 10) / 10;
+    n = n.toPrecision(4);
     return(n)
 }
 
