@@ -115,6 +115,15 @@ function parseStatoclinico(indata) {
 			} 
 		})
     }
+   $("#totale").removeClass("spinner-border");
+   $("#oggi").removeClass("spinner-border");
+   $("#domicilio").removeClass("spinner-border");
+   $("#infettive").removeClass("spinner-border");
+   $("#intesita").removeClass("spinner-border");
+   $("#intensiva").removeClass("spinner-border");
+   $("#deceduti").removeClass("spinner-border");
+   $("#dimessi").removeClass("spinner-border");
+
    $("#oggi").text(oggi);
    $("#domicilio").text(domicilio);
    $("#infettive").text(infettive);
@@ -131,7 +140,7 @@ function parseStatoclinico(indata) {
    difftotale = totale - totale_ieri;
    if (totale > totale_ieri) {
       $("#variazionecasi").removeClass("h1 text-right text-red").addClass("h1 text-left text-red");
-      $("#difftotaletext").text("+" + difftotale);
+      $("#difftotaletext").text(difftotale);
       //$("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-up-right");
    } 
    if (totale < totale_ieri) {
@@ -172,6 +181,7 @@ require(['csv','jquery'], function(csv,$) {
         dataType: "text",       
         success: function(response) {
             dataandamentocasi = $.csv.toArrays(response);
+            $("#spinandamento").removeClass("spinner-border");
             }
         });
 
@@ -191,6 +201,9 @@ require(['csv','jquery'], function(csv,$) {
         dataType: "text",       
         success: function(response) {
             tablesituazionecomuni = $.csv.toArrays(response);
+            $("#spinmap").removeClass("spinner-border");
+            $("#spinmappoints").removeClass("spinner-border");
+            $("#spintable").removeClass("spinner-border");
             }
         }); 
 
