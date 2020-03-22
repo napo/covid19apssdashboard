@@ -25,7 +25,7 @@ require(['c3', 'jquery'], function(c3, $) {
         case 2:
           if (colData != "") {
             v = parseInt(colData)
-            totali.push(v - nuovi[idx]);
+            totali.push(v); // - nuovi[index]);
           }
         break;
         }  
