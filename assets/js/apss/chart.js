@@ -9,7 +9,8 @@ require(['c3', 'jquery'], function(c3, $) {
   } else {
     $.each(dataandamentocasi, function( index, row ) {
     if(index > 0) {
-      labels.push(row[0]);
+      s = row[0] + " totali: " + row[2];
+      labels.push(s); //row[0]);
       nuovi.push(parseInt(row[1]));
       totali.push(parseInt(row[2])-parseInt(row[1]));
     }
