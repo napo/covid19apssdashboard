@@ -36,7 +36,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             panOnDrag: true,
             backgroundColor: 'transparent',
             onRegionTipShow: function(event, label, index, f){
-                label.html(label.html() + (dataformap[index] ? '<br/>'+ indicatore +':<br/>' + dataformap[index]+'' : ''));
+                label.html(label.html() + (dataformap[index] ? '<br/>'+ indicatore +':<br/>' + dataformap[index].toString().replace(".",",")+'' : ''));
             },
             series: {
                 regions: [{

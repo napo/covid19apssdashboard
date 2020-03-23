@@ -25,7 +25,7 @@ function each1000people(idc,m) {
     p = abitanticomuni[idc] 
     n =(m*c)/p
     /*n= Math.round(n * 10) / 10;*/
-    n = n.toPrecision(3).toString().replace(".",",");
+    n = n.toPrecision(3) //.toString().replace(".",",");
     return(n)
 }
 
@@ -133,7 +133,7 @@ function parseStatoclinico(indata) {
    difftotale = totale - totale_ieri;
    if (totale > totale_ieri) {
       $("#variazionecasi").removeClass("h1 text-right text-red").addClass("h1 text-left text-red");
-      $("#difftotaletext").text(difftotale);
+      $("#difftotaletext").text("+ " + difftotale.toString());
       //$("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-up-right");
    } 
    if (totale < totale_ieri) {
