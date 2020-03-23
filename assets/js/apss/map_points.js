@@ -88,8 +88,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                   '<b>contagi: </b>'+markersValue[index].r+'</br>'
                 );
             },
-            onRegionLabelShow: function(e, el, code){
-                    e.preventDefault();
+            onRegionTipShow: function(e, el, code){
+                e.preventDefault();
             },
         });
     });
