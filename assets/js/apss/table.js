@@ -52,9 +52,13 @@ function preparedatatable() {
 }
 
 function updateTable(indata) {
-    var sizecolumns = [{ "width": "60px", "targets": 0 },
-                   {"width": "40px", "targets": 1 }];
-    
+    var sizecolumns = [
+                        { width: 20, targets: 0 },
+                        { width: 5, targets: 1 },
+                        { width: 5, targets: 2 },                        
+                        { width: 5, targets: 3 }
+                    ];
+
     $("a.datadownload").attr("href", urlelencocomuni);
     $(document).ready( function () {
     $('#data-table').DataTable({
@@ -85,6 +89,8 @@ function updateTable(indata) {
             "data": indata
             }, {
             "columnDefs": sizecolumns
+            }, {
+            "fixedColumns": true
             }
         ).order([1,'desc']).draw();
     });
