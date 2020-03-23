@@ -5,8 +5,6 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
         var vv = []
         $.each(tablecodicicomuni, function( index, row ) {
             if (index !=0) {
-               // codicicomuni[row[1].toUpperCase()] = row[0];
-               // abitanticomuni[row[0]]=parseInt(row[2]);
                 dataformap[row[0]] = 0;
             }
         });
@@ -36,6 +34,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                             lon = lon + lons[i];
                         }
                     }      
+
                     m = {latLng: [lat, lon], name: nomecomune, r:v};
                     markersValue.push(m);
                     vv.push(v);
@@ -72,6 +71,18 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     cursor: 'pointer'
                   }
             },
+            /*
+            labels: {
+                render: function(code){
+                    console.log(code);
+                    return(code);
+                },
+                offsets: function(code){
+                  return {
+                    115: [46.1668,11.8126]
+                  }[code];
+                }
+            },*/
             markers: markersValue, 
             series: {
                 markers: [{
