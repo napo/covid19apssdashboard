@@ -160,6 +160,9 @@
           <div class="row row-cards" id="statoclinico">
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ieridomicilio" class="text-right text-yellow" style="font-size: x-small;">
+                  <i id="fieridomicilio"></i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-yellow">
                     <span id="domicilio" class="spinner-border"></span>
@@ -171,6 +174,9 @@
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ieriinfettive" class="text-right text-orange" style="font-size: x-small;">
+                  <i id="fieriinfettive" class="fe fe-minus">&nbsp;</i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-orange">
                     <span id="infettive" class="spinner-border"></span>
@@ -183,6 +189,9 @@
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ieriintensita" class="text-right text-orange" style="font-size: x-small;">
+                  <i id="fieriintensita"></i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-orange">
                     <span id="intesita" class="spinner-border"></span>
@@ -195,6 +204,9 @@
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ieriintensiva" class="text-right text-orange" style="font-size: x-small;">
+                  <i id="fieriintensiva"></i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-orange">
                     <span id="intensiva" class="spinner-border"></span>
@@ -207,6 +219,9 @@
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ierideceduti" class="text-right text-red" style="font-size: x-small;">
+                  <i id="fierideceduti"></i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-red">
                     <span id="deceduti" class="spinner-border"></span>
@@ -219,6 +234,9 @@
             </div>
             <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
+                <div id="ieridimessi" class="text-right text-green" style="font-size: x-small;">
+                  <i id="fieridimessi"></i>
+                </div>
                 <div class="card-body p-3 text-center">
                   <div class="h1 m-0 text-green">
                     <span id="dimessi" class="spinner-border"></span>
@@ -245,6 +263,22 @@
               </div>
             </div>
           </div>
+<!-- grafico logaritmico 
+          <div class="row" id="logaritmico">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <strong>Andamento storico contagi</strong>&nbsp;<span id="spinandamentolog" class="spinner-border"></span>
+                </h3>
+                </div>
+                <div class="card-body">
+                    <div id="chart-log" style="height: 16rem"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+-->
 <!-- mappe -->
           <div class="row" id="maps">
             <div class="col-sm-6">
@@ -350,7 +384,7 @@
     </div>
     <script src="assets/js/apss/commons.js"></script>
     <script src="assets/js/apss/chart.js"></script>
-
+    <!--<script src="assets/js/apss/log_chart.js"></script>-->
     <script src="assets/js/apss/table.js"></script>
     <script src="assets/js/apss/map_points.js"></script>
     <script src="assets/js/apss/map.js"></script>

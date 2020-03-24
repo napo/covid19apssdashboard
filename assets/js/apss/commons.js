@@ -29,6 +29,25 @@ function each1000people(idc,m) {
     return(n)
 }
 
+function indicatori(label,ieri,oggi) {
+  ieri = parseInt(ieri);
+  oggi = parseInt(oggi);
+  iddiv = "#ieri"+ label;
+  iddivf = "#fieri" + label;      
+  if (oggi > ieri) {
+    $(iddivf).addClass("fe fe-arrow-up");
+    $(iddiv).text("+ " + (oggi - ieri).toString());
+  } 
+  if (oggi < ieri) {
+    $(iddiv).text("" + (oggi - ieri).toString());
+    $(iddivf).addClass("fe fe-arrow-down");
+  }
+  if (oggi == ieri) {
+    $(iddiv).text("0");
+    $(iddivf).addClass("fe fe-arrow-down");   
+  }
+  return(true)
+}
 
 function parseStatoclinico(indata) {
 	idxtoday = indata[0].length - 1;
@@ -124,24 +143,30 @@ function parseStatoclinico(indata) {
    $("#intensiva").text(intensiva);
    $("#deceduti").text(deceduti);
    $("#dimessi").text(dimessi);
+
    if (domicilio != "n/d") {
       totale = parseInt(domicilio) + parseInt(infettive) + parseInt(intensiva) + parseInt(intesita) + parseInt(deceduti) + parseInt(dimessi);
     } 
-  totale_ieri = domicilio_ieri + infettive_ieri + intesita_ieri + intensiva_ieri + deceduti_ieri + dimessi_ieri;
+    totale_ieri = domicilio_ieri + infettive_ieri + intesita_ieri + intensiva_ieri + deceduti_ieri + dimessi_ieri;
    $("#totale").text(totale);
    var difftotale = 0;;
    difftotale = totale - totale_ieri;
    if (totale > totale_ieri) {
       $("#variazionecasi").removeClass("h1 text-right text-red").addClass("h1 text-left text-red");
       $("#difftotaletext").text("+ " + difftotale.toString());
-      //$("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-up-right");
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-up");
    } 
    if (totale < totale_ieri) {
       $("#variazionecasi").removeClass("h1 text-right text-green").addClass("h1 text-left text-green");
       $("#difftotaletext").text(difftotale);
-      //$("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-down-left");
+      $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-down");
    }
-
+   indicatori("domicilio",domicilio_ieri,domicilio);
+   indicatori("infettive",infettive_ieri,infettive);
+   indicatori("intensita",intesita_ieri,intesita);
+   indicatori("intensiva",intensiva_ieri,intensiva);
+   indicatori("deceduti",deceduti_ieri,deceduti);
+   indicatori("dimessi",dimessi_ieri,dimessi);
 }
 
 require(['csv','jquery'], function(csv,$) {
