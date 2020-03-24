@@ -86,11 +86,11 @@ function updateTable(indata) {
                     "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
                 }
             },
-            "data": indata
+                "data": indata
             }, {
-            "columnDefs": sizecolumns
-            }, {
-            "fixedColumns": true
+                "columnDefs": sizecolumns
+            },{
+                "fixedColumns": true
             }
         ).order([1,'desc']).draw();
     });
