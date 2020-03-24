@@ -39,7 +39,7 @@ function preparedatatable() {
                         percontagi = percontagi + '%'
                         ogni1000.push(v1000);
                         //cc = [nomecomune,casi,v1000];
-                        people = numberWithCommas(people);
+                        //people = numberWithCommas(people);
                         data4table.push([nomecomune,casi,people,percontagi]);
                         //cc.push([allcomuni,allcasi,ogni1000])
                     }
