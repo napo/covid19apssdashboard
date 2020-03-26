@@ -89,7 +89,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                     attribute: 'fill',
                 },{
                     attribute: 'r',
-                    scale: [1, 15],
+                    scale: [2, 15],
                     values: vv //markersValue
                 }]
             },
