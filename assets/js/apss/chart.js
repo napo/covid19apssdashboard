@@ -57,4 +57,32 @@ require(['c3', 'jquery'], function(c3, $) {
         top: 0
       },*/
     });
+
+  data_log = ['totali'];
+  for(var i=1; i<totali.length; i++){
+      if (totali[i] == 0) {
+          data_log[i]= 0 ;
+      } else {
+        data_log[i] = Math.log(totali[i]) / Math.LN10;
+      }
+    }
+/*
+    var chart = c3.generate({
+        bindto: '#sparkline',
+        data: {
+            columns: [
+                data_log
+            ]
+        },
+        legend: {
+            show: false
+        }, tooltip:{show:false},
+                axis: {
+                x: {show:false},
+                y: {show:false}
+            }, size: {height:30, width:50},     point: {
+            show: false
+        }
+    });
+*/
   });
