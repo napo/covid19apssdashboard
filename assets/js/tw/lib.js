@@ -3,7 +3,6 @@
 var urlcodicicomuni = 'data/codici_comuni.csv'
 var urlsituazionecomuni = 'data/stato_comuni_td.csv'
 var urlstatoclinico = 'data/stato_clinico_td.csv'
-var urlcentricomunitavalle = 'data/centri_comunita_valle.csv'
 
 var tablestatoclinico = "";
 var tablecodicicomuni = "";
@@ -177,17 +176,7 @@ require(['csv','jquery'], function(csv,$) {
         });
 
     $.ajax({
-      async: false, //false,
-        type: "GET",  
-        url: urlcentricomunitavalle,
-        dataType: "text",       
-        success: function(response) {
-            tablecentricomunitavalle = $.csv.toArrays(response);
-            }
-        });
-
-    $.ajax({
-		  async: false,
+ async: false,
       type: "GET",  
       url: urlcodicicomuni,
       dataType: "text",       
