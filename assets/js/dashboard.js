@@ -5,9 +5,9 @@ shim: {
 'tablesorter': ['jquery'],
 'csv': ['jquery'],
 'vector-map': ['jquery'],
-'vector-map-de': ['vector-map', 'jquery'],
 'vector-map-world': ['vector-map', 'jquery'],
 'vector-map-trentino':['vector-map','jquery'],
+'vector-map-comunita-valli-trentino':['vector-map','jquery'],
 'core': ['bootstrap', 'jquery'],
 },
 paths: {
@@ -22,6 +22,7 @@ paths: {
 'vector-map-de': 'assets/js/vendors/jquery-jvectormap-de-merc',
 'vector-map-world': 'assets/js/vendors/jquery-jvectormap-world-mill',
 'vector-map-trentino': 'assets/js/vendors/jquery-jvectormap-comuni-trentini',
+'vector-map-comunita-valli-trentino': 'assets/js/vendors/jquery-jvectormap-comunita-valle-trentino',
 'circle-progress': 'assets/js/vendors/circle-progress.min',}
 });
 window.tabler = {
