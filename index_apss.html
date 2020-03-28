@@ -47,7 +47,7 @@
   </head>
   <body>
     <div class="page">
-      <div class="container"> <!--flex-fill">-->
+      <div class="flex-fill">
         <div class="header py-4">
           <div class="container-fluid">
             <div class="d-flex">
@@ -81,9 +81,11 @@
                   <li class="nav-item">
                     <a href="#datixcomune" class="nav-link"><i class="fe fe-file-text"></i> Dati per Comune</a>
                   </li>
+                  <!--
                   <li class="nav-item">
-                    <a href="#download" class="nav-link"><i class="fe fe-download"></i> Download</a>
+                    <a href="#download" class="nav-link"><i class="fe fe-download"></i> Open Data</a>
                   </li>
+                -->
                   <li class="nav-item">
                     <a class="nav-link" data-toggle="modal" data-target="#infoModal"><i class="fe fe-info"></i> Informazioni</a>
                   </li>
@@ -124,7 +126,7 @@
             </div>
       </div>
       <div class="my-3 my-md-5">
-        <div class="container">
+        <div class="container-fluid">
 <!-- menu -->
           <div class="row">
               <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -132,17 +134,13 @@
                   <div class="card-body">
                     <div class="h1">Situazione sanitaria emergenza COVID-19</div>
                     <div class="h3">Provincia Autonoma di Trento</div>
-                    <div class="text-muted lead">
-                      Situazione al giorno 
-                      <span id="oggi" class="spinner-border"></span>
-                    </div>
+                    <div class="text-muted lead">Situazione al giorno <span id="oggi" class="spinner-border"></span></div>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
-        </div>
 <!-- stato clinico -->
-        <div class="container">
           <div class="row">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <div class="card">
@@ -159,23 +157,8 @@
               </div>
             </div>
           </div>
-          <div class="row" id="statoclinico">
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-              <div class="card">
-                <div id="ieripositiviattuali" class="text-right text-black">
-                    <i id="fieripositiviattuali"></i>
-                </div>
-                <div class="card-body p-3 text-center">
-                  <div class="h1 m-0 text-black">
-                    <span id="positiviattuali" class="spinner-border"></span>
-                  </div>
-                  <div class="text-muted mb-4">
-                    Attualmente contagiati<br/><small style="font-size: xx-small;">totale a meno di guariti e decessi</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+          <div class="row row-cards" id="statoclinico">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ieridomicilio" class="text-right text-yellow">
                   <i id="fieridomicilio"></i>
@@ -185,25 +168,11 @@
                     <span id="domicilio" class="spinner-border"></span>
                   </div>
                   <div class="text-muted mb-4">
-                    <br/>Domicilio</div>
+                    Domicilio<br/>(comprese RSA)</div>
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
-              <div class="card">
-                <div id="ierirsa" class="text-right text-yellow">
-                  <i id="fierirsa"></i>
-                </div>
-                <div class="card-body p-3 text-center">
-                  <div class="h1 m-0 text-yellow">
-                    <span id="rsa" class="spinner-border"></span>
-                  </div>
-                  <div class="text-muted mb-4">
-                    Domicilio<br/>in RSA</div>
-                </div>
-              </div>
-            </div>
-            <div class="col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ieriinfettive" class="text-right text-orange">
                   <i id="fieriinfettive"></i>
@@ -218,7 +187,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-3 col-lg-3 col-xl-3">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ieriintensita" class="text-right text-orange">
                   <i id="fieriintensita"></i>
@@ -233,7 +202,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-3 col-lg-3 col-xl-3">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ieriintensiva" class="text-right text-orange">
                   <i id="fieriintensiva"></i>
@@ -248,7 +217,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-3 col-lg-3 col-xl-3">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ierideceduti" class="text-right text-red">
                   <i id="fierideceduti"></i>
@@ -263,7 +232,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-6 col-sm-6 col-lg-3 col-lg-3 col-xl-3">
+            <div class="col-6 col-sm-4 col-lg-2">
               <div class="card">
                 <div id="ieridimessi" class="text-right text-green">
                   <i id="fieridimessi"></i>
@@ -273,13 +242,12 @@
                     <span id="dimessi" class="spinner-border"></span>
                   </div>
                   <div class="text-muted mb-4">
-                    <br/>Guariti
+                    <br/>Dimessi
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 <!-- grafico -->
           <div class="row" id="storico">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
@@ -295,12 +263,13 @@
               </div>
             </div>
           </div>
+<!-- grafico logaritmico 
           <div class="row" id="logaritmico">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Andamento storico contagi rappresentati su scala logaritmica</strong>&nbsp;<span id="spinandamentolog" class="spinner-border"></span>
+                    <strong>Andamento storico contagi</strong>&nbsp;<span id="spinandamentolog" class="spinner-border"></span>
                 </h3>
                 </div>
                 <div class="card-body">
@@ -309,13 +278,14 @@
               </div>
             </div>
           </div>
+-->
 <!-- mappe -->
           <div class="row" id="maps">
             <div class="col-sm-6">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Contagi per Comune ogni 1.000 abitanti</strong>&nbsp;<span id="spinmappoints" class="spinner-border"></span>
+                    <strong>Numero di contagi per Comune</strong>&nbsp;<span id="spinmappoints" class="spinner-border"></span>
                   </h3>
                 </div>
                 <div class="card-body">
@@ -330,7 +300,7 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Contagi ogni 1.000 abitanti per area</strong>&nbsp;<span id="spinmap" class="spinner-border"></span>
+                    <strong>Diffusione in rapporto al numero di abitati</strong>&nbsp;<span id="spinmap" class="spinner-border"></span>
                   </h3>
                 </div>
                 <div class="card-body">
@@ -360,16 +330,9 @@
                             <th>COMUNE</th>
                             <th>CONTAGI</th>
                             <th>NUMERO ABITANTI</th>
-                            <th>% POP. CONTAGIATA</th>
-                            <th>GUARITI</th>
-                            <th>DECEDUTI</th>
-                            <th>ULTIMO AGG</th>
-                          </tr>
+                            <th>% POPOLAZIONE CONTAGIATA</th></tr>
                         </thead>
                         <tr>
-                          <td></td>
-                          <td></td>
-                          <td></td>
                           <td></td>
                           <td></td>
                           <td></td>
@@ -382,7 +345,7 @@
               </div>
             </div>
           </div>
-<!-- open data -->
+<!-- open data 
           <div class="row">
             <div class="col-sm-12">
               <div class="container-fluid">
@@ -391,10 +354,11 @@
                     <img src="assets/images/logo/logo_datitrentino.png" alt="logo opendata"/>
                   </div>
                   <div class="card-body">
-                    Sono disponibili i seguenti dataset in formato CSV derivati dal <a href="https://patn.maps.arcgis.com/apps/opsdashboard/index.html#/30d39ef2c83a47d285512a4685235843">cruscotto di monitoraggio covid-19 di Trentino Digitale</a>
+                    Sono disponibili i seguenti dataset in formato CSV
                     <ul>
-                      <li><a href="data/stato_clinico_td.csv">stato clinico</a></li>
-                      <li><a href="stato_clinico_td.csv">situazione dei comuni trentini</a></li>
+                      <li><a href="#" id="downloadandamentocasi">andamento casi di contagio</a></li>
+                      <li><a href="#" id="downloadstatoclinico">andamento stato clinico</a></li>
+                      <li><a href="#" id="downloadcasicomunitrentini">ultima distribuzione casi per il Trentino</a></li>
                     </ul>
                     Licenza di rilascio: CC-BY 4.0 - maggiori informazioni sulle politiche open data della PaT su <a href="http://dati.trentino.it">http://dati.trentino.it</a>
                   </div>
@@ -402,6 +366,7 @@
               </div>
             </div>
           </div>
+-->
         </div>
         <footer class="footer">
           <div class="container-fluid">
@@ -417,11 +382,11 @@
         </footer>
       </div>
     </div>
-    <script src="assets/js/tw/lib.js"></script>
-    <script src="assets/js/tw/chart.js"></script>
+    <script src="assets/js/apss/commons.js"></script>
+    <script src="assets/js/apss/chart.js"></script>
     <!--<script src="assets/js/apss/log_chart.js"></script>-->
-    <script src="assets/js/tw/table.js"></script>
-    <script src="assets/js/tw/map_points.js"></script>
-    <script src="assets/js/tw/map.js"></script>
+    <script src="assets/js/apss/table.js"></script>
+    <script src="assets/js/apss/map_points.js"></script>
+    <script src="assets/js/apss/map.js"></script>
   </body>
 </html>
