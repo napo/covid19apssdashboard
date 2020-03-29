@@ -8,13 +8,9 @@ var tablestatoclinico = "";
 var tablecodicicomuni = "";
 var tablesituazionecomuni = "";
 var datacomuni = "";
-var downloadandamentocasi;
 var codicicomuni = {};
-var abitanticomuni = {};
 var datasituazionecomuni = {};
-var labelassoluto = ""
-var labelrelativo = "";//L'indice mostra il numero di contagi ogni 1.000 persone"
-var tablecentricomunitavalle = "";
+var abitanticomuni = {};
 
 function updatesituazionecomuni(tablestatocomuni) {
   $.each(tablestatocomuni, function(index,row) {
@@ -32,6 +28,7 @@ function updatesituazionecomuni(tablestatocomuni) {
         data["lastupdate"] = row[5];
         percontagi = ((data["contagi"]/ data["abitanti"] ) * 100).toPrecision(2); 
         data["percontagi"] = percontagi;
+        data["incremento"] = row[12];
         datasituazionecomuni[row[0]] = data; 
     }
   });

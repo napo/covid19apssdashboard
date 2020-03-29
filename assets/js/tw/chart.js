@@ -4,11 +4,12 @@ require(['c3', 'jquery'], function(c3, $) {
   var labels = [];
   var deceduti = [];
   var guariti = [];
+  var incremento = [];
   nuovi.push("nuovi");
   totali.push("totali");
   guariti.push("guariti");
   deceduti.push("deceduti");
-
+  incremento.push("incremento");
 
   for (var i = 0; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
@@ -16,7 +17,7 @@ require(['c3', 'jquery'], function(c3, $) {
     nuovi.push(parseInt(data[12]));
     totali.push(parseInt(data[7]));
     deceduti.push(parseInt(data[6]));
-    guariti.push(parseInt(data[5]))
+    guariti.push(parseInt(data[5]));
   }
   
   var chart = c3.generate({
@@ -61,6 +62,15 @@ require(['c3', 'jquery'], function(c3, $) {
 
   $("#spinandamento").removeClass("spinner-border");
 
+  data_log_nuovi = ['nuovi'];
+  for(var i=1; i<nuovi.length; i++){
+      if (nuovi[i] == 0) {
+          data_log_nuovi[i]= 0 ;
+      } else {
+        data_log_nuovi[i] = Math.log(nuovi[i]) / Math.LN10;
+      }
+    }
+
   data_log = ['totali'];
   for(var i=1; i<totali.length; i++){
       if (totali[i] == 0) {
@@ -104,22 +114,26 @@ require(['c3', 'jquery'], function(c3, $) {
       data: {
         columns: [
             data_log,
+            data_log_nuovi,
             data_log_deceduti,
             data_log_guariti  
         ],
         type: 'spline', 
         groups: [
           ['totali'],
+          ['nuovi'],
           ['deceduti'],
           ['guariti']
         ],
         colors: {
-          'totali': tabler.colors["orange"],
+          'totali': tabler.colors["yellow"],
+          'nuovi': tabler.colors['orange'],
           'deceduti': tabler.colors["red"],
           'guariti': tabler.colors["green"]
         },
         names: {
-          'totali': 'contagi'
+          'totali': 'contagi',
+          'nuovi': 'incremento contagi'
         }
       },
       axis: {
@@ -170,6 +184,9 @@ require(['c3', 'jquery'], function(c3, $) {
                   }
                   if (id == 'deceduti') {
                     v = deceduti[whereiam]
+                  }
+                  if (id == 'nuovi') {
+                    v = nuovi[whereiam]
                   }
                   return v;
               }
