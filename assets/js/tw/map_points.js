@@ -52,7 +52,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
             },
             markerStyle: {
               initial: {
-                    "fill": '#ef5d68',
+                    "fill": tabler.colors.orange, //'#ef5d68',
                     "stroke": '#fd9644',
                     "fill-opacity": 0.8,
                     "stroke-width": 1,
