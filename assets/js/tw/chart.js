@@ -20,46 +20,6 @@ require(['c3', 'jquery'], function(c3, $) {
     guariti.push(parseInt(data[5]));
   }
   
-  var chart = c3.generate({
-      bindto: '#chart-bar-stacked', 
-      data: {
-        columns: [
-          nuovi,
-          totali
-        ],
-        type: 'bar', // default type of chart
-        groups: [
-          [ 'nuovi', 'totali']
-        ],
-        colors: {
-          'nuovi': tabler.colors['red'],
-          'totali': tabler.colors["orange"]
-        },
-        names: {
-          'nuovi': 'Nuovi',
-          'totali': 'Precedenti'
-        }
-      },
-      axis: {
-        x: {
-          type: 'category',
-          categories: labels
-        },
-      },
-      /*
-      bar: {
-        width: 16
-      },*/
-      legend: {
-          show: false, //hide legend
-      },
-      /*
-      padding: {
-        bottom: 0,
-        top: 0
-      },*/
-    });
-
   $("#spinandamento").removeClass("spinner-border");
 
   data_log_nuovi = ['nuovi'];
@@ -194,4 +154,45 @@ require(['c3', 'jquery'], function(c3, $) {
     }
     });
   });
+
+  var chart = c3.generate({
+      bindto: '#chart-bar-stacked', 
+      data: {
+        columns: [
+          nuovi, //data_log_nuovi, //nuovi,
+          totali //data_log //totali
+        ],
+        type: 'bar', // default type of chart
+        groups: [
+          [ 'nuovi', 'totali']
+        ],
+        colors: {
+          'nuovi': tabler.colors['red'],
+          'totali': tabler.colors["orange"]
+        },
+        names: {
+          'nuovi': 'Nuovi',
+          'totali': 'Precedenti'
+        }
+      },
+      axis: {
+        x: {
+          type: 'category',
+          categories: labels
+        },
+      },
+      /*
+      bar: {
+        width: 16
+      },*/
+      legend: {
+          show: false, //hide legend
+      },
+      /*
+      padding: {
+        bottom: 0,
+        top: 0
+      },*/
+    });
+
   });
