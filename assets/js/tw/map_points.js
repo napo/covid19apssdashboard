@@ -21,8 +21,10 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                         "contagiogni1000": contagiogni1000,
                         "abitanti": abitanti
                     };
-                markersValue.push(m);
-                vv.push(contagiogni1000);
+                if (contagi > 0) {
+                    markersValue.push(m);
+                    vv.push(contagiogni1000);
+                }
             }
         });    
 
@@ -79,8 +81,9 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     '<b>'+markersValue[index].name+'</b><br/><br/>'+
                     '<b>contagi: </b>'+markersValue[index].contagi+'</br>' +
                     '<b>guariti: </b>'+markersValue[index].guariti+'</br>' +
-                    '<b>decessi: </b>'+markersValue[index].decessi+'</br><br/><br/>' +
-                    '<b>' + markersValue[index].contagiogni1000 + ' contagiati ogni 1.000 abitanti </b>'
+                    '<b>decessi: </b>'+markersValue[index].decessi+'</br><br/>' +
+                    '<b>' + markersValue[index].contagiogni1000 + ' contagiati ogni 1.000 abitanti </b><br/><br/>' +
+                    '<b>abitanti: </b>'+markersValue[index].abitanti
                 );
             },
             onRegionTipShow: function(e, el, code){
