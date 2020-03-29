@@ -3,16 +3,22 @@
 var urlcodicicomuni = 'data/codici_comuni.csv'
 var urlsituazionecomuni = 'data/stato_comuni_td.csv'
 var urlstatoclinico = 'data/stato_clinico_td.csv'
+var urlysituazionecomuni = 'data/yesterday/stato_comuni_td.csv'
 
 var tablestatoclinico = "";
 var tablecodicicomuni = "";
 var tablesituazionecomuni = "";
+var tableysituazionecomuni = "";
 var datacomuni = "";
 var codicicomuni = {};
 var datasituazionecomuni = {};
+var dataysituazionecomuni = {};
 var abitanticomuni = {};
 
+var chartlog = "";
+
 function updatesituazionecomuni(tablestatocomuni) {
+  situazione = {};
   $.each(tablestatocomuni, function(index,row) {
     if (index >0) {
         data = {};
@@ -29,9 +35,11 @@ function updatesituazionecomuni(tablestatocomuni) {
         percontagi = ((data["contagi"]/ data["abitanti"] ) * 100).toPrecision(2); 
         data["percontagi"] = percontagi;
         data["incremento"] = row[12];
-        datasituazionecomuni[row[0]] = data; 
+        //datasituazionecomuni[row[0]] = data;
+        situazione[row[0]] = data; 
     }
   });
+  return(situazione);
 }
 
 function each1000people(idc,m) {
@@ -173,7 +181,7 @@ require(['csv','jquery'], function(csv,$) {
         });
 
     $.ajax({
- async: false,
+      async: false,
       type: "GET",  
       url: urlcodicicomuni,
       dataType: "text",       
@@ -189,18 +197,30 @@ require(['csv','jquery'], function(csv,$) {
     });
 
     $.ajax({
-		async: false,
-        type: "GET",  
-        url: urlsituazionecomuni,
-        dataType: "text",       
-        success: function(response) {
-            tablesituazionecomuni = $.csv.toArrays(response);
-            $("#spinmap").removeClass("spinner-border");
-            $("#spinmappoints").removeClass("spinner-border");
-            $("#spintable").removeClass("spinner-border");
-            updatesituazionecomuni(tablesituazionecomuni);
-            }
-        }); 
-	});
+      async: false,
+      type: "GET",  
+      url: urlysituazionecomuni,
+      dataType: "text",       
+      success: function(response) {
+        tableysituazionecomuni = $.csv.toArrays(response);
+        dataysituazionecomuni = updatesituazionecomuni(tableysituazionecomuni);
+      }
+    });
+
+    $.ajax({
+		  async: false,
+      type: "GET",  
+      url: urlsituazionecomuni,
+      dataType: "text",       
+      success: function(response) {
+          tablesituazionecomuni = $.csv.toArrays(response);
+          $("#spinmap").removeClass("spinner-border");
+          $("#spinmappoints").removeClass("spinner-border");
+          $("#spintable").removeClass("spinner-border");
+          datasituazionecomuni = updatesituazionecomuni(tablesituazionecomuni);
+          }
+      }); 
+	 });
+
 });
 

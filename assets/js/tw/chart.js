@@ -69,7 +69,7 @@ require(['c3', 'jquery'], function(c3, $) {
   $("#spinandamentolog").removeClass("spinner-border");
   var whereiam = "";
   $(document).ready(function(){
-    var chart = c3.generate({
+    chartlog = c3.generate({
       bindto: '#chart-log', 
       data: {
         columns: [

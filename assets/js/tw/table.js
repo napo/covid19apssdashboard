@@ -9,17 +9,37 @@ function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+function addSymbolDiff(ic) {
+    if (ic > 0) {
+        ic = '+' + ic.toString()
+    } else {
+        ic = ic.toString()
+    }
+    return(ic)
+}
+
 function preparedatatable() {
     data4table = []
     $.each(datasituazionecomuni, function( index, row ) {
         if (row.contagi > 0) {
+            codice = row.codice;
+            ieriguariti = dataysituazionecomuni[codice].guariti;
+            ieridecessi = dataysituazionecomuni[codice].decessi;
+            iericontagi = dataysituazionecomuni[codice].contagi;
+            ic = addSymbolDiff(row.contagi - iericontagi);
+            ig = addSymbolDiff(row.guariti - ieriguariti);
+            id = addSymbolDiff(row.decessi - ieridecessi);
+
             data4table.push([
                 row.nomecomune,
                 row.contagi,
+                ic,
                 row.abitanti,
                 row.percontagi,
                 row.guariti,
+                ig,
                 row.decessi,
+                id,
                 row.lastupdate
                 ]);
         }
@@ -28,11 +48,9 @@ function preparedatatable() {
 }
 
 function updateTable(indata) {
-    //$("a.datadownload").attr("href", urlelencocomuni);
     $(document).ready( function () {
-    $('#data-table').DataTable({
-            "language":
-            {
+        $('#data-table').DataTable({
+            "language": {
                 "sEmptyTable":     "Nessun dato presente nella tabella",
                 "sInfo":           "Vista da _START_ a _END_ di _TOTAL_ elementi",
                 "sInfoEmpty":      "Vista da 0 a 0 di 0 elementi",
@@ -55,11 +73,7 @@ function updateTable(indata) {
                     "sSortDescending": ": attiva per ordinare la colonna in ordine decrescente"
                 }
             },
-                "data": indata
-            }, {
-                //"columnDefs": sizecolumns
-            },{
-                "fixedColumns": true
+            "data": indata 
             }
         ).order([1,'desc']).draw();
     });
