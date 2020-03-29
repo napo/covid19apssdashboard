@@ -1,23 +1,22 @@
 require(['c3', 'jquery'], function(c3, $) {
-  var nuovi = []
-  var totali = []
-  var labels = []
-  nuovi.push("nuovi")
-  totali.push("totali")
+  var nuovi = [];
+  var totali = [];
+  var labels = [];
+  var deceduti = [];
+  var guariti = [];
+  nuovi.push("nuovi");
+  totali.push("totali");
+  guariti.push("guariti");
+  deceduti.push("deceduti");
 
-/*
-  if (typeof(tablestatoclinico === 'undefined')) {
-    nuovi.push(0);
-    totali.push(0);
-    labels.push("");
-  } else {
-  */
 
   for (var i = 0; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     labels.push(data[0].replace("/2020",""));
     nuovi.push(parseInt(data[12]));
     totali.push(parseInt(data[7]));
+    deceduti.push(parseInt(data[6]));
+    guariti.push(parseInt(data[5]))
   }
   
   var chart = c3.generate({
@@ -36,7 +35,6 @@ require(['c3', 'jquery'], function(c3, $) {
           'totali': tabler.colors["orange"]
         },
         names: {
-            // name of each serie
           'nuovi': 'Nuovi',
           'totali': 'Precedenti'
         }
@@ -72,21 +70,53 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     }
 
-  $("#spinandamentolog").removeClass("spinner-border");
+  data_log_deceduti = ['deceduti'];
+  for(var i=1; i<totali.length; i++){
+      if (deceduti[i] == 0) {
+          data_log_deceduti[i]= 0 ;
+      } else {
+        if (data_log_deceduti[i] == 0) {
+          data_log_deceduti[i] = 0;
+        } else {
+          data_log_deceduti[i] = Math.log(deceduti[i]) / Math.LN10;
+        }
+      }
+    }
 
+  data_log_guariti = ['guariti'];
+  for(var i=1; i<totali.length; i++){
+      if (guariti[i] == 0) {
+          data_log_guariti[i]= 0 ;
+      } else {
+        if (data_log_guariti[i] = 0) {
+          data_log_guariti[i] = 0;
+        } else {
+          data_log_guariti[i] = Math.log(guariti[i]) / Math.LN10;
+        }
+      }
+    }
+
+  $("#spinandamentolog").removeClass("spinner-border");
+  var whereiam = "";
   $(document).ready(function(){
     var chart = c3.generate({
       bindto: '#chart-log', 
       data: {
         columns: [
-            data_log     
+            data_log,
+            data_log_deceduti,
+            data_log_guariti  
         ],
         type: 'spline', 
         groups: [
-          [ 'totali']
+          ['totali'],
+          ['deceduti'],
+          ['guariti']
         ],
         colors: {
-          'totali': tabler.colors["orange"]
+          'totali': tabler.colors["orange"],
+          'deceduti': tabler.colors["red"],
+          'guariti': tabler.colors["green"]
         },
         names: {
           'totali': 'contagi'
@@ -108,7 +138,8 @@ require(['c3', 'jquery'], function(c3, $) {
             right: 0
           },
           show: true,
-          label: 'numero giorni trascorsi'
+          type: 'category',
+          categories: labels
         }
       },
       legend: {
@@ -125,26 +156,25 @@ require(['c3', 'jquery'], function(c3, $) {
         show: true
       },
       tooltip: {
-        show: false
+          format: {
+              title: function (d) { 
+                whereiam = d;
+                return labels[d] + "/2020"; },
+              value: function (value, ratio, id) {
+                  v = ""
+                  if (id == 'totali') {
+                    v = totali[whereiam]
+                  }
+                  if (id == 'guariti') {
+                    v = guariti[whereiam]
+                  }
+                  if (id == 'deceduti') {
+                    v = deceduti[whereiam]
+                  }
+                  return v;
+              }
+          }
     }
     });
   });
-/*
-  var chart = c3.generate({
-        bindto: '#logaritmico',
-        data: {
-            columns: [
-                data_log
-            ]
-        },
-        type: 'area',
-        colors: {
-          'totali': tabler.colors['red']
-        },
-
-        legend: {
-            show: false
-        }
-    });
-  */
   });
