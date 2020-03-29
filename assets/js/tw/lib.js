@@ -102,7 +102,7 @@ function parseStatoclinico(indata) {
     infettive = parseInt(todaydata[2]);
     infettive_ieri = parseInt(yesterdaydata[2]);
     intesita = parseInt(todaydata[3]);
-    intesita_ieri = parseInt(yesterdaydata[2]);
+    intesita_ieri = parseInt(yesterdaydata[3]);
     intensiva = parseInt(todaydata[4]);
     intensiva_ieri = parseInt(yesterdaydata[4]);
     deceduti = parseInt(todaydata[6]);
