@@ -19,7 +19,7 @@ require(['c3', 'jquery'], function(c3, $) {
     deceduti.push(parseInt(data[6]));
     guariti.push(parseInt(data[5]));
   }
-  
+  console.log(nuovi);
   $("#spinandamento").removeClass("spinner-border");
 
   data_log_nuovi = ['nuovi'];
@@ -36,7 +36,7 @@ require(['c3', 'jquery'], function(c3, $) {
       if (totali[i] == 0) {
           data_log[i]= 0 ;
       } else {
-        data_log[i] = Math.log(totali[i]) / Math.LN10;
+        data_log[i] = Math.log(totali[i]+nuovi[i]) / Math.LN10;
       }
     }
 
@@ -136,20 +136,21 @@ require(['c3', 'jquery'], function(c3, $) {
           format: {
               title: function (d) { 
                 whereiam = d;
+                console.log(d);
                 return labels[d] + "/2020"; },
               value: function (value, ratio, id) {
                   v = ""
                   if (id == 'totali') {
-                    v = totali[whereiam]
+                    v = (totali[whereiam+1]+nuovi[whereiam+1]);
                   }
                   if (id == 'guariti') {
-                    v = guariti[whereiam]
+                    v = guariti[whereiam+1]
                   }
                   if (id == 'deceduti') {
-                    v = deceduti[whereiam]
+                    v = deceduti[whereiam+1]
                   }
                   if (id == 'nuovi') {
-                    v = nuovi[whereiam]
+                    v = nuovi[whereiam+1]
                   }
                   return v;
               }
