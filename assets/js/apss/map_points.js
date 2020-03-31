@@ -51,6 +51,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             normalizeFunction: 'polynomial',
             hoverOpacity: 0.7,
             hoverColor: false,
+            legend: {
+                vertical: true,
+                //cssClass: 'maplegend',
+                title: 'contagi ogni 1000 abitanti'
+            }, 
             regionStyle: {
                 initial: {
                     fill: '#F4F4F4',

@@ -15,7 +15,7 @@ require(['c3', 'jquery'], function(c3, $) {
     data = tablestatoclinico[i];
     labels.push(data[0].replace("/2020",""));
     nuovi.push(parseInt(data[12]));
-    totali.push(parseInt(data[7]));
+    totali.push(parseInt(data[7]-data[12]));
     deceduti.push(parseInt(data[6]));
     guariti.push(parseInt(data[5]));
   }

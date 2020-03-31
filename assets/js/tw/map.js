@@ -44,6 +44,11 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 label.html() + message
             );
         },
+        legend: {
+            vertical: true,
+            //cssClass: 'maplegend',
+            title: 'contagi ogni 1000 abitanti'
+        }, 
         series: {
             regions: [{
                 values: dataformap,
