@@ -129,6 +129,9 @@ require(['c3', 'jquery'], function(c3, $) {
       point: {
         show: true
       },
+      zoom: {
+        enabled: true
+      },
       tooltip: {
           format: {
               title: function (d) { 
@@ -174,6 +177,9 @@ require(['c3', 'jquery'], function(c3, $) {
           'nuovi': 'Nuovi',
           'totali': 'Precedenti'
         }
+      },
+      zoom: {
+        enabled: true
       },
       axis: {
         x: {
