@@ -26,7 +26,7 @@ function preparedatatable() {
             ieriguariti = dataysituazionecomuni[codice].guariti;
             ieridecessi = dataysituazionecomuni[codice].decessi;
             iericontagi = dataysituazionecomuni[codice].contagi;
-            ic = addSymbolDiff(row.contagi - iericontagi);
+            ic = addSymbolDiff(Math.abs(row.contagi - iericontagi)); //occhio
             ig = addSymbolDiff(row.guariti - ieriguariti);
             id = addSymbolDiff(row.decessi - ieridecessi);
 
