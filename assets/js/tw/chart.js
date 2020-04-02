@@ -73,27 +73,27 @@ require(['c3', 'jquery'], function(c3, $) {
       bindto: '#chart-log', 
       data: {
         columns: [
-            data_log,
+          //  data_log,
             data_log_nuovi,
             data_log_deceduti,
             data_log_guariti  
         ],
         type: 'spline', 
         groups: [
-          ['totali'],
+          //['totali'],
           ['nuovi'],
           ['deceduti'],
           ['guariti']
         ],
         colors: {
-          'totali': tabler.colors["yellow"],
+          //'totali': tabler.colors["yellow"],
           'nuovi': tabler.colors['orange'],
           'deceduti': tabler.colors["red"],
           'guariti': tabler.colors["green"]
         },
         names: {
-          'totali': 'contagi',
-          'nuovi': 'incremento contagi'
+          //'totali': 'contagi',
+          'nuovi': 'contagi'
         }
       },
       axis: {
@@ -140,9 +140,9 @@ require(['c3', 'jquery'], function(c3, $) {
                 return labels[d] + "/2020"; },
               value: function (value, ratio, id) {
                   v = ""
-                  if (id == 'totali') {
-                    v = (totali[whereiam+1]+nuovi[whereiam+1]);
-                  }
+              //    if (id == 'totali') {
+              //      v = (totali[whereiam+1]+nuovi[whereiam+1]);
+              //    }
                   if (id == 'guariti') {
                     v = guariti[whereiam+1]
                   }
