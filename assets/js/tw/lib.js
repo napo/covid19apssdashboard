@@ -17,9 +17,9 @@ var abitanticomuni = {};
 
 var chartlog = "";
 
-function updatesituazionecomuni(tablestatocomuni) {
+function updatesituazionecomuni(intablestatocomuni) {
   situazione = {};
-  $.each(tablestatocomuni, function(index,row) {
+  $.each(intablestatocomuni, function(index,row) {
     if (index >0) {
         data = {};
         data['codice'] = row[0];

@@ -1,4 +1,4 @@
-require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
+frequire(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     $(document).ready(function(){
         var dataformap = {};
         var markersValue = []
@@ -8,13 +8,13 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 dataformap[row[0]] = 0;
             }
         });
-
+        console.log(tablesituazionecomuni);
         $.each(tablesituazionecomuni, function( index, row ) {
             if (index !=0) {
                 nomecomune = row[0];
                 v = parseInt(row[1]);
                 if (codicicomuni.hasOwnProperty(nomecomune)) {
-                    v1 = each1000people(codicicomuni[nomecomune],v);
+                    //v1 = each1000people(codicicomuni[nomecomune],v);
                     dataformap[codicicomuni[nomecomune]]=v; //v1;
                     lats = row[2].split('.');
                     lons = row[3].split('.');
@@ -52,9 +52,9 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             hoverOpacity: 0.7,
             hoverColor: false,
             legend: {
-                vertical: true,
+                horizontal: true,
                 //cssClass: 'maplegend',
-                title: 'contagi ogni 1000 abitanti'
+                title: 'numero persone contagiate'//contagi ogni 1000 abitanti'
             }, 
             regionStyle: {
                 initial: {

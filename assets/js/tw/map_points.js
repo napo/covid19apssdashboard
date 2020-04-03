@@ -23,7 +23,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     };
                 if (contagi > 0) {
                     markersValue.push(m);
-                    vv.push(contagiogni1000);
+                    vv.push(contagi); //ogni1000);
                 }
             }
         });    

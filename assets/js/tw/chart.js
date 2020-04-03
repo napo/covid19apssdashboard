@@ -19,7 +19,6 @@ require(['c3', 'jquery'], function(c3, $) {
     deceduti.push(parseInt(data[6]));
     guariti.push(parseInt(data[5]));
   }
-  console.log(nuovi);
   $("#spinandamento").removeClass("spinner-border");
 
   data_log_nuovi = ['nuovi'];
@@ -101,7 +100,7 @@ require(['c3', 'jquery'], function(c3, $) {
           padding: {
             bottom: 0,
           },
-          show: false,
+          show: true,
             tick: {
             outer: false
           }
@@ -136,7 +135,6 @@ require(['c3', 'jquery'], function(c3, $) {
           format: {
               title: function (d) { 
                 whereiam = d;
-                console.log(d);
                 return labels[d] + "/2020"; },
               value: function (value, ratio, id) {
                   v = ""
