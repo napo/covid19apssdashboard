@@ -92,7 +92,8 @@ require(['c3', 'jquery'], function(c3, $) {
         },
         names: {
           //'totali': 'contagi',
-          'nuovi': 'contagi'
+          'nuovi': 'contagi',
+          'guariti': 'dimessi'
         }
       },
       axis: {
