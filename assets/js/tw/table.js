@@ -26,20 +26,20 @@ function preparedatatable() {
             ieriguariti = dataysituazionecomuni[codice].guariti;
             ieridecessi = dataysituazionecomuni[codice].decessi;
             iericontagi = dataysituazionecomuni[codice].contagi;
-            ic = addSymbolDiff(Math.abs(row.contagi - iericontagi)); //occhio
+            ic = addSymbolDiff(row.contagi - iericontagi); //occhio
             ig = addSymbolDiff(row.guariti - ieriguariti);
             id = addSymbolDiff(row.decessi - ieridecessi);
 
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                //ic,
+                ic,
                 row.abitanti,
                 row.percontagi,
                 row.guariti,
-                //ig,
+                ig,
                 row.decessi,
-                //id,
+                id,
                 row.lastupdate
                 ]);
         }
