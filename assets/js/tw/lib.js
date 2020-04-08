@@ -17,9 +17,11 @@ var abitanticomuni = {};
 
 var chartlog = "";
 var chartbar = "";
+var chartcontagi = "";
 var chart_nuovi = [];
 var chart_totali = [];
 var chart_labels = [];
+var chart_ltotale = [];
 var chart_deceduti = [];
 var chart_guariti = [];
 var chart_incremento = [];
@@ -28,6 +30,27 @@ var chart_data_log = []
 var chart_data_log_deceduti = [];
 var chart_data_log_guariti = [];
 
+function contagiN() {
+  $('#contagichart').html('assoluta');
+  $("#can").hide();
+  $("#cal").show();
+  chartcontagi.load({
+    columns: [
+      chart_nuovi  
+      ]
+    });
+  }
+
+function contagiL() {
+  $('#contagichart').html('logaritmica');
+  $("#can").show();
+  $("#cal").hide();
+  chartcontagi.load({
+    columns: [
+      chart_data_log_nuovi
+    ]
+    });
+  }
 
 function barN() {
   $('#vistabar').html('assoluta');
@@ -58,7 +81,7 @@ function chartN() {
   $("#val").show();
   chartlog.load({
     columns: [
-      chart_nuovi,
+      //chart_totali,
       chart_deceduti,
       chart_guariti 
     ]
@@ -72,7 +95,7 @@ function chartL() {
   $("#van").show(); 
   chartlog.load({
     columns: [
-        chart_data_log_nuovi,
+        //chart_data_log,
         chart_data_log_deceduti,
         chart_data_log_guariti 
     ],
@@ -236,6 +259,8 @@ require(['csv','jquery'], function(csv,$) {
     $('#ban').hide();
     $("#val").hide();
     $('#van').show();
+    $("#cal").hide();
+    $('#can').show();
     $.ajax({
     	async: false, //false,
         type: "GET",  

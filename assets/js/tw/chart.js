@@ -4,15 +4,19 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_guariti.push("guariti");
   chart_deceduti.push("deceduti");
   chart_incremento.push("incremento");
+  var chart_e = [] //.push("giorno");
 
   for (var i = 0; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
-    chart_labels.push("giorno " + data[0].replace("/2020","") + " - totale: " + data[7]);
+    chart_e.push(data[0]);
+    chart_labels.push(data[0]); //.replace("/2020",""));
+    chart_ltotale.push("totale: " + data[7]);
     chart_nuovi.push(parseInt(data[12]));
     chart_totali.push(parseInt(data[7]-data[12]));
     chart_deceduti.push(parseInt(data[6]));
     chart_guariti.push(parseInt(data[5]));
   }
+
   $("#spinandamento").removeClass("spinner-border");
   chart_data_log_nuovi = ['nuovi'];
   for(var i=1; i<chart_nuovi.length; i++){
@@ -64,28 +68,23 @@ require(['c3', 'jquery'], function(c3, $) {
     chartlog = c3.generate({
       bindto: '#chart-log', 
       data: {
+        x: 'giorno',
+        xFormat: '%d/%m/%Y',
         columns: [
-          //  data_log,
-            chart_data_log_nuovi,
+            chart_e,
             chart_data_log_deceduti,
             chart_data_log_guariti  
         ],
         type: 'spline', 
         groups: [
-          //['totali'],
-          ['nuovi'],
           ['deceduti'],
           ['guariti']
         ],
         colors: {
-          //'totali': tabler.colors["yellow"],
-          'nuovi': tabler.colors['orange'],
           'deceduti': tabler.colors["red"],
           'guariti': tabler.colors["green"]
         },
         names: {
-          //'totali': 'contagi',
-          'nuovi': 'contagi',
           'guariti': 'dimessi'
         }
       },
@@ -105,8 +104,10 @@ require(['c3', 'jquery'], function(c3, $) {
             right: 0
           },
           show: true,
-          type: 'category',
-          categories: chart_labels
+          type: 'timeseries',
+          tick: {
+            format: '%d/%m/%Y'
+          }
         }
       },
       legend: {
@@ -127,22 +128,26 @@ require(['c3', 'jquery'], function(c3, $) {
       },
       tooltip: {
           format: {
-              title: function (d) { 
+            title: function (d) {
+                g = d.getDate();
+                if (g < 10) {
+                  g = "0" + g;
+                }
+                y =  d.getFullYear();
+                m  = d.getMonth() +1;
+                if (m < 10) {
+                   m = "0" + m;
+                } 
+                s = g+"/"+m+"/"+y;
+                d = chart_e.indexOf(s);
                 whereiam = d;
-                return chart_labels[d] + "/20"; },
+              return chart_labels[d]; },
               value: function (value, ratio, id) {
-                  v = ""
-              //    if (id == 'totali') {
-              //      v = (totali[whereiam+1]+nuovi[whereiam+1]);
-              //    }
                   if (id == 'guariti') {
                     v = chart_guariti[whereiam+1]
                   }
                   if (id == 'deceduti') {
                     v = chart_deceduti[whereiam+1]
-                  }
-                  if (id == 'nuovi') {
-                    v = chart_nuovi[whereiam+1]
                   }
                   return v;
               }
@@ -154,7 +159,10 @@ require(['c3', 'jquery'], function(c3, $) {
   chartbar = c3.generate({
       bindto: '#chart-bar-stacked', 
       data: {
+        x: 'giorno',
+        xFormat: '%d/%m/%Y',
         columns: [
+          chart_e,
           chart_nuovi, //data_log_nuovi, //nuovi,
           chart_totali //data_log //totali
         ],
@@ -176,8 +184,73 @@ require(['c3', 'jquery'], function(c3, $) {
       },
       axis: {
         x: {
-          type: 'category',
-          categories: chart_labels
+          type: 'timeseries',
+          tick: {
+            format: '%d/%m/%Y'
+          }
+        },
+      },
+      legend: {
+          show: false, //hide legend
+      },
+        tooltip: {
+        format: {
+          title: function (d) {
+              g = d.getDate();
+              if (g < 10) {
+                g = "0" + g;
+              }
+              y =  d.getFullYear();
+              m  = d.getMonth() +1;
+              if (m < 10) {
+                 m = "0" + m;
+              } 
+              s = g+"/"+m+"/"+y;
+              d = chart_e.indexOf(s);
+              whereiambar = d;
+              return chart_labels[d]; },
+          value: function (value, ratio, id) {
+                  v = ""
+                  if (id == 'nuovi') {
+                    v = chart_nuovi[whereiambar+1]
+                  }
+                  if (id == 'totali') {
+                    v = chart_totali[whereiambar+1]
+                  }
+                  return v;
+              }
+          }
+      }
+    });
+
+  $("#spinandamentocontagi").removeClass("spinner-border");
+  var whereiamcont = "";
+  chartcontagi = c3.generate({
+      bindto: '#chart-contagi', 
+      data: {
+        x: 'giorno',
+        xFormat: '%d/%m/%Y',
+        columns: [
+          chart_e,
+          chart_data_log_nuovi //chart_nuovi
+        ],
+        type: 'area-spline', // default type of chart
+        colors: {
+          'nuovi': tabler.colors["orange"]
+        },
+        names: {
+          'nuovi': 'numero contagi',
+        }
+      },
+      zoom: {
+        enabled: true
+      },
+      axis: {
+        x: {
+          type: 'timeseries',
+          tick: {
+            format: '%d/%m/%Y'
+          }
         },
       },
       legend: {
@@ -185,16 +258,24 @@ require(['c3', 'jquery'], function(c3, $) {
       },
       tooltip: {
         format: {
-          title: function (d) { 
-            whereiambar = d;
-                return chart_labels[d]; },
-              value: function (value, ratio, id) {
+          title: function (d) {
+              g = d.getDate();
+              if (g < 10) {
+                g = "0" + g;
+              }
+              y =  d.getFullYear();
+              m  = d.getMonth() +1;
+              if (m < 10) {
+                 m = "0" + m;
+              } 
+              s = g+"/"+m+"/"+y;
+              d = chart_e.indexOf(s);
+              whereiamcont = d;
+              return chart_labels[d]; },
+          value: function (value, ratio, id) {
                   v = ""
                   if (id == 'nuovi') {
-                    v = chart_nuovi[whereiambar+1]
-                  }
-                  if (id == 'totali') {
-                    v = chart_totali[whereiambar+1]
+                    v = chart_nuovi[whereiamcont+1]
                   }
                   return v;
               }

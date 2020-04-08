@@ -321,12 +321,33 @@
               </div>
             </div>
           </div>
+          <div class="row" id="numerocontagi">
+            <div class="col-12 col-md-12 col-lg-12 col-xl-12">
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <strong>numero contagi giorno per giorno su scala
+                      <span id="contagichart">logaritmica</span>
+                    </strong>
+                    &nbsp;
+                    <span id="spinandamentocontagi" class="spinner-border"></span>
+                </h3>
+                </div>
+                <div class="card-body">
+                  <div id="chart-contagi" style="height: 16rem"></div>
+                </div>
+                <div class="card-header">
+                  <a id="can" href="javascript:contagiN()">cambia vista su scala assoluta</a><a id="cal" href="javascript:contagiL()">cambia vista su scala logaritmica</a>
+                </div>
+              </div>
+            </div>
+          </div>
           <div class="row" id="logaritmico">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Andamento storico contagi/guarigioni/decessi rappresentati su scala 
+                    <strong>Andamento dimessi e decessi rappresentati su scala 
                       <span id="vistachart">logaritmica</span>
                     </strong>
                     &nbsp;
