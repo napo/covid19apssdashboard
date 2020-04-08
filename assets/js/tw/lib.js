@@ -16,6 +16,69 @@ var dataysituazionecomuni = {};
 var abitanticomuni = {};
 
 var chartlog = "";
+var chartbar = "";
+var chart_nuovi = [];
+var chart_totali = [];
+var chart_labels = [];
+var chart_deceduti = [];
+var chart_guariti = [];
+var chart_incremento = [];
+var chart_data_log_nuovi = [];
+var chart_data_log = []
+var chart_data_log_deceduti = [];
+var chart_data_log_guariti = [];
+
+
+function barN() {
+  $('#vistabar').html('assoluta');
+  $("#ban").hide();
+  $("#bal").show();
+  chartbar.load({
+    columns: [
+      chart_nuovi,
+      chart_totali    ]
+    });
+  }
+
+function barL() {
+  $('#vistabar').html('logaritmica');
+  $("#ban").show();
+  $("#bal").hide();
+  chartbar.load({
+    columns: [
+      chart_data_log,
+      chart_data_log_nuovi 
+    ]
+    });
+  }
+
+function chartN() {
+  $('#vistachart').html('assoluta');
+  $("#van").hide();
+  $("#val").show();
+  chartlog.load({
+    columns: [
+      chart_nuovi,
+      chart_deceduti,
+      chart_guariti 
+    ]
+    });
+  }
+
+
+function chartL() {
+  $('#vistachart').html('logaritmica');
+  $("#val").hide();
+  $("#van").show(); 
+  chartlog.load({
+    columns: [
+        chart_data_log_nuovi,
+        chart_data_log_deceduti,
+        chart_data_log_guariti 
+    ],
+    });
+  }
+
 
 function updatesituazionecomuni(intablestatocomuni) {
   situazione = {};
@@ -169,6 +232,10 @@ function parseStatoclinico(indata) {
 
 require(['csv','jquery'], function(csv,$) {
   $(document).ready(function() {
+    $("#bal").show();
+    $('#ban').hide();
+    $("#val").hide();
+    $('#van').show();
     $.ajax({
     	async: false, //false,
         type: "GET",  

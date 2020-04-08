@@ -1,66 +1,59 @@
 require(['c3', 'jquery'], function(c3, $) {
-  var nuovi = [];
-  var totali = [];
-  var labels = [];
-  var deceduti = [];
-  var guariti = [];
-  var incremento = [];
-  nuovi.push("nuovi");
-  totali.push("totali");
-  guariti.push("guariti");
-  deceduti.push("deceduti");
-  incremento.push("incremento");
+  chart_nuovi.push("nuovi");
+  chart_totali.push("totali");
+  chart_guariti.push("guariti");
+  chart_deceduti.push("deceduti");
+  chart_incremento.push("incremento");
 
   for (var i = 0; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
-    labels.push(data[0].replace("/2020",""));
-    nuovi.push(parseInt(data[12]));
-    totali.push(parseInt(data[7]-data[12]));
-    deceduti.push(parseInt(data[6]));
-    guariti.push(parseInt(data[5]));
+    chart_labels.push("giorno " + data[0].replace("/2020","") + " - totale: " + data[7]);
+    chart_nuovi.push(parseInt(data[12]));
+    chart_totali.push(parseInt(data[7]-data[12]));
+    chart_deceduti.push(parseInt(data[6]));
+    chart_guariti.push(parseInt(data[5]));
   }
   $("#spinandamento").removeClass("spinner-border");
-
-  data_log_nuovi = ['nuovi'];
-  for(var i=1; i<nuovi.length; i++){
-      if (nuovi[i] == 0) {
-          data_log_nuovi[i]= 0 ;
+  chart_data_log_nuovi = ['nuovi'];
+  for(var i=1; i<chart_nuovi.length; i++){
+      if (chart_nuovi[i] == 0) {
+          chart_data_log_nuovi[i]= 0 ;
       } else {
-        data_log_nuovi[i] = Math.log(nuovi[i]) / Math.LN10;
+        chart_data_log_nuovi[i] = Math.log(chart_nuovi[i]) / Math.LN10;
       }
     }
 
-  data_log = ['totali'];
-  for(var i=1; i<totali.length; i++){
-      if (totali[i] == 0) {
-          data_log[i]= 0 ;
+  chart_data_log = ['totali'];
+  for(var i=1; i<chart_totali.length; i++){
+      if (chart_totali[i] == 0) {
+          chart_data_log[i]= 0 ;
       } else {
-        data_log[i] = Math.log(totali[i]+nuovi[i]) / Math.LN10;
+        chart_data_log[i] = Math.log(chart_totali[i]+chart_nuovi[i]) / Math.LN10;
       }
     }
 
-  data_log_deceduti = ['deceduti'];
-  for(var i=1; i<totali.length; i++){
-      if (deceduti[i] == 0) {
-          data_log_deceduti[i]= 0 ;
+  chart_data_log_deceduti = ['deceduti'];
+  for(var i=1; i<chart_totali.length; i++){
+      if (chart_deceduti[i] == 0) {
+          chart_data_log_deceduti[i]= 0 ;
       } else {
-        if (data_log_deceduti[i] == 0) {
-          data_log_deceduti[i] = 0;
+        if (chart_data_log_deceduti[i] == 0) {
+          chart_data_log_deceduti[i] = 0;
         } else {
-          data_log_deceduti[i] = Math.log(deceduti[i]) / Math.LN10;
+          chart_data_log_deceduti[i] = Math.log(chart_deceduti[i]) / Math.LN10;
         }
       }
     }
 
-  data_log_guariti = ['guariti'];
-  for(var i=1; i<totali.length; i++){
-      if (guariti[i] == 0) {
-          data_log_guariti[i]= 0 ;
+  chart_data_log_guariti = ['guariti'];
+  for(var i=1; i<chart_totali.length; i++){
+      if (chart_guariti[i] == 0) {
+          chart_data_log_guariti[i]= 0 ;
       } else {
-        if (data_log_guariti[i] = 0) {
-          data_log_guariti[i] = 0;
+        if (chart_data_log_guariti[i] = 0) {
+          chart_data_log_guariti[i] = 0;
         } else {
-          data_log_guariti[i] = Math.log(guariti[i]) / Math.LN10;
+          chart_data_log_guariti[i] = Math.log(chart_guariti[i]) / Math.LN10;
         }
       }
     }
@@ -73,9 +66,9 @@ require(['c3', 'jquery'], function(c3, $) {
       data: {
         columns: [
           //  data_log,
-            data_log_nuovi,
-            data_log_deceduti,
-            data_log_guariti  
+            chart_data_log_nuovi,
+            chart_data_log_deceduti,
+            chart_data_log_guariti  
         ],
         type: 'spline', 
         groups: [
@@ -113,7 +106,7 @@ require(['c3', 'jquery'], function(c3, $) {
           },
           show: true,
           type: 'category',
-          categories: labels
+          categories: chart_labels
         }
       },
       legend: {
@@ -136,34 +129,34 @@ require(['c3', 'jquery'], function(c3, $) {
           format: {
               title: function (d) { 
                 whereiam = d;
-                return labels[d] + "/2020"; },
+                return chart_labels[d] + "/20"; },
               value: function (value, ratio, id) {
                   v = ""
               //    if (id == 'totali') {
               //      v = (totali[whereiam+1]+nuovi[whereiam+1]);
               //    }
                   if (id == 'guariti') {
-                    v = guariti[whereiam+1]
+                    v = chart_guariti[whereiam+1]
                   }
                   if (id == 'deceduti') {
-                    v = deceduti[whereiam+1]
+                    v = chart_deceduti[whereiam+1]
                   }
                   if (id == 'nuovi') {
-                    v = nuovi[whereiam+1]
+                    v = chart_nuovi[whereiam+1]
                   }
                   return v;
               }
           }
-    }
+      }
     });
   });
-
-  var chart = c3.generate({
+  var whereiambar = "";
+  chartbar = c3.generate({
       bindto: '#chart-bar-stacked', 
       data: {
         columns: [
-          nuovi, //data_log_nuovi, //nuovi,
-          totali //data_log //totali
+          chart_nuovi, //data_log_nuovi, //nuovi,
+          chart_totali //data_log //totali
         ],
         type: 'bar', // default type of chart
         groups: [
@@ -184,21 +177,29 @@ require(['c3', 'jquery'], function(c3, $) {
       axis: {
         x: {
           type: 'category',
-          categories: labels
+          categories: chart_labels
         },
       },
-      /*
-      bar: {
-        width: 16
-      },*/
       legend: {
           show: false, //hide legend
       },
-      /*
-      padding: {
-        bottom: 0,
-        top: 0
-      },*/
+      tooltip: {
+        format: {
+          title: function (d) { 
+            whereiambar = d;
+                return chart_labels[d]; },
+              value: function (value, ratio, id) {
+                  v = ""
+                  if (id == 'nuovi') {
+                    v = chart_nuovi[whereiambar+1]
+                  }
+                  if (id == 'totali') {
+                    v = chart_totali[whereiambar+1]
+                  }
+                  return v;
+              }
+          }
+      }
     });
 
   });

@@ -306,11 +306,17 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Andamento storico contagi</strong>&nbsp;<span id="spinandamento" class="spinner-border"></span>
+                    <strong>Andamento storico contagi rappresentati su scala 
+                      <span id="vistabar">assoluta</span>
+                    </strong>&nbsp;<span id="spinandamento" class="spinner-border"></span>
                 </h3>
                 </div>
                 <div class="card-body">
                     <div id="chart-bar-stacked" style="height: 16rem"></div>
+                </div>
+                <div class="card-header">
+                  <a id="ban" href="javascript:barN()">cambia vista su scala assoluta</a>
+                  <a id="bal" href="javascript:barL()">cambia vista su scala logaritmica</a>
                 </div>
               </div>
             </div>
@@ -320,11 +326,18 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>Andamento storico contagi/guarigioni/decessi rappresentati su scala logaritmica</strong>&nbsp;<span id="spinandamentolog" class="spinner-border"></span>
+                    <strong>Andamento storico contagi/guarigioni/decessi rappresentati su scala 
+                      <span id="vistachart">logaritmica</span>
+                    </strong>
+                    &nbsp;
+                    <span id="spinandamentolog" class="spinner-border"></span>
                 </h3>
                 </div>
                 <div class="card-body">
-                    <div id="chart-log" style="height: 16rem"></div>
+                  <div id="chart-log" style="height: 16rem"></div>
+                </div>
+                <div class="card-header">
+                  <a id="van" href="javascript:chartN()">cambia vista su scala assoluta</a><a id="val" href="javascript:chartL()">cambia vista su scala logaritmica</a>
                 </div>
               </div>
             </div>
