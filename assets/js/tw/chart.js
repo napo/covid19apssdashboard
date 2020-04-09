@@ -12,7 +12,7 @@ require(['c3', 'jquery'], function(c3, $) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
     chart_labels.push(data[0]); //.replace("/2020",""));
-    chart_ltotale.push("totale: " + data[7]);
+    chart_ltotale.push(data[7]);
     chart_nuovi.push(parseInt(data[12]));
     chart_totali.push(parseInt(data[7]-data[12]));
     chart_deceduti.push(parseInt(data[6]));
@@ -60,6 +60,19 @@ require(['c3', 'jquery'], function(c3, $) {
           chart_data_log_guariti[i] = 0;
         } else {
           chart_data_log_guariti[i] = Math.log(chart_guariti[i]) / Math.LN10;
+        }
+      }
+    }
+
+  chart_data_log_totale[0] = chart_ltotale[0];
+  for(var i=1; i<chart_totali.length; i++){
+      if (chart_ltotale[i] == 0) {
+          chart_data_log_totale[i]= 0 ;
+      } else {
+        if (chart_data_log_totale[i] = 0) {
+          chart_data_log_totale[i] = 0;
+        } else {
+          chart_data_log_totale[i] = Math.log(chart_ltotale[i]) / Math.LN10;
         }
       }
     }
@@ -170,20 +183,26 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
           chart_e,
+          chart_ltotale,
           chart_nuovi, 
           chart_totali 
         ],
-        type: 'bar', 
+        type: 'bar',
+        types: {
+          'totale': 'spline'
+        },
         groups: [
           [ 'nuovi', 'totali']
         ],
         colors: {
+          'totale': tabler.colors["yellow"],
           'nuovi': tabler.colors['red'],
           'totali': tabler.colors["orange"]
         },
         names: {
           'nuovi': 'Nuovi',
-          'totali': 'Precedenti'
+          'totali': 'Precedenti',
+          'totale': 'Totale'
         }
       },
       zoom: {
@@ -223,6 +242,9 @@ require(['c3', 'jquery'], function(c3, $) {
                   }
                   if (id == 'totali') {
                     v = chart_totali[whereiambar]
+                  }
+                  if (id == 'totale') {
+                    v = chart_ltotale[whereiambar]
                   }
                   return v;
               }

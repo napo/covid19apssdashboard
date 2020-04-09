@@ -29,6 +29,7 @@ var chart_data_log_nuovi = [];
 var chart_data_log = []
 var chart_data_log_deceduti = [];
 var chart_data_log_guariti = [];
+var chart_data_log_totale = [];
 
 function contagiN() {
   $('#contagichart').html('assoluta');
@@ -58,6 +59,7 @@ function barN() {
   $("#bal").show();
   chartbar.load({
     columns: [
+      chart_ltotale,
       chart_nuovi,
       chart_totali    ]
     });
@@ -69,6 +71,7 @@ function barL() {
   $("#bal").hide();
   chartbar.load({
     columns: [
+      chart_data_log_totale,
       chart_data_log,
       chart_data_log_nuovi 
     ]
