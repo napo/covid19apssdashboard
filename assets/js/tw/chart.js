@@ -1,12 +1,14 @@
 require(['c3', 'jquery'], function(c3, $) {
-  chart_nuovi.push("nuovi");
-  chart_totali.push("totali");
-  chart_guariti.push("guariti");
-  chart_deceduti.push("deceduti");
-  chart_incremento.push("incremento");
-  var chart_e = [] //.push("giorno");
+  var chart_e = [];
 
-  for (var i = 0; i < tablestatoclinico.length; i++) {
+  chart_e[0] = "giorno"; 
+  chart_labels[0] =tablestatoclinico[0][0];
+  chart_ltotale[0] = "totale"
+  chart_nuovi[0] = "nuovi";
+  chart_totali[0] = "totali";
+  chart_deceduti[0] = "deceduti";
+  chart_guariti[0] = 'dimessi';
+  for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
     chart_labels.push(data[0]); //.replace("/2020",""));
@@ -18,7 +20,7 @@ require(['c3', 'jquery'], function(c3, $) {
   }
 
   $("#spinandamento").removeClass("spinner-border");
-  chart_data_log_nuovi = ['nuovi'];
+  chart_data_log_nuovi[0] = chart_nuovi[0];
   for(var i=1; i<chart_nuovi.length; i++){
       if (chart_nuovi[i] == 0) {
           chart_data_log_nuovi[i]= 0 ;
@@ -27,7 +29,7 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     }
 
-  chart_data_log = ['totali'];
+  chart_data_log[0] = chart_totali[0];
   for(var i=1; i<chart_totali.length; i++){
       if (chart_totali[i] == 0) {
           chart_data_log[i]= 0 ;
@@ -36,7 +38,7 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     }
 
-  chart_data_log_deceduti = ['deceduti'];
+  chart_data_log_deceduti[0] = chart_deceduti[0];
   for(var i=1; i<chart_totali.length; i++){
       if (chart_deceduti[i] == 0) {
           chart_data_log_deceduti[i]= 0 ;
@@ -49,7 +51,7 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     }
 
-  chart_data_log_guariti = ['guariti'];
+  chart_data_log_guariti[0] = chart_guariti[0];
   for(var i=1; i<chart_totali.length; i++){
       if (chart_guariti[i] == 0) {
           chart_data_log_guariti[i]= 0 ;
@@ -78,14 +80,11 @@ require(['c3', 'jquery'], function(c3, $) {
         type: 'spline', 
         groups: [
           ['deceduti'],
-          ['guariti']
+          ['dimessi']
         ],
         colors: {
           'deceduti': tabler.colors["red"],
-          'guariti': tabler.colors["green"]
-        },
-        names: {
-          'guariti': 'dimessi'
+          'dimessi': tabler.colors["green"]
         }
       },
       axis: {
@@ -123,6 +122,14 @@ require(['c3', 'jquery'], function(c3, $) {
       point: {
         show: true
       },
+      grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
+      },
       zoom: {
         enabled: true
       },
@@ -143,11 +150,11 @@ require(['c3', 'jquery'], function(c3, $) {
                 whereiam = d;
               return chart_labels[d]; },
               value: function (value, ratio, id) {
-                  if (id == 'guariti') {
-                    v = chart_guariti[whereiam+1]
+                  if (id == 'dimessi') {
+                    v = chart_guariti[whereiam]
                   }
                   if (id == 'deceduti') {
-                    v = chart_deceduti[whereiam+1]
+                    v = chart_deceduti[whereiam]
                   }
                   return v;
               }
@@ -163,10 +170,10 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
           chart_e,
-          chart_nuovi, //data_log_nuovi, //nuovi,
-          chart_totali //data_log //totali
+          chart_nuovi, 
+          chart_totali 
         ],
-        type: 'bar', // default type of chart
+        type: 'bar', 
         groups: [
           [ 'nuovi', 'totali']
         ],
@@ -191,9 +198,9 @@ require(['c3', 'jquery'], function(c3, $) {
         },
       },
       legend: {
-          show: false, //hide legend
+          show: true, //hide legend
       },
-        tooltip: {
+      tooltip: {
         format: {
           title: function (d) {
               g = d.getDate();
@@ -212,14 +219,22 @@ require(['c3', 'jquery'], function(c3, $) {
           value: function (value, ratio, id) {
                   v = ""
                   if (id == 'nuovi') {
-                    v = chart_nuovi[whereiambar+1]
+                    v = chart_nuovi[whereiambar]
                   }
                   if (id == 'totali') {
-                    v = chart_totali[whereiambar+1]
+                    v = chart_totali[whereiambar]
                   }
                   return v;
               }
           }
+      },
+        grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
       }
     });
 
@@ -253,6 +268,14 @@ require(['c3', 'jquery'], function(c3, $) {
           }
         },
       },
+      grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
+      },
       legend: {
           show: false, //hide legend
       },
@@ -275,7 +298,7 @@ require(['c3', 'jquery'], function(c3, $) {
           value: function (value, ratio, id) {
                   v = ""
                   if (id == 'nuovi') {
-                    v = chart_nuovi[whereiamcont+1]
+                    v = chart_nuovi[whereiamcont]
                   }
                   return v;
               }
