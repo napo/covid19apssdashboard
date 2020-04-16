@@ -6,7 +6,6 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
         $("#mapindicator").text(indicatore);
         $.each(tablecodicicomuni, function(index,row) {
             if (index > 0) {
-                console.log(index);
                 m = {latLng: [row[6], row[7]], name: row[1]};
                 markers.push(m); 
                 codice = row[0];
