@@ -121,7 +121,7 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["latitude"] = row[8];
         data["longitude"] = row[9];
         data["abitanti"] = abitanticomuni[row[0]];
-        data["lastupdate"] = row[11];
+        data["lastupdate"] = row[10];
         percontagi = ((data["contagi"]/ data["abitanti"] ) * 100).toPrecision(2); 
         data["percontagi"] = percontagi;
         data["incremento"] = row[12];
