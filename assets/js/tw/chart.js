@@ -87,8 +87,10 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
             chart_e,
-            chart_data_log_deceduti,
-            chart_data_log_dimessi  
+            chart_deceduti,
+            chart_dimessi 
+            //chart_data_log_deceduti,
+            //chart_data_log_dimessi  
         ],
         type: 'spline', 
         groups: [
@@ -269,7 +271,7 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
           chart_e,
-          chart_data_log_nuovi //chart_nuovi
+          chart_nuovi //chart_data_log_nuovi //
         ],
         type: 'area-spline', // default type of chart
         colors: {

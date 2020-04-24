@@ -32,7 +32,7 @@ var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
 
 function contagiN() {
-  $('#contagichart').html('assoluta');
+  $('#contagichart').html('lineare');
   $("#can").hide();
   $("#cal").show();
   chartcontagi.load({
@@ -54,7 +54,7 @@ function contagiL() {
   }
 
 function barN() {
-  $('#vistabar').html('assoluta');
+  $('#vistabar').html('lineare');
   $("#ban").hide();
   $("#bal").show();
   chartbar.load({
@@ -116,11 +116,12 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["contagi"] = parseInt(row[2]);
         data["guariti"] = parseInt(row[3]);
         data["decessi"] = parseInt(row[4]);
+        data["dimessi"] = parseInt(row[5]);
         data["contagiogni1000"] = each1000people(row[0],parseInt(row[2]));
-        data["latitude"] = row[6];
-        data["longitude"] = row[7];
+        data["latitude"] = row[8];
+        data["longitude"] = row[9];
         data["abitanti"] = abitanticomuni[row[0]];
-        data["lastupdate"] = row[5];
+        data["lastupdate"] = row[11];
         percontagi = ((data["contagi"]/ data["abitanti"] ) * 100).toPrecision(2); 
         data["percontagi"] = percontagi;
         data["incremento"] = row[12];
@@ -264,10 +265,10 @@ require(['csv','jquery'], function(csv,$) {
   $(document).ready(function() {
     $("#bal").show();
     $('#ban').hide();
-    $("#val").hide();
-    $('#van').show();
-    $("#cal").hide();
-    $('#can').show();
+    $("#val").show();
+    $('#van').hide();
+    $("#cal").show();
+    $('#can').hide();
     $.ajax({
     	async: false, //false,
         type: "GET",  
