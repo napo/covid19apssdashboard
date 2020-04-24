@@ -23,12 +23,12 @@ var chart_totali = [];
 var chart_labels = [];
 var chart_ltotale = [];
 var chart_deceduti = [];
-var chart_guariti = [];
+var chart_dimessi = [];
 var chart_incremento = [];
 var chart_data_log_nuovi = [];
 var chart_data_log = []
 var chart_data_log_deceduti = [];
-var chart_data_log_guariti = [];
+var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
 
 function contagiN() {
@@ -86,7 +86,7 @@ function chartN() {
     columns: [
       //chart_totali,
       chart_deceduti,
-      chart_guariti 
+      chart_dimessi
     ]
     });
   }
@@ -100,7 +100,7 @@ function chartL() {
     columns: [
         //chart_data_log,
         chart_data_log_deceduti,
-        chart_data_log_guariti 
+        chart_data_log_dimessi 
     ],
     });
   }
@@ -178,6 +178,8 @@ function parseStatoclinico(indata) {
   var deceduti_ieri = 0;
   var dimessi = 0;
   var dimessi_ieri = 0;
+  var guariti = 0;
+  var guariti_ieri = 0;
 	if(typeof(indata) === 'undefined') {
     return null;
   } else {
@@ -201,8 +203,10 @@ function parseStatoclinico(indata) {
     intensiva_ieri = parseInt(yesterdaydata[4]);
     deceduti = parseInt(todaydata[6]);
     deceduti_ieri = parseInt(yesterdaydata[6]);
-    dimessi = parseInt(todaydata[5]);
-    dimessi_ieri = parseInt(yesterdaydata[5]);
+    guariti = parseInt(todaydata[5]);
+    guariti_ieri = parseInt(yesterdaydata[5]);
+    dimessi = parseInt(todaydata[17]);
+    dimessi_ieri = parseInt(yesterdaydata[17]);
 	}
 
   $("#totale").removeClass("spinner-border");

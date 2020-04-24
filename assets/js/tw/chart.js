@@ -7,7 +7,7 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_nuovi[0] = "nuovi";
   chart_totali[0] = "totali";
   chart_deceduti[0] = "deceduti";
-  chart_guariti[0] = 'dimessi';
+  chart_dimessi[0] = 'dimessi';
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
@@ -16,7 +16,7 @@ require(['c3', 'jquery'], function(c3, $) {
     chart_nuovi.push(parseInt(data[12]));
     chart_totali.push(parseInt(data[7]-data[12]));
     chart_deceduti.push(parseInt(data[6]));
-    chart_guariti.push(parseInt(data[5]));
+    chart_dimessi.push(parseInt(data[17]));
   }
 
   $("#spinandamento").removeClass("spinner-border");
@@ -51,15 +51,15 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     }
 
-  chart_data_log_guariti[0] = chart_guariti[0];
+  chart_data_log_dimessi[0] = chart_dimessi[0];
   for(var i=1; i<chart_totali.length; i++){
-      if (chart_guariti[i] == 0) {
-          chart_data_log_guariti[i]= 0 ;
+      if (chart_dimessi[i] == 0) {
+          chart_data_log_dimessi[i]= 0 ;
       } else {
-        if (chart_data_log_guariti[i] = 0) {
-          chart_data_log_guariti[i] = 0;
+        if (chart_data_log_dimessi[i] = 0) {
+          chart_data_log_dimessi[i] = 0;
         } else {
-          chart_data_log_guariti[i] = Math.log(chart_guariti[i]) / Math.LN10;
+          chart_data_log_dimessi[i] = Math.log(chart_dimessi[i]) / Math.LN10;
         }
       }
     }
@@ -88,7 +88,7 @@ require(['c3', 'jquery'], function(c3, $) {
         columns: [
             chart_e,
             chart_data_log_deceduti,
-            chart_data_log_guariti  
+            chart_data_log_dimessi  
         ],
         type: 'spline', 
         groups: [
@@ -164,7 +164,7 @@ require(['c3', 'jquery'], function(c3, $) {
               return chart_labels[d]; },
               value: function (value, ratio, id) {
                   if (id == 'dimessi') {
-                    v = chart_guariti[whereiam]
+                    v = chart_dimessi[whereiam]
                   }
                   if (id == 'deceduti') {
                     v = chart_deceduti[whereiam]
