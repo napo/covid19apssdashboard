@@ -13,10 +13,10 @@ require(['c3', 'jquery'], function(c3, $) {
     chart_e.push(data[0]);
     chart_labels.push(data[0]); //.replace("/2020",""));
     chart_ltotale.push(data[7]);
-    chart_nuovi.push(parseInt(data[12]));
-    chart_totali.push(parseInt(data[7]-data[12]));
+    chart_nuovi.push(parseInt(data[11]));
+    chart_totali.push(parseInt(data[7]-data[11]));
     chart_deceduti.push(parseInt(data[6]));
-    chart_dimessi.push(parseInt(data[17]));
+    chart_dimessi.push(parseInt(data[16]));
   }
 
   $("#spinandamento").removeClass("spinner-border");
