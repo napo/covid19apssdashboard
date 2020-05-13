@@ -189,13 +189,13 @@ function parseStatoclinico(indata) {
     yesterdaydata = indata[idxtoday-1];
     totale = parseInt(todaydata[7]);
     totale_ieri = parseInt(yesterdaydata[7]);
-    totale_attuali = parseInt(todaydata[9]);
-    totale_attuali_ieri = parseInt(yesterdaydata[9]);
+    totale_attuali = parseInt(todaydata[10]);
+    totale_attuali_ieri = parseInt(yesterdaydata[10]);
     oggi = todaydata[0];
     domicilio = parseInt(todaydata[1]);
     domicilio_ieri = parseInt(yesterdaydata[1]);
-    rsa = parseInt(todaydata[10]);
-    rsa_ieri = parseInt(yesterdaydata[10]);
+    rsa = parseInt(todaydata[14]);
+    rsa_ieri = parseInt(yesterdaydata[14]);
     infettive = parseInt(todaydata[2]);
     infettive_ieri = parseInt(yesterdaydata[2]);
     intesita = parseInt(todaydata[3]);
@@ -206,8 +206,8 @@ function parseStatoclinico(indata) {
     deceduti_ieri = parseInt(yesterdaydata[6]);
     guariti = parseInt(todaydata[5]);
     guariti_ieri = parseInt(yesterdaydata[5]);
-    dimessi = parseInt(todaydata[17]);
-    dimessi_ieri = parseInt(yesterdaydata[17]);
+    dimessi = parseInt(todaydata[16]);
+    dimessi_ieri = parseInt(yesterdaydata[16]);
 	}
 
   $("#totale").removeClass("spinner-border");
