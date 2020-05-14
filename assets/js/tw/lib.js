@@ -166,6 +166,7 @@ function parseStatoclinico(indata) {
   var totale_ieri = 0;
   var totale_attuali = 0;
   var totale_attuali_ieri = 0;
+  var totale_positivi = 0;
   var oggi = "n/d";
   var domicilio = 0;
   var domicilio_ieri = 0;
@@ -190,6 +191,7 @@ function parseStatoclinico(indata) {
     totale = parseInt(todaydata[7]);
     totale_ieri = parseInt(yesterdaydata[7]);
     totale_attuali = parseInt(todaydata[10]);
+    totale_positivi = parseInt(todaydata[8]);
     totale_attuali_ieri = parseInt(yesterdaydata[10]);
     oggi = todaydata[0];
     domicilio = parseInt(todaydata[1]);
@@ -227,9 +229,10 @@ function parseStatoclinico(indata) {
   $("#intesita").text(intesita);
   $("#intensiva").text(intensiva);
   $("#deceduti").text(deceduti);
-  $("#dimessi").text(dimessi);
+  //$("#dimessi").text(dimessi);
+  $("#dimessi").text(guariti);
   $("#rsa").text(rsa);
-  $("#positiviattuali").text(totale_attuali);
+  $("#positiviattuali").text(totale_positivi);
 
   /*
   if (domicilio != "n/d") {

@@ -23,11 +23,12 @@ function preparedatatable() {
     $.each(datasituazionecomuni, function( index, row ) {
         if (row.contagi > 0) {
             codice = row.codice;
-            ieridimessi = dataysituazionecomuni[codice].dimessi;
+            //ieridimessi = dataysituazionecomuni[codice].dimessi;
+            ieridimessi = dataysituazionecomuni[codice].guariti;
             ieridecessi = dataysituazionecomuni[codice].decessi;
             iericontagi = dataysituazionecomuni[codice].contagi;
             ic = addSymbolDiff(row.contagi - iericontagi); //occhio
-            ig = addSymbolDiff(row.dimessi - ieridimessi);
+            ig = addSymbolDiff(row.guariti - ieridimessi);
             id = addSymbolDiff(row.decessi - ieridecessi);
 
             data4table.push([
@@ -36,7 +37,8 @@ function preparedatatable() {
                 ic,
                 row.abitanti,
                 row.percontagi,
-                row.dimessi,
+                //row.dimessi,
+                row.guariti,
                 ig,
                 row.decessi,
                 id,
