@@ -186,24 +186,24 @@ require(['c3', 'jquery'], function(c3, $) {
         columns: [
           chart_e,
           chart_ltotale,
-          chart_nuovi, 
-          chart_totali 
+          /*chart_nuovi, 
+          chart_totali */
         ],
-        type: 'bar',
-        types: {
+        type: 'area-spline',
+        /*types: {
           'totale': 'spline'
         },
         groups: [
           [ 'nuovi', 'totali']
-        ],
+        ],*/
         colors: {
-          'totale': tabler.colors["yellow"],
-          'nuovi': tabler.colors['red'],
-          'totali': tabler.colors["orange"]
+          'totale': '#000000' //tabler.colors ["yellow"]//["yellow"]
+          /*'nuovi': tabler.colors['red'],
+          'totali': tabler.colors["orange"]*/
         },
         names: {
-          'nuovi': 'Nuovi',
-          'totali': 'Precedenti',
+          /*'nuovi': 'Nuovi',
+          'totali': 'Precedenti',*/
           'totale': 'Totale'
         }
       },
@@ -219,7 +219,7 @@ require(['c3', 'jquery'], function(c3, $) {
         },
       },
       legend: {
-          show: true, //hide legend
+          show: false, ///true, //hide legend
       },
       tooltip: {
         format: {
@@ -239,12 +239,13 @@ require(['c3', 'jquery'], function(c3, $) {
               return chart_labels[d]; },
           value: function (value, ratio, id) {
                   v = ""
+                  /*
                   if (id == 'nuovi') {
                     v = chart_nuovi[whereiambar]
                   }
                   if (id == 'totali') {
                     v = chart_totali[whereiambar]
-                  }
+                  }*/
                   if (id == 'totale') {
                     v = chart_ltotale[whereiambar]
                   }

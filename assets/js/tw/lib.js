@@ -60,8 +60,9 @@ function barN() {
   chartbar.load({
     columns: [
       chart_ltotale,
+      /*
       chart_nuovi,
-      chart_totali    ]
+      chart_totali*/    ]
     });
   }
 
@@ -72,8 +73,9 @@ function barL() {
   chartbar.load({
     columns: [
       chart_data_log_totale,
+      /*
       chart_data_log,
-      chart_data_log_nuovi 
+      chart_data_log_nuovi*/ 
     ]
     });
   }
