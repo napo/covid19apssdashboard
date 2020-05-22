@@ -34,14 +34,14 @@ function preparedatatable() {
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                //leva22 ic,
+                ic,
                 row.abitanti,
                 row.percontagi,
                 //row.dimessi,
                 row.guariti,
-                //leva22 ig,
+                ig,
                 row.decessi,
-                //leva22 id,
+                id,
                 row.lastupdate
                 ]);
         }
