@@ -25,7 +25,6 @@ require(['c3', 'jquery'], function(c3, $) {
     }
   }
 
-console.log(data_log);
 var chart_log = c3.generate({
     bindto: '#chart-log', 
     size: {
@@ -39,7 +38,7 @@ var chart_log = c3.generate({
       ],
       labels : {show:true,
           format: {
-              data1 : function(d,id){console.log(id, Math.pow(10,d));return Math.pow(10,d).toFixed(0);}
+              data1 : function(d,id){(id, Math.pow(10,d));return Math.pow(10,d).toFixed(0);}
           }
       }
     },

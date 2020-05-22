@@ -4,7 +4,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
         var vv = [];
 
         $.each(datasituazionecomuni, function( index, row ) {
-            data = datasituazionecomuni[index]
+            data = datasituazionecomuni[index];
             if (index !=0) {
                 nomecomune = data.nomecomune;
                 contagi = parseInt(data.contagi);
