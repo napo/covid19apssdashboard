@@ -9,7 +9,12 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 m = {latLng: [row[6], row[7]], name: row[1]};
                 markers.push(m); 
                 codice = row[0];
-                dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
+                try {
+                    dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
+                } catch(e) {
+                    console.log(e.message);
+                    console.log(row);
+                }
             }
         });
 
