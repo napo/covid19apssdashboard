@@ -197,7 +197,7 @@ require(['c3', 'jquery'], function(c3, $) {
           [ 'nuovi', 'totali']
         ],*/
         colors: {
-          'totale': '#000000' //tabler.colors ["yellow"]//["yellow"]
+          'totale': tabler.colors ["yellow"]//["yellow"]
           /*'nuovi': tabler.colors['red'],
           'totali': tabler.colors["orange"]*/
         },
