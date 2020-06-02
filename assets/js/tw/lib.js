@@ -255,6 +255,11 @@ function parseStatoclinico(indata) {
     $("#difftotaletext").text(difftotale);
     $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-down");
   }
+  if (difftotale == 0){
+    $("#variazionecasi").removeClass("h1 text-right text-green").addClass("h1 text-left text-green");
+    $("#difftotaletext").text("nessun nuoovo contagio ");
+    $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-down");
+  }
   indicatori("domicilio",domicilio_ieri,domicilio);
   indicatori("infettive",infettive_ieri,infettive);
   indicatori("intensita",intesita_ieri,intesita);
