@@ -257,7 +257,7 @@ function parseStatoclinico(indata) {
   }
   if (difftotale == 0){
     $("#variazionecasi").removeClass("h1 text-right text-green").addClass("h1 text-left text-green");
-    $("#difftotaletext").text("nessun nuoovo contagio ");
+    $("#difftotaletext").text("nessun nuovo contagio ");
     $("#iconavariazionecasi").removeClass("fe").addClass("fe fe-arrow-down");
   }
   indicatori("domicilio",domicilio_ieri,domicilio);
