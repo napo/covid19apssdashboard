@@ -6,7 +6,7 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_ltotale[0] = "totale"
   chart_nuovi[0] = "nuovi";
   chart_totali[0] = "totali";
-  chart_deceduti[0] = "deceduti";
+  chart_deceduti[0] = "decessi";
   chart_dimessi[0] = 'dimessi';
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
@@ -94,11 +94,11 @@ require(['c3', 'jquery'], function(c3, $) {
         ],
         type: 'spline', 
         groups: [
-          ['deceduti'],
+          ['decessi'],
           ['dimessi']
         ],
         colors: {
-          'deceduti': tabler.colors["red"],
+          'decessi': tabler.colors["red"],
           'dimessi': tabler.colors["green"]
         }
       },
@@ -168,7 +168,7 @@ require(['c3', 'jquery'], function(c3, $) {
                   if (id == 'dimessi') {
                     v = chart_dimessi[whereiam]
                   }
-                  if (id == 'deceduti') {
+                  if (id == 'decessi') {
                     v = chart_deceduti[whereiam]
                   }
                   return v;
