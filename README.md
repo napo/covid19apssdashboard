@@ -3,3 +3,5 @@ Questa dashboard mostra i dati di diffusione in Trentino che la Provincia Autono
 
 La dashboard è visitabile qui
 https://covid19trentino.fbk.eu
+
+
