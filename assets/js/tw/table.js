@@ -23,25 +23,23 @@ function preparedatatable() {
     $.each(datasituazionecomuni, function( index, row ) {
         if (row.contagi > 0) {
             codice = row.codice;
-            //ieridimessi = dataysituazionecomuni[codice].dimessi;
             ieridimessi = dataysituazionecomuni[codice].guariti;
             ieridecessi = dataysituazionecomuni[codice].decessi;
             iericontagi = dataysituazionecomuni[codice].contagi;
-            ic = addSymbolDiff(row.contagi - iericontagi); //occhio
+            ic = addSymbolDiff(row.contagi - iericontagi); 
             ig = addSymbolDiff(row.guariti - ieridimessi);
             id = addSymbolDiff(row.decessi - ieridecessi);
-
+			
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                ic,
+                //SIcontabellaieri ic,
                 row.abitanti,
                 row.percontagi,
-                //row.dimessi,
                 row.guariti,
-                ig,
+                //SIcontabellaieriig,
                 row.decessi,
-                id,
+                //SIcontabellaieriid,
                 row.lastupdate
                 ]);
         }
