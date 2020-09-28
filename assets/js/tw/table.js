@@ -33,13 +33,13 @@ function preparedatatable() {
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                //SIcontabellaieri ic,
+                ic,
                 row.abitanti,
                 row.percontagi,
                 row.guariti,
-                //SIcontabellaieriig,
+                ig,
                 row.decessi,
-                //SIcontabellaieriid,
+                id,
                 row.lastupdate
                 ]);
         }
