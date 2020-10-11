@@ -4,20 +4,24 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_e[0] = "giorno"; 
   chart_labels[0] =tablestatoclinico[0][0];
   chart_ltotale[0] = "totale"
-  chart_nuovi[0] = "nuovi";
+  chart_nuovi[0] = "contagi";
   chart_totali[0] = "totali";
   chart_deceduti[0] = "decessi";
   chart_dimessi[0] = 'dimessi';
+  chart_sma = [];
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
     chart_labels.push(data[0]); //.replace("/2020",""));
     chart_ltotale.push(data[7]);
     chart_nuovi.push(parseInt(data[11]));
+    chart_sma.push(parseInt(data[11]));
     chart_totali.push(parseInt(data[7]-data[11]));
     chart_deceduti.push(parseInt(data[6]));
     chart_dimessi.push(parseInt(data[16]));
   }
+  calc_sma = movingAverage(chart_sma,7);
+  calc_sma.unshift("media");
 
   $("#spinandamento").removeClass("spinner-border");
   chart_data_log_nuovi[0] = chart_nuovi[0];
@@ -89,8 +93,6 @@ require(['c3', 'jquery'], function(c3, $) {
             chart_e,
             chart_deceduti,
             chart_dimessi 
-            //chart_data_log_deceduti,
-            //chart_data_log_dimessi  
         ],
         type: 'spline', 
         groups: [
@@ -265,13 +267,7 @@ require(['c3', 'jquery'], function(c3, $) {
 
   $("#spinandamentocontagi").removeClass("spinner-border");
   var whereiamcont = "";
-/* sei qui 
-  calc_sma = chart_nuovi
-  calc_sma.shift()
-  calc_sma = movingAverage(calc_sma)
-  calc_sma.unshift("media mobile")
-  console.log(chart_nuovi);
-*/
+
   chartcontagi = c3.generate({
       bindto: '#chart-contagi', 
       data: {
@@ -279,15 +275,25 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
           chart_e,
-          chart_nuovi //calc_sma //chart_data_log_nuovi //
+          chart_nuovi,
+          calc_sma
         ],
-        type: 'area-spline', // default type of chart
+        //type: 'area-spline', 
+        types: {
+            'contagi': 'area-spline',
+            'media ': 'line'
+        },
         colors: {
-          'nuovi': tabler.colors["orange"]
+          'contagi': tabler.colors["orange"],
+          "media": tabler.colors["yellow"]
         },
         names: {
-          'nuovi': 'numero contagi',
-        }
+          'contagi': 'contagi',
+          'media': 'media ultimi 7gg'
+        },
+        point: {
+        	show: true
+    	},
       },
       zoom: {
         enabled: true
@@ -309,7 +315,8 @@ require(['c3', 'jquery'], function(c3, $) {
         }
       },
       legend: {
-          show: false, //hide legend
+          show: true
+          //position: '' //hide legend
       },
       tooltip: {
         format: {
@@ -331,6 +338,9 @@ require(['c3', 'jquery'], function(c3, $) {
                   v = ""
                   if (id == 'nuovi') {
                     v = chart_nuovi[whereiamcont]
+                  }
+                  if (id == 'media mobile') {
+                    v = calc_sma[whereiamcont]
                   }
                   return v;
               }

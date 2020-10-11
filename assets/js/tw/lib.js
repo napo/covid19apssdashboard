@@ -347,7 +347,7 @@ function movingAverage(values, N) {
   }
   for (let n = values.length; i < n; ++i) {
     sum += values[i];
-    means[i] = sum / N;
+    means[i] = Math.round((sum / N) * 100) / 100;
     sum -= values[i - N + 1];
   }
   return means;
