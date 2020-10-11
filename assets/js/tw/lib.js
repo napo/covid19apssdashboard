@@ -35,9 +35,14 @@ function contagiN() {
   $('#contagichart').html('lineare');
   $("#can").hide();
   $("#cal").show();
+  calc_sma = chart_nuovi
+  calc_sma.shift()
+  calc_sma = movingAverage(calc_sma)
+  calc_sma.unshift("media mobile")
   chartcontagi.load({
     columns: [
-      chart_nuovi  
+      chart_nuovi,
+      calc_sma
       ]
     });
   }
@@ -73,9 +78,6 @@ function barL() {
   chartbar.load({
     columns: [
       chart_data_log_totale,
-      /*
-      chart_data_log,
-      chart_data_log_nuovi*/ 
     ]
     });
   }
@@ -100,7 +102,6 @@ function chartL() {
   $("#van").show(); 
   chartlog.load({
     columns: [
-        //chart_data_log,
         chart_data_log_deceduti,
         chart_data_log_dimessi 
     ],
@@ -340,7 +341,7 @@ require(['csv','jquery'], function(csv,$) {
 function movingAverage(values, N) {
   let i = 0;
   let sum = 0;
-  const means = new Float64Array(values.length).fill(NaN);
+  const means = new Array(values.length).fill(0);
   for (let n = Math.min(N - 1, values.length); i < n; ++i) {
     sum += values[i];
   }

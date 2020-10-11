@@ -141,8 +141,8 @@
                         <p>
                         Alcuni dettagli sui dati da parte di <a href="https://patn.maps.arcgis.com/apps/opsdashboard/index.html#/30d39ef2c83a47d285512a4685235843">Trentino Digitale</a><br/><br/>
                         Per informare i cittadini e mettere a disposizione i dati raccolti, utili ai soli fini comunicativi e informativi, si mettono a disposizione, con licenza CC-BY-4.0, le seguenti informazioni:<ul>
-                        <li>Totale positivi: totale persone risultate positive, compresi deceduti e guariti.</li>
-                        <li>Attualmente positivi: totale persone attualmente positive, sia ospedalizzate che in isolamento domiciliare.</li>
+                        <li>Totale positivi: totale persone risultate positive, comprese quelle decedute e guarite.</li>
+                        <li>Attualmente positivi: totale persone attualmente positive, sia in ospedale che in isolamento domiciliare.</li>
                         <li>Dimessi: totale persone dimesse o clinicamente guarite.</li>
                         <li>Deceduti: persone decedute.</li>
                         </ul>
@@ -314,7 +314,7 @@
                     <span id="dimessi" class="spinner-border"></span>
                   </div>
                   <div class="text-muted mb-4">
-                    <br/>Guariti
+                    <br/>Guarigioni
                   </div>
                 </div>
               </div>
@@ -327,18 +327,20 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong><!--Andamento storico--> Incremento storico dei contagi rappresentati su scala 
-                      <span id="vistabar">lineare</span>
+                    <strong>Incremento storico dei contagi<!-- rappresentati su scala 
+                      <span id="vistabar">lineare</span>-->
                     </strong>&nbsp;<span id="spinandamento" class="spinner-border"></span>
                 </h3>
                 </div>
                 <div class="card-body">
                     <div id="chart-bar-stacked" style="height: 16rem"></div>
                 </div>
+                <!--
                 <div class="card-header">
                   <a id="ban" href="javascript:barN()">cambia vista su scala lineare</a>
                   <a id="bal" href="javascript:barL()">cambia vista su scala logaritmica</a>
                 </div>
+                -->
               </div>
             </div>
           </div>
@@ -347,22 +349,25 @@
               <div class="card">
                 <div class="card-header">
                   <h3 class="card-title">
-                    <strong>numero contagi giorno per giorno su scala
+                    <strong>Numero contagi giorno per giorno<!-- su scala
                       <span id="contagichart">lineare</span>
                     </strong>
-                    &nbsp;
+                    &nbsp;-->
                     <span id="spinandamentocontagi" class="spinner-border"></span>
                 </h3>
                 </div>
                 <div class="card-body">
                   <div id="chart-contagi" style="height: 16rem"></div>
                 </div>
+                <!--
                 <div class="card-header">
                   <a id="can" href="javascript:contagiN()">cambia vista su scala lineare</a><a id="cal" href="javascript:contagiL()">cambia vista su scala logaritmica</a>
                 </div>
+                -->
               </div>
             </div>
           </div>
+          <!--
           <div class="row" id="logaritmico">
             <div class="col-12 col-md-12 col-lg-12 col-xl-12">
               <div class="card">
@@ -384,6 +389,7 @@
               </div>
             </div>
           </div>
+          -->
 <!-- mappe -->
           <div class="row" id="maps">
             <div class="col-sm-6">
@@ -437,7 +443,7 @@
                             <th>DIFF</th>
                             <th>NUMERO ABITANTI</th>
                             <th>% POP. CONTAGIATA</th>
-                            <th>GUARITI</th>
+                            <th>GUARIGIONI</th>
                             <th>DIFF</th>
                             <th>DECESSI</th>
                             <th>DIFF</th>

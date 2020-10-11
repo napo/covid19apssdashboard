@@ -12,7 +12,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 try {
                     dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
                 } catch(e) {
-                    console.log(row);
+                    //console.log(row);
                 }
             }
         });

@@ -265,6 +265,13 @@ require(['c3', 'jquery'], function(c3, $) {
 
   $("#spinandamentocontagi").removeClass("spinner-border");
   var whereiamcont = "";
+/* sei qui 
+  calc_sma = chart_nuovi
+  calc_sma.shift()
+  calc_sma = movingAverage(calc_sma)
+  calc_sma.unshift("media mobile")
+  console.log(chart_nuovi);
+*/
   chartcontagi = c3.generate({
       bindto: '#chart-contagi', 
       data: {
@@ -272,7 +279,7 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
           chart_e,
-          chart_nuovi //chart_data_log_nuovi //
+          chart_nuovi //calc_sma //chart_data_log_nuovi //
         ],
         type: 'area-spline', // default type of chart
         colors: {
