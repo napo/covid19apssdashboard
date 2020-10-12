@@ -10,7 +10,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 markers.push(m); 
                 codice = row[0];
                 try {
-                    dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
+                    //dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
+   					dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
                 } catch(e) {
                     //console.log(row);
                 }
@@ -30,18 +31,26 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             nomecomune = data["nomecomune"];
             guariti = data["guariti"];
             decessi = data["decessi"];
+            contagi_attuali = contagi - guariti - decessi;
             contagiogni1000 = data["contagiogni1000"];
             abitanti = data["abitanti"];   
-            if (contagi == 0) {
-                message = "<strong>" + nomecomune + "</strong>:<br/>"
-                message += "nessun contagio";
+            if (contagi_attuali == 0) {
+                //message = "<strong>" + nomecomune + "</strong><br/><br/>";
+                message += "<br/><br/>attualmente nessun caso positivo<br/><br/>";
+                message += "contagi totali: " + contagi + "<br/>";
+                message += "decessi totali: " + decessi + "<br/>";
+                message += "guariti totali: " + guariti + "<br/><br/>";
+                message += "popolazione residente: " + abitanti + "<br/>";
+                message += "</strong>";
             } else {
-                message = "<br/><br/>"
-                message += contagiogni1000 + " <strong>contagi ogni 1.000 abitanti<br/><br/>"
-                message += "contagi: " + contagi + "<br/>"
-                message += "decessi: " + decessi + "<br/>"
-                message += "guariti: " + guariti + "<br/><br/>"
-                message += "abitanti: " + abitanti + "<br/>"
+                message = "<br/><br/>";
+                contagiogni1000 = contagiogni1000.toString().replace(".",",");
+                message += "percentuale attualmente positivi: " + contagiogni1000 + "%<br/><br/>"
+                message += "totale attualmente positivi: " + contagi_attuali + "<br/><br/>"
+                message += "contagi totali: " + contagi + "<br/>"
+                message += "decessi totali: " + decessi + "<br/>"
+                message += "guariti totali: " + guariti + "<br/><br/>"
+                message += "popolazione residente: " + abitanti + "<br/>"
                 message += "</strong>"
             }
             label.html(
@@ -75,7 +84,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             },  
             hover: {
                 "fill-opacity": 0.8,
-                "fill": '#df5015',
+                "fill": '#f1c40f',
             },
             selected: {
                 fill: 'yellow'

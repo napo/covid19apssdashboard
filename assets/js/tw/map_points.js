@@ -10,11 +10,15 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                 contagi = parseInt(data.contagi);
                 guariti = parseInt(data.guariti);
                 decessi = parseInt(data.decessi);
+                dimessi = parseInt(data.dimessi);
+                contagi_attuali = parseInt(data.contagi_attuali);
                 contagiogni1000 = parseInt(data.contagiogni1000);
                 abitanti = parseInt(data.abitanti);
+                lastupdate = data.lastupdate;
                 m = {
                         "latLng": [data.latitude, data.longitude], 
                         "name": nomecomune,
+                        "contagi_attuali": contagi_attuali,
                         "contagi":contagi,
                         "guariti": guariti,
                         "decessi": decessi,
@@ -23,7 +27,8 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     };
                 if (contagi > 0) {
                     markersValue.push(m);
-                    vv.push(contagi); //ogni1000);
+                    vv.push(contagi_attuali);
+                    //vv.push(contagi); //ogni1000);
                 }
             }
         });    
@@ -57,7 +62,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     "fill": tabler.colors.orange, //'#ef5d68',
                     "stroke": '#fd9644',
                     "fill-opacity": 0.8,
-                    "stroke-width": 1,
+                    "stroke-width": 0,
                     "stroke-opacity": 1,
                   },
                 hover: {
@@ -72,18 +77,19 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     attribute: 'fill',
                 },{
                     attribute: 'r',
-                    scale: [2, 15],
+                    scale: [0, 15],
                     values: vv
                 }]
             },
             onMarkerTipShow: function(event, label, index){
                 label.html(
                     '<b>'+markersValue[index].name+'</b><br/><br/>'+
-                    '<b>contagi: </b>'+markersValue[index].contagi+'</br>' +
-                    '<b>guariti: </b>'+markersValue[index].guariti+'</br>' +
-                    '<b>decessi: </b>'+markersValue[index].decessi+'</br><br/>' +
-                    '<b>' + markersValue[index].contagiogni1000 + ' contagiati ogni 1.000 abitanti </b><br/><br/>' +
-                    '<b>abitanti: </b>'+markersValue[index].abitanti
+                    '<b>positivi attuali</b>: '+markersValue[index].contagi_attuali+'<br/><br/>' +
+                    '<b>positivi totali</b>: '+markersValue[index].contagi+'<br/>' +
+                    '<b>guariti totali</b>: '+markersValue[index].guariti+'<br/>' +
+                    '<b>decessi totali</b>: '+markersValue[index].decessi+'<br/><br/>' +
+                    '<b>tot positivi ogni 1.000 abitanti</b>: ' + markersValue[index].contagiogni1000 + '<br/><br/>' +
+                    '<b>popolazione residente: </b>'+markersValue[index].abitanti
                 );
             },
             onRegionTipShow: function(e, el, code){
