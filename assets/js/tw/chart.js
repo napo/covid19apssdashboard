@@ -280,16 +280,16 @@ require(['c3', 'jquery'], function(c3, $) {
         ],
         //type: 'area-spline', 
         types: {
-            'contagi': 'area-spline',
+            'contagi': 'bar', //'area-spline',
             'media ': 'line'
         },
         colors: {
           'contagi': tabler.colors["orange"],
-          "media": tabler.colors["yellow"]
+          "media": tabler.colors["yellow-light"]
         },
         names: {
           'contagi': 'contagi',
-          'media': 'media ultimi 7gg'
+          'media': 'media ogni 7gg'
         },
         point: {
         	show: true
@@ -336,10 +336,10 @@ require(['c3', 'jquery'], function(c3, $) {
               return chart_labels[d]; },
           value: function (value, ratio, id) {
                   v = ""
-                  if (id == 'nuovi') {
+                  if (id == 'contagi') {
                     v = chart_nuovi[whereiamcont]
                   }
-                  if (id == 'media mobile') {
+                  if (id == 'media') {
                     v = calc_sma[whereiamcont]
                   }
                   return v;
