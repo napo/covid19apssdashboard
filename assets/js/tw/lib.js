@@ -114,7 +114,6 @@ function updatesituazionecomuni(intablestatocomuni) {
   $.each(intablestatocomuni, function(index,row) {
     if (index >0) {
     	contagi_attuali = parseInt(row[2]) - parseInt(row[3]) - parseInt(row[4]) - parseInt(row[5]);
-    	console.log(contagi_attuali);
         data = {};
         data['codice'] = row[0];
         data["nomecomune"]= row[1];
@@ -154,6 +153,9 @@ function each1000people(idc,m) {
 }
 
 function indicatori(label,ieri,oggi) {
+console.log(label)
+console.log(ieri)
+console.log(oggi)
   ieri = parseInt(ieri);
   oggi = parseInt(oggi);
   iddiv = "#ieri"+ label;
@@ -174,6 +176,7 @@ function indicatori(label,ieri,oggi) {
 }
 
 function parseStatoclinico(indata) {
+console.log(indata);
   var totale = 0
   var totale_ieri = 0;
   var totale_attuali = 0;
@@ -203,8 +206,9 @@ function parseStatoclinico(indata) {
     totale = parseInt(todaydata[7]);
     totale_ieri = parseInt(yesterdaydata[7]);
     totale_attuali = parseInt(todaydata[10]);
-    totale_positivi = parseInt(todaydata[8]);
     totale_attuali_ieri = parseInt(yesterdaydata[10]);
+    totale_positivi = parseInt(todaydata[8]);
+    totale_positivi_ieri = parseInt(yesterdaydata[8]);
     oggi = todaydata[0];
     domicilio = parseInt(todaydata[1]);
     domicilio_ieri = parseInt(yesterdaydata[1]);
@@ -232,7 +236,7 @@ function parseStatoclinico(indata) {
   $("#intesita").removeClass("spinner-border");
   $("#intensiva").removeClass("spinner-border");
   $("#deceduti").removeClass("spinner-border");
-  $("#dimessi").removeClass("spinner-border");
+  $("#guariti").removeClass("spinner-border");
   $("#rsa").removeClass("spinner-border");
   $("#oggimap1").removeClass("spinner-border");
   $("#oggimap2").removeClass("spinner-border"); 
@@ -244,17 +248,10 @@ function parseStatoclinico(indata) {
   $("#intesita").text(intesita);
   $("#intensiva").text(intensiva);
   $("#deceduti").text(deceduti);
-  //$("#dimessi").text(dimessi);
-  $("#dimessi").text(guariti);
+  $("#guariti").text(guariti);
   $("#rsa").text(rsa);
   $("#positiviattuali").text(totale_positivi);
 
-  /*
-  if (domicilio != "n/d") {
-    totale = parseInt(domicilio) + parseInt(infettive) + parseInt(intensiva) + parseInt(intesita) + parseInt(deceduti) + parseInt(dimessi);
-  } 
-  totale_ieri = domicilio_ieri + infettive_ieri + intesita_ieri + intensiva_ieri + deceduti_ieri + dimessi_ieri;
-  */
   $("#totale").text(totale);
   var difftotale = 0;;
   difftotale = totale - totale_ieri;
@@ -278,10 +275,9 @@ function parseStatoclinico(indata) {
   indicatori("intensita",intesita_ieri,intesita);
   indicatori("intensiva",intensiva_ieri,intensiva);
   indicatori("deceduti",deceduti_ieri,deceduti);
-  indicatori("dimessi",dimessi_ieri,dimessi);
+  indicatori("guariti",guariti_ieri,guariti);
   indicatori("rsa",rsa_ieri,rsa);
-  indicatori("positiviattuali",totale_attuali_ieri,totale_attuali);
-
+  indicatori("positiviattuali",totale_positivi_ieri,totale_positivi);
 }
 
 require(['csv','jquery'], function(csv,$) {
