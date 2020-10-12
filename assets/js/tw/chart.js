@@ -344,6 +344,7 @@ require(['c3', 'jquery'], function(c3, $) {
           }
       }
     });
+    }
 });
 
 
