@@ -1,6 +1,5 @@
 require(['c3', 'jquery'], function(c3, $) {
   var chart_e = [];
-
   chart_e[0] = "giorno"; 
   chart_labels[0] =tablestatoclinico[0][0];
   chart_ltotale[0] = "totale"
@@ -200,8 +199,6 @@ require(['c3', 'jquery'], function(c3, $) {
         ],*/
         colors: {
           'totale': tabler.colors ["yellow"]//["yellow"]
-          /*'nuovi': tabler.colors['red'],
-          'totali': tabler.colors["orange"]*/
         },
         names: {
           /*'nuovi': 'Nuovi',
@@ -347,5 +344,8 @@ require(['c3', 'jquery'], function(c3, $) {
           }
       }
     });
+});
+
+
 
   });

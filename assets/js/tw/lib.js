@@ -30,6 +30,15 @@ var chart_data_log = []
 var chart_data_log_deceduti = [];
 var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
+var chart_domicilio = [];
+var chart_struttura_intermedia = [];
+var chart_casa_cura = [];
+var chart_intensiva= [];
+var chart_intensita = [];
+var chart_infettive = [];
+var chart_guariti_distro = [];
+var chart_deceduti_distro = [];
+var chart_rsa = [];
 
 function contagiN() {
   $('#contagichart').html('lineare');
@@ -153,9 +162,6 @@ function each1000people(idc,m) {
 }
 
 function indicatori(label,ieri,oggi) {
-console.log(label)
-console.log(ieri)
-console.log(oggi)
   ieri = parseInt(ieri);
   oggi = parseInt(oggi);
   iddiv = "#ieri"+ label;
@@ -176,7 +182,6 @@ console.log(oggi)
 }
 
 function parseStatoclinico(indata) {
-console.log(indata);
   var totale = 0
   var totale_ieri = 0;
   var totale_attuali = 0;
@@ -211,21 +216,45 @@ console.log(indata);
     totale_positivi_ieri = parseInt(yesterdaydata[8]);
     oggi = todaydata[0];
     domicilio = parseInt(todaydata[1]);
+    chart_domicilio[0]='domicilio'
+    chart_domicilio[1] = domicilio;
     domicilio_ieri = parseInt(yesterdaydata[1]);
     rsa = parseInt(todaydata[14]);
     rsa_ieri = parseInt(yesterdaydata[14]);
+    chart_rsa[0] = 'rsa';
+    chart_rsa[1] = rsa;
     infettive = parseInt(todaydata[2]);
+    chart_infettive[0] = 'malattie infettive';
+    chart_infettive[1] = infettive
     infettive_ieri = parseInt(yesterdaydata[2]);
     intesita = parseInt(todaydata[3]);
+    chart_intensita[0] = 'alta intesità';
+    chart_intensita[1] = intesita;
     intesita_ieri = parseInt(yesterdaydata[3]);
     intensiva = parseInt(todaydata[4]);
+    chart_intensiva[0] = 'terapia intensiva'
+    chart_intensiva[1] = intensiva;
     intensiva_ieri = parseInt(yesterdaydata[4]);
     deceduti = parseInt(todaydata[6]);
+    chart_deceduti_distro[0] = 'deceduti';
     deceduti_ieri = parseInt(yesterdaydata[6]);
+    chart_deceduti_distro[1] = deceduti-deceduti_ieri;
     guariti = parseInt(todaydata[5]);
+    chart_guariti_distro[0] = 'guariti';
     guariti_ieri = parseInt(yesterdaydata[5]);
+    chart_guariti_distro[1] = guariti - guariti_ieri;
     dimessi = parseInt(todaydata[16]);
+    chart_dimessi[0] = 'dimessi';
+    chart_dimessi[1] = dimessi;
     dimessi_ieri = parseInt(yesterdaydata[16]);
+	casa_cura = parseInt(todaydata[12]);
+	chart_casa_cura[0] = 'casa di cura';
+	chart_casa_cura[1] = casa_cura;
+	casa_cura_ieri = parseInt(yesterdaydata[12]);
+	struttura_intermedia = parseInt(todaydata[13]);
+	chart_struttura_intermedia[0]='struttura intermedia';
+	chart_struttura_intermedia[1]=struttura_intermedia;
+	struttura_intermedia_ieri = parseInt(yesterdaydata[13]);
 	}
 
   $("#totale").removeClass("spinner-border");
@@ -238,11 +267,14 @@ console.log(indata);
   $("#deceduti").removeClass("spinner-border");
   $("#guariti").removeClass("spinner-border");
   $("#rsa").removeClass("spinner-border");
+  $("#casacura").removeClass("spinner-border");
+   $("#struttura").removeClass("spinner-border");
   $("#oggimap1").removeClass("spinner-border");
   $("#oggimap2").removeClass("spinner-border"); 
   $("#oggi").text(oggi);
   $("#oggimap1").text(oggi);
   $("#oggimap2").text(oggi);
+  $("#oggicontagi").text(oggi);
   $("#domicilio").text(domicilio);
   $("#infettive").text(infettive);
   $("#intesita").text(intesita);
@@ -250,6 +282,8 @@ console.log(indata);
   $("#deceduti").text(deceduti);
   $("#guariti").text(guariti);
   $("#rsa").text(rsa);
+  $("#casacura").text(casa_cura);
+  $("#struttura").text(casa_cura);
   $("#positiviattuali").text(totale_positivi);
 
   $("#totale").text(totale);
@@ -277,7 +311,8 @@ console.log(indata);
   indicatori("deceduti",deceduti_ieri,deceduti);
   indicatori("guariti",guariti_ieri,guariti);
   indicatori("rsa",rsa_ieri,rsa);
-  indicatori("positiviattuali",totale_positivi_ieri,totale_positivi);
+  indicatori("casacura",casa_cura_ieri,casa_cura);
+  indicatori("struttura",struttura_intermedia_ieri,struttura_intermedia); indicatori("positiviattuali",totale_positivi_ieri,totale_positivi);
 }
 
 require(['csv','jquery'], function(csv,$) {
