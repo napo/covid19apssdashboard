@@ -62,7 +62,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     "fill": tabler.colors.orange, //'#ef5d68',
                     "stroke": '#fd9644',
                     "fill-opacity": 0.8,
-                    "stroke-width": 0,
+                    "stroke-width": 1,
                     "stroke-opacity": 1,
                   },
                 hover: {
@@ -77,7 +77,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     attribute: 'fill',
                 },{
                     attribute: 'r',
-                    scale: [0, 15],
+                    scale: [2, 15],
                     values: vv
                 }]
             },
