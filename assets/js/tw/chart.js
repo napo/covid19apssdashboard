@@ -1,4 +1,6 @@
 require(['c3', 'jquery'], function(c3, $) {
+  $("#spinandamento").removeClass("spinner-border");
+
   var chart_e = [];
   chart_e[0] = "giorno"; 
   chart_labels[0] =tablestatoclinico[0][0];
@@ -7,6 +9,9 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_totali[0] = "totali";
   chart_deceduti[0] = "decessi";
   chart_dimessi[0] = 'dimessi';
+  chart_infettive[0] = 'malattie infettive';
+  chart_intensita[0] = 'alta intensità';
+  chart_intensiva[0] = 'terapia intensiva';
   chart_sma = [];
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
@@ -18,90 +23,41 @@ require(['c3', 'jquery'], function(c3, $) {
     chart_totali.push(parseInt(data[7]-data[11]));
     chart_deceduti.push(parseInt(data[6]));
     chart_dimessi.push(parseInt(data[16]));
+    chart_infettive.push(parseInt(data[2]));
+    chart_intensita.push(parseInt(data[3]));
+    chart_intensiva.push(parseInt(data[4]));
   }
   calc_sma = movingAverage(chart_sma,7);
   calc_sma.unshift("media");
-
-  $("#spinandamento").removeClass("spinner-border");
-  chart_data_log_nuovi[0] = chart_nuovi[0];
-  for(var i=1; i<chart_nuovi.length; i++){
-      if (chart_nuovi[i] == 0) {
-          chart_data_log_nuovi[i]= 0 ;
-      } else {
-        chart_data_log_nuovi[i] = Math.log(chart_nuovi[i]) / Math.LN10;
-      }
-    }
-
-  chart_data_log[0] = chart_totali[0];
-  for(var i=1; i<chart_totali.length; i++){
-      if (chart_totali[i] == 0) {
-          chart_data_log[i]= 0 ;
-      } else {
-        chart_data_log[i] = Math.log(chart_totali[i]+chart_nuovi[i]) / Math.LN10;
-      }
-    }
-
-  chart_data_log_deceduti[0] = chart_deceduti[0];
-  for(var i=1; i<chart_totali.length; i++){
-      if (chart_deceduti[i] == 0) {
-          chart_data_log_deceduti[i]= 0 ;
-      } else {
-        if (chart_data_log_deceduti[i] == 0) {
-          chart_data_log_deceduti[i] = 0;
-        } else {
-          chart_data_log_deceduti[i] = Math.log(chart_deceduti[i]) / Math.LN10;
-        }
-      }
-    }
-
-  chart_data_log_dimessi[0] = chart_dimessi[0];
-  for(var i=1; i<chart_totali.length; i++){
-      if (chart_dimessi[i] == 0) {
-          chart_data_log_dimessi[i]= 0 ;
-      } else {
-        if (chart_data_log_dimessi[i] = 0) {
-          chart_data_log_dimessi[i] = 0;
-        } else {
-          chart_data_log_dimessi[i] = Math.log(chart_dimessi[i]) / Math.LN10;
-        }
-      }
-    }
-
-  chart_data_log_totale[0] = chart_ltotale[0];
-  for(var i=1; i<chart_totali.length; i++){
-      if (chart_ltotale[i] == 0) {
-          chart_data_log_totale[i]= 0 ;
-      } else {
-        if (chart_data_log_totale[i] = 0) {
-          chart_data_log_totale[i] = 0;
-        } else {
-          chart_data_log_totale[i] = Math.log(chart_ltotale[i]) / Math.LN10;
-        }
-      }
-    }
-
-  $("#spinandamentolog").removeClass("spinner-border");
-  var whereiam = "";
+	
+  $("#spinricoveri").removeClass("spinner-border");
+  var whereiamricoveri = "";
   $(document).ready(function(){
     chartlog = c3.generate({
-      bindto: '#chart-log', 
+      bindto: '#chart-bar-stacked-ricoveri', 
       data: {
         x: 'giorno',
         xFormat: '%d/%m/%Y',
         columns: [
             chart_e,
-            chart_deceduti,
-            chart_dimessi 
+            chart_intensiva,
+            chart_intensita,
+            chart_infettive 
         ],
-        type: 'spline', 
+        type: 'area-spline', //bar', 
         groups: [
-          ['decessi'],
-          ['dimessi']
+          ['terapia intensiva',
+          'alta intensità',
+          'malattie infettive']
         ],
         colors: {
-          'decessi': tabler.colors["red"],
-          'dimessi': tabler.colors["green"]
+          'terapia intensiva': tabler.colors["red"],
+          'alta intensità': tabler.colors["orange"],
+          'malattie infettive': tabler.colors["yellow"]
         }
+      },
+      point: {
+        show: false
       },
       axis: {
         y: {
@@ -163,14 +119,17 @@ require(['c3', 'jquery'], function(c3, $) {
                 } 
                 s = g+"/"+m+"/"+y;
                 d = chart_e.indexOf(s);
-                whereiam = d;
+                whereiamricoveri = d;
               return chart_labels[d]; },
               value: function (value, ratio, id) {
-                  if (id == 'dimessi') {
-                    v = chart_dimessi[whereiam]
+                  if (id == 'malattie infettive') {
+                    v = chart_infettive[whereiamricoveri]
                   }
-                  if (id == 'decessi') {
-                    v = chart_deceduti[whereiam]
+                  if (id == 'alta intensità') {
+                    v = chart_intensita[whereiamricoveri]
+                  }
+                  if (id == 'terapia intensiva') {
+                    v = chart_intensiva[whereiamricoveri]
                   }
                   return v;
               }
@@ -178,6 +137,7 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     });
   });
+  
   var whereiambar = "";
   chartbar = c3.generate({
       bindto: '#chart-bar-stacked', 
@@ -344,6 +304,4 @@ require(['c3', 'jquery'], function(c3, $) {
           }
       }
     });
-
-
   });
