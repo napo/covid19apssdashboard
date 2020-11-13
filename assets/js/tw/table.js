@@ -53,7 +53,7 @@ function addtooltip() {
         var title = "nome"
         switch(index) {
           case 0:
-            title = "Nome del comune"
+            title = "Nome del comune del Trentino"
             break;
           case 1:
             title = "Totale contagi dal 03/03/2020"
