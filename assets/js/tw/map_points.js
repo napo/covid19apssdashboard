@@ -88,7 +88,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                     '<b>positivi totali</b>: '+markersValue[index].contagi+'<br/>' +
                     '<b>guariti totali</b>: '+markersValue[index].guariti+'<br/>' +
                     '<b>decessi totali</b>: '+markersValue[index].decessi+'<br/><br/>' +
-                    '<b>tot positivi ogni 1.000 abitanti</b>: ' + markersValue[index].contagiogni1000 + '<br/><br/>' +
+                    //'<b>tot positivi ogni 1.000 abitanti</b>: ' + markersValue[index].contagiogni1000 + '<br/><br/>' +
                     '<b>popolazione residente: </b>'+markersValue[index].abitanti
                 );
             },
