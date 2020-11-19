@@ -116,14 +116,14 @@ function updatesituazionecomuni(intablestatocomuni) {
   situazione = {};
   $.each(intablestatocomuni, function(index,row) {
     if (index >0) {
-    	contagi_attuali = parseInt(row[2]) - parseInt(row[3]) - parseInt(row[4]) - parseInt(row[5]);
+    	contagi_attuali = parseInt(row[2]) - parseInt(row[3]) - parseInt(row[4]); // - parseInt(row[5]);
         data = {};
         data['codice'] = row[0];
         data["nomecomune"]= row[1];
         data["contagi"] = parseInt(row[2]);
         data["guariti"] = parseInt(row[3]);
         data["decessi"] = parseInt(row[4]);
-        //data["dimessi"] = parseInt(row[5]);
+        data["dimessi"] = parseInt(row[5]);
 
         //data["contagiogni1000"] = each1000people(row[0],parseInt(row[2]));
         data["contagiogni1000"] = each1000people(row[0],contagi_attuali);
