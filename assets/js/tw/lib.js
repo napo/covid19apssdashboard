@@ -30,7 +30,7 @@ var chart_data_log = []
 var chart_data_log_deceduti = [];
 var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
-var chart_infettive = [];
+var chart_infettive = [];f
 var chart_intensita = [];
 var chart_intensiva = [];
 
@@ -123,7 +123,8 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["contagi"] = parseInt(row[2]);
         data["guariti"] = parseInt(row[3]);
         data["decessi"] = parseInt(row[4]);
-        data["dimessi"] = parseInt(row[5]);
+        //data["dimessi"] = parseInt(row[5]);
+
         //data["contagiogni1000"] = each1000people(row[0],parseInt(row[2]));
         data["contagiogni1000"] = each1000people(row[0],contagi_attuali);
         data["latitude"] = row[8];
