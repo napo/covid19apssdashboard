@@ -30,7 +30,7 @@ var chart_data_log = []
 var chart_data_log_deceduti = [];
 var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
-var chart_infettive = [];f
+var chart_infettive = [];
 var chart_intensita = [];
 var chart_intensiva = [];
 
