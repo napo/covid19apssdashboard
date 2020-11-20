@@ -31,8 +31,8 @@ var chart_data_log_deceduti = [];
 var chart_data_log_dimessi = [];
 var chart_data_log_totale = [];
 var chart_infettive = [];
-var chart_intensita = [];
-var chart_intensiva = [];
+var chart_alta_intensita = [];
+var chart_terapia_intensiva = [];
 
 function contagiN() {
   $('#contagichart').html('lineare');

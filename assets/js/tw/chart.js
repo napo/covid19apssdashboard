@@ -10,8 +10,8 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_deceduti[0] = "decessi";
   chart_dimessi[0] = 'dimessi';
   chart_infettive[0] = 'malattie infettive';
-  chart_intensita[0] = 'alta intensità';
-  chart_intensiva[0] = 'terapia intensiva';
+  chart_alta_intensita[0] = 'alta intensità';
+  chart_terapia_intensiva[0] = 'terapia intensiva';
   chart_sma = [];
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
@@ -24,8 +24,8 @@ require(['c3', 'jquery'], function(c3, $) {
     chart_deceduti.push(parseInt(data[6]));
     chart_dimessi.push(parseInt(data[16]));
     chart_infettive.push(parseInt(data[2]));
-    chart_intensita.push(parseInt(data[3]));
-    chart_intensiva.push(parseInt(data[4]));
+    chart_alta_intensita.push(parseInt(data[3]));
+    chart_terapia_intensiva.push(parseInt(data[4]));
   }
   calc_sma = movingAverage(chart_sma,7);
   calc_sma.unshift("media");
@@ -40,20 +40,22 @@ require(['c3', 'jquery'], function(c3, $) {
         xFormat: '%d/%m/%Y',
         columns: [
             chart_e,
-            chart_intensiva,
-            chart_intensita,
-            chart_infettive 
+            chart_infettive,
+            chart_alta_intensita,
+            chart_terapia_intensiva
         ],
         type: 'area-spline', //bar', 
         groups: [
-          ['terapia intensiva',
-          'alta intensità',
-          'malattie infettive']
+          [
+          'malattie infettive',
+          'terapia intensiva',
+          'alta intensità'
+          ]
         ],
         colors: {
-          'terapia intensiva': tabler.colors["red"],
-          'alta intensità': tabler.colors["orange"],
-          'malattie infettive': tabler.colors["yellow"]
+          'malattie infettive': tabler.colors["yellow"],
+          'terapia intensiva': tabler.colors["orange"],
+          'alta intensità': tabler.colors["red"]
         }
       },
       point: {
@@ -126,10 +128,10 @@ require(['c3', 'jquery'], function(c3, $) {
                     v = chart_infettive[whereiamricoveri]
                   }
                   if (id == 'alta intensità') {
-                    v = chart_intensita[whereiamricoveri]
+                    v = chart_alta_intensita[whereiamricoveri]
                   }
                   if (id == 'terapia intensiva') {
-                    v = chart_intensiva[whereiamricoveri]
+                    v = chart_terapia_intensiva[whereiamricoveri]
                   }
                   return v;
               }
@@ -137,6 +139,8 @@ require(['c3', 'jquery'], function(c3, $) {
       }
     });
   });
+  
+
   
   var whereiambar = "";
   chartbar = c3.generate({
