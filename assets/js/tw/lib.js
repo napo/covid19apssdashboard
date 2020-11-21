@@ -197,7 +197,8 @@ function parseStatoclinico(indata) {
   var dimessi_ieri = 0;
   var guariti = 0;
   var guariti_ieri = 0;
-	if(typeof(indata) === 'undefined') {
+ 
+  if(typeof(indata) === 'undefined') {
     return null;
   } else {
     idxtoday = indata.length - 1;
@@ -214,8 +215,8 @@ function parseStatoclinico(indata) {
     //chart_domicilio[0]='domicilio'
     //chart_domicilio[1] = domicilio;
     domicilio_ieri = parseInt(yesterdaydata[1]);
-    rsa = parseInt(todaydata[14]);
-    rsa_ieri = parseInt(yesterdaydata[14]);
+    rsa = parseInt(todaydata[9]);
+    rsa_ieri = parseInt(yesterdaydata[9]);
     //chart_rsa[0] = 'rsa';
     //chart_rsa[1] = rsa;
     infettive = parseInt(todaydata[2]);
@@ -238,19 +239,19 @@ function parseStatoclinico(indata) {
     //chart_guariti_distro[0] = 'guariti';
     guariti_ieri = parseInt(yesterdaydata[5]);
     //chart_guariti_distro[1] = guariti - guariti_ieri;
-    dimessi = parseInt(todaydata[16]);
+    dimessi = parseInt(todaydata[15]);
     //chart_dimessi[0] = 'dimessi';
     //chart_dimessi[1] = dimessi;
-    dimessi_ieri = parseInt(yesterdaydata[16]);
-	casa_cura = parseInt(todaydata[12]);
-	//chart_casa_cura[0] = 'casa di cura';
-	//chart_casa_cura[1] = casa_cura;
-	casa_cura_ieri = parseInt(yesterdaydata[12]);
-	struttura_intermedia = parseInt(todaydata[13]);
-	//chart_struttura_intermedia[0]='struttura intermedia';
-	//chart_struttura_intermedia[1]=struttura_intermedia;
-	struttura_intermedia_ieri = parseInt(yesterdaydata[13]);
-	}
+    dimessi_ieri = parseInt(yesterdaydata[15]);
+    casa_cura = parseInt(todaydata[12]);
+    //chart_casa_cura[0] = 'casa di cura';  
+    //chart_casa_cura[1] = casa_cura;
+    casa_cura_ieri = parseInt(yesterdaydata[12]);
+    struttura_intermedia = parseInt(todaydata[13]);   
+    //chart_struttura_intermedia[0]='struttura intermedia';
+    //chart_struttura_intermedia[1]=struttura_intermedia;
+    struttura_intermedia_ieri = parseInt(yesterdaydata[13]);
+ }
 
   $("#totale").removeClass("spinner-border");
   $("#positiviattuali").removeClass("spinner-border");
@@ -262,6 +263,7 @@ function parseStatoclinico(indata) {
   $("#deceduti").removeClass("spinner-border");
   $("#guariti").removeClass("spinner-border");
   $("#rsa").removeClass("spinner-border");
+  $("#dimessi").removeClass("spinner-border");
   $("#casacura").removeClass("spinner-border");
   $("#struttura").removeClass("spinner-border");
   $("#oggimap1").removeClass("spinner-border");
@@ -280,8 +282,9 @@ function parseStatoclinico(indata) {
   $("#casacura").text(casa_cura);
   $("#struttura").text(struttura_intermedia);
   $("#positiviattuali").text(totale_positivi);
-
+  $("#dimessi").text(dimessi);
   $("#totale").text(totale);
+
   var difftotale = 0;;
   difftotale = totale - totale_ieri;
   if (totale > totale_ieri) {
@@ -305,6 +308,7 @@ function parseStatoclinico(indata) {
   indicatori("intensiva",intensiva_ieri,intensiva);
   indicatori("deceduti",deceduti_ieri,deceduti);
   indicatori("guariti",guariti_ieri,guariti);
+  indicatori("dimessi",dimessi_ieri,dimessi);
   indicatori("rsa",rsa_ieri,rsa);
   indicatori("casacura",casa_cura_ieri,casa_cura);
 	indicatori("struttura",struttura_intermedia_ieri,struttura_intermedia);
