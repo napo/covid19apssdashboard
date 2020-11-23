@@ -32,6 +32,60 @@ require(['c3', 'jquery'], function(c3, $) {
 	
   $("#spinricoveri").removeClass("spinner-border");
   var whereiamricoveri = "";
+
+/*
+  $(document).ready(function(){
+    var chart = c3.generate({
+        bindto: '#chart-bar-stacked-ricoveri', 
+        data: {
+            x: 'giorno',
+            xFormat: '%d/%m/%Y',
+            type: 'area-spline', //bar', 
+            columns: [
+                chart_e,
+                chart_infettive,
+                chart_alta_intensita,
+                chart_terapia_intensiva
+            ],
+            colors: {
+              'malattie infettive': tabler.colors["yellow"],
+              'terapia intensiva': tabler.colors["red"]
+              'alta intensità': tabler.colors["orange"],
+            }
+        },
+        axis: {
+            x: {
+                type: 'timeseries',
+                tick: {
+                    format: '%d-%m-%Y'
+                }
+            }
+        },
+        legend: {
+          position: 'inset',
+          padding: 0,
+          inset: {
+            anchor: 'top-left',
+            x: 20,
+            y: 8,
+            step: 10
+          }
+        },
+        grid: {
+          x: {
+              show: true
+          },
+          y: {
+              show: true
+          }
+        },
+        zoom: {
+          enabled: true
+        }
+    });
+  });
+*/
+
   $(document).ready(function(){
     chartlog = c3.generate({
       bindto: '#chart-bar-stacked-ricoveri', 
@@ -44,18 +98,10 @@ require(['c3', 'jquery'], function(c3, $) {
             chart_alta_intensita,
             chart_terapia_intensiva
         ],
-        type: 'area-spline', //bar', 
-        groups: [
-          [
-          'malattie infettive',
-          'terapia intensiva',
-          'alta intensità'
-          ]
-        ],
         colors: {
           'malattie infettive': tabler.colors["yellow"],
-          'terapia intensiva': tabler.colors["orange"],
-          'alta intensità': tabler.colors["red"]
+          'terapia intensiva': tabler.colors["red"],
+          'alta intensità': tabler.colors["orange"]
         }
       },
       point: {
@@ -73,13 +119,16 @@ require(['c3', 'jquery'], function(c3, $) {
         },
         x: {
             padding: {
-            left: 0,
-            right: 0
+            left: 10,
+            right: 10
           },
           show: true,
           type: 'timeseries',
           tick: {
-            format: '%d/%m/%Y'
+            format: '%d/%m/%Y',
+            culling: {
+                max: 10 
+            }
           }
         }
       },
@@ -88,9 +137,9 @@ require(['c3', 'jquery'], function(c3, $) {
         padding: 0,
         inset: {
           anchor: 'top-left',
-          x: 20,
-          y: 8,
-          step: 10
+          x: 10,
+          y: -10,
+          //step: 10
         }
       },
       point: {
@@ -106,42 +155,11 @@ require(['c3', 'jquery'], function(c3, $) {
       },
       zoom: {
         enabled: true
-      },
-      tooltip: {
-          format: {
-            title: function (d) {
-                g = d.getDate();
-                if (g < 10) {
-                  g = "0" + g;
-                }
-                y =  d.getFullYear();
-                m  = d.getMonth() +1;
-                if (m < 10) {
-                   m = "0" + m;
-                } 
-                s = g+"/"+m+"/"+y;
-                d = chart_e.indexOf(s);
-                whereiamricoveri = d;
-              return chart_labels[d]; },
-              value: function (value, ratio, id) {
-                  if (id == 'malattie infettive') {
-                    v = chart_infettive[whereiamricoveri]
-                  }
-                  if (id == 'alta intensità') {
-                    v = chart_alta_intensita[whereiamricoveri]
-                  }
-                  if (id == 'terapia intensiva') {
-                    v = chart_terapia_intensiva[whereiamricoveri]
-                  }
-                  return v;
-              }
-          }
       }
     });
   });
-  
 
-  
+
   var whereiambar = "";
   chartbar = c3.generate({
       bindto: '#chart-bar-stacked', 
