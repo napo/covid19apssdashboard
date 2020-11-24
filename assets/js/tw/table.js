@@ -29,14 +29,15 @@ function preparedatatable() {
             ic = addSymbolDiff(row.contagi - iericontagi); 
             ig = addSymbolDiff(row.guariti - ieridimessi);
             id = addSymbolDiff(row.decessi - ieridecessi);
-			
+
             data4table.push([
                 row.nomecomune,
                 row.contagi,
                 ic,
                 row.abitanti,
                 row.percontagi,
-                row.contagiogni1000,
+                row.contagi_attuali,
+                row.percontagiattuale,
                 row.guariti,
                 ig,
                 row.decessi,
@@ -68,21 +69,23 @@ function addtooltip() {
             title = "Percentuale della popolazione che è stata contagiata dal 03/03/2020"
             break;
           case 5:
+            title = 'Numero di persone attualmente contagiate'
+          case 6:
             title = "Percentuale della popolazione attualmente contagiata"
             break;
-          case 6:
+          case 7:
             title = "Totale delle persone guarite"
             break;
-          case 7:
+          case 8:
             title = "Differenza del numero di persone guarite rispetto al giorno precedente"
             break;
-          case 8:
+          case 9:
             title = "Totale di decessi avvenuti dal 03/03/2020"
             break;
-          case 9:
+          case 10:
             title = "Differenza dei decessi rispetto al giorno precedente"
             break;
-          case 10:
+          case 11:
             title = "Data dell'aggiornamento dei dati presentati"
             break;
           default:

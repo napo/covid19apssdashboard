@@ -116,7 +116,7 @@ function updatesituazionecomuni(intablestatocomuni) {
   situazione = {};
   $.each(intablestatocomuni, function(index,row) {
     if (index >0) {
-    	contagi_attuali = parseInt(row[2]) - parseInt(row[3]) - parseInt(row[4]); // - parseInt(row[5]);
+    	  contagi_attuali = parseInt(row[2]) - parseInt(row[3]) - parseInt(row[4]); // - parseInt(row[5]);
         data = {};
         data['codice'] = row[0];
         data["nomecomune"]= row[1];
@@ -124,9 +124,7 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["guariti"] = parseInt(row[3]);
         data["decessi"] = parseInt(row[4]);
         data["dimessi"] = parseInt(row[5]);
-
-        //data["contagiogni1000"] = each1000people(row[0],parseInt(row[2]));
-        data["contagiogni1000"] = each1000people(row[0],contagi_attuali);
+        data["percontagiattuale"] = percontagiattuale(row[0],contagi_attuali);
         data["latitude"] = row[8];
         data["longitude"] = row[9];
         data["abitanti"] = abitanticomuni[row[0]];
@@ -135,25 +133,20 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["percontagi"] = percontagi;
         data["incremento"] = row[12];
         data["contagi_attuali"] = contagi_attuali;
-        //data["contagiogni1000today"] = each1000people(row[0],contagi_attuali));
-        //datasituazionecomuni[row[0]] = data;
         situazione[row[0]] = data; 
     }
   });
   return(situazione);
 }
 
-function each1000people(idc,m) {
+function percontagiattuale(idc,m) {
+  n = 0;
+  if (m > 0) {
     p = abitanticomuni[idc];
     n = (m / p) * 100;
-/*
-    c = 1000;
-    p = abitanticomuni[idc] 
-    n =(m*c)/p
-    n = n.toPrecision(3) //.toString().replace(".",",");
-*/
-	n = n.toPrecision(2) //.toString().replace(".",",") + "%";
-    return(n)
+    n = n.toPrecision(2) //.toString().replace(".",",") + "%";
+  }
+  return(n)
 }
 
 function indicatori(label,ieri,oggi) {

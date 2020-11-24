@@ -12,7 +12,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                 decessi = parseInt(data.decessi);
                 dimessi = parseInt(data.dimessi);
                 contagi_attuali = parseInt(data.contagi_attuali);
-                contagiogni1000 = parseInt(data.contagiogni1000);
+                vpercontagiattuale = parseInt(data.percontagiattuale);
                 abitanti = parseInt(data.abitanti);
                 lastupdate = data.lastupdate;
                 m = {
@@ -22,7 +22,7 @@ require(['jquery', 'vector-map', 'vector-map-comunita-valli-trentino'], function
                         "contagi":contagi,
                         "guariti": guariti,
                         "decessi": decessi,
-                        "contagiogni1000": contagiogni1000,
+                        "contagiogni1000": vpercontagiattuale,
                         "abitanti": abitanti
                     };
                 if (contagi > 0) {

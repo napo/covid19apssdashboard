@@ -20,14 +20,6 @@ var choosemapindicator = "relativo"; //assoluto = totali per comune, relativo = 
 var labelassoluto = ""
 var labelrelativo = "";//L'indice mostra il numero di contagi ogni 1.000 persone"
 
-function each1000people(idc,m) {
-    c = 1000;
-    p = abitanticomuni[idc] 
-    n =(m*c)/p
-    /*n= Math.round(n * 10) / 10;*/
-    n = n.toPrecision(3) //.toString().replace(".",",");
-    return(n)
-}
 
 function indicatori(label,ieri,oggi) {
   ieri = parseInt(ieri);

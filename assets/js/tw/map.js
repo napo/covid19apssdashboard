@@ -2,7 +2,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     $(document).ready(function(){
         var markers = []
         dataformap = {}
-    	var indicatore = ""; //"contagi ogni 1.000 abitanti";
+    	var indicatore = ""; 
         $("#mapindicator").text(indicatore);
         $.each(tablecodicicomuni, function(index,row) {
             if (index > 0) {
@@ -10,8 +10,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 markers.push(m); 
                 codice = row[0];
                 try {
-                    //dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
-   					dataformap[codice]=datasituazionecomuni[codice]['contagiogni1000'];
+   					dataformap[codice]=datasituazionecomuni[codice]['percontagiattuale'];
                 } catch(e) {
                     //console.log(row);
                 }
@@ -32,7 +31,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             guariti = data["guariti"];
             decessi = data["decessi"];
             contagi_attuali = contagi - guariti - decessi;
-            contagiogni1000 = data["contagiogni1000"];
+            vpercontagiattuale = data["percontagiattuale"];
             abitanti = data["abitanti"];   
             if (contagi_attuali == 0) {
                 //message = "<strong>" + nomecomune + "</strong><br/><br/>";
@@ -44,8 +43,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 message += "</strong>";
             } else {
                 message = "<br/><br/>";
-                contagiogni1000 = contagiogni1000.toString().replace(".",",");
-                message += "percentuale attualmente positivi: " + contagiogni1000 + "%<br/><br/>"
+                vpercontagiattuale = vpercontagiattuale.toString().replace(".",",");
+                message += "percentuale attualmente positivi: " + vpercontagiattuale + "%<br/><br/>"
                 message += "totale attualmente positivi: " + contagi_attuali + "<br/><br/>"
                 message += "contagi totali: " + contagi + "<br/>"
                 message += "decessi totali: " + decessi + "<br/>"
@@ -60,7 +59,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
         legend: {
             vertical: true,
             //cssClass: 'maplegend',
-            title: 'contagi ogni 1000 abitanti'
+            title: 'percentuale contagi attuale sui residenti'
         }, 
         series: {
             regions: [{
