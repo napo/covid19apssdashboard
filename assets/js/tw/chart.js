@@ -13,6 +13,7 @@ require(['c3', 'jquery'], function(c3, $) {
   chart_alta_intensita[0] = 'alta intensità';
   chart_terapia_intensiva[0] = 'terapia intensiva';
   chart_sma = [];
+  chart_smadecessi = [];
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
@@ -27,65 +28,105 @@ require(['c3', 'jquery'], function(c3, $) {
     chart_alta_intensita.push(parseInt(data[3]));
     chart_terapia_intensiva.push(parseInt(data[4]));
   }
+
+  chart_decessi[0] = 'decessi'; 
+  chart_decessi.push(chart_deceduti[1]);
+  prev_decesso = chart_deceduti[1];
+  chart_smadecessi[0] = prev_decesso;
+  for (var i = 2; i < chart_deceduti.length; i++) {
+  	curtot = chart_deceduti[i];
+  	v = curtot - prev_decesso;
+  	prev_decesso = curtot;
+  	chart_decessi[i] = v;
+  	chart_smadecessi[i-1]=v;
+  }
   calc_sma = movingAverage(chart_sma,7);
   calc_sma.unshift("media");
-	
-  $("#spinricoveri").removeClass("spinner-border");
-  var whereiamricoveri = "";
-
-/*
+  calc_smadecessi = movingAverage(chart_smadecessi,7);
+  calc_smadecessi.unshift("media");
+  $("#spindecessi").removeClass("spinner-border");
   $(document).ready(function(){
-    var chart = c3.generate({
-        bindto: '#chart-bar-stacked-ricoveri', 
-        data: {
-            x: 'giorno',
-            xFormat: '%d/%m/%Y',
-            type: 'area-spline', //bar', 
-            columns: [
-                chart_e,
-                chart_infettive,
-                chart_alta_intensita,
-                chart_terapia_intensiva
-            ],
-            colors: {
-              'malattie infettive': tabler.colors["yellow"],
-              'terapia intensiva': tabler.colors["red"]
-              'alta intensità': tabler.colors["orange"],
-            }
+    chartlog = c3.generate({
+      bindto: '#chart-bar-stacked-decessi', 
+      data: {
+        x: 'giorno',
+        xFormat: '%d/%m/%Y',
+        columns: [
+            chart_e,
+            chart_decessi,
+           	calc_smadecessi
+        ],
+        colors: {
+          'decessi': tabler.colors["red"],
+          'media': tabler.colors["blue-darkest"]
         },
-        axis: {
-            x: {
-                type: 'timeseries',
-                tick: {
-                    format: '%d-%m-%Y'
-                }
-            }
+        types: {
+            'decessi': 'bar',
+            'media': 'line'
         },
-        legend: {
-          position: 'inset',
-          padding: 0,
-          inset: {
-            anchor: 'top-left',
-            x: 20,
-            y: 8,
-            step: 10
-          }
+         names: {
+          'decessi': 'decessi',
+          'media': 'media ogni 7gg'
         },
-        grid: {
-          x: {
-              show: true
+      },
+      point: {
+        show: true
+      },
+      axis: {
+        y: {
+          padding: {
+            bottom: 0,
           },
-          y: {
-              show: true
+          show: true,
+            tick: {
+            outer: false
           }
         },
-        zoom: {
-          enabled: true
+        x: {
+            padding: {
+            left: 10,
+            right: 10
+          },
+          show: true,
+          type: 'timeseries',
+          tick: {
+            format: '%d/%m/%Y',
+            culling: {
+                max: 10 
+            }
+          }
         }
+      },
+      legend: {
+        position: 'inset',
+        padding: 0,
+        inset: {
+          anchor: 'top-left',
+          x: 10,
+          y: -10,
+          //step: 10
+        }
+      },
+      point: {
+        show: true
+      },
+      grid: {
+        x: {
+            show: true
+        },
+        y: {
+            show: true
+        }
+      },
+      zoom: {
+        enabled: true
+      }
     });
   });
-*/
 
+
+
+  $("#spinricoveri").removeClass("spinner-border");
   $(document).ready(function(){
     chartlog = c3.generate({
       bindto: '#chart-bar-stacked-ricoveri', 
@@ -160,7 +201,6 @@ require(['c3', 'jquery'], function(c3, $) {
   });
 
 
-  var whereiambar = "";
   chartbar = c3.generate({
       bindto: '#chart-bar-stacked', 
       data: {
@@ -173,12 +213,6 @@ require(['c3', 'jquery'], function(c3, $) {
           chart_totali */
         ],
         type: 'area-spline',
-        /*types: {
-          'totale': 'spline'
-        },
-        groups: [
-          [ 'nuovi', 'totali']
-        ],*/
         colors: {
           'totale': tabler.colors ["yellow"]//["yellow"]
         },
@@ -202,39 +236,7 @@ require(['c3', 'jquery'], function(c3, $) {
       legend: {
           show: false, ///true, //hide legend
       },
-      tooltip: {
-        format: {
-          title: function (d) {
-              g = d.getDate();
-              if (g < 10) {
-                g = "0" + g;
-              }
-              y =  d.getFullYear();
-              m  = d.getMonth() +1;
-              if (m < 10) {
-                 m = "0" + m;
-              } 
-              s = g+"/"+m+"/"+y;
-              d = chart_e.indexOf(s);
-              whereiambar = d;
-              return chart_labels[d]; },
-          value: function (value, ratio, id) {
-                  v = ""
-                  /*
-                  if (id == 'nuovi') {
-                    v = chart_nuovi[whereiambar]
-                  }
-                  if (id == 'totali') {
-                    v = chart_totali[whereiambar]
-                  }*/
-                  if (id == 'totale') {
-                    v = chart_ltotale[whereiambar]
-                  }
-                  return v;
-              }
-          }
-      },
-        grid: {
+      grid: {
         x: {
             show: true
         },
@@ -264,7 +266,7 @@ require(['c3', 'jquery'], function(c3, $) {
         },
         colors: {
           'contagi': tabler.colors["orange"],
-          "media": tabler.colors["yellow-light"]
+          "media": tabler.colors["blue"]
         },
         names: {
           'contagi': 'contagi',

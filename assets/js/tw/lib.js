@@ -33,7 +33,7 @@ var chart_data_log_totale = [];
 var chart_infettive = [];
 var chart_alta_intensita = [];
 var chart_terapia_intensiva = [];
-
+var chart_decessi = [];
 function contagiN() {
   $('#contagichart').html('lineare');
   $("#can").hide();
