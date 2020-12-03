@@ -57,7 +57,7 @@ function addtooltip() {
             title = "Nome del comune del Trentino"
             break;
           case 1:
-            title = "Totale contagi dal 03/03/2020"
+            title = "Totale persone risultate positive dal 03/03/2020"
             break;
           case 2:
             title = "Differenza di contagi rispetto al giorno precedente"
