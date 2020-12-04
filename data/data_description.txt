@@ -21,8 +21,6 @@ casa_cura	=> numero di persone positive ricoverate in case di cura alla data con
 strut_int	=> numero di persone positive ricoverate in strutture intermedie alla data contenuta nel campo 'giorno'
 tot_rsa		=> totale delle persone positive ricoverate in rsa + strutture intermedie (strut_int) + case di cura (casa_cura) alla data contenuta nel campo 'giorno'
 dimessi		=> numero di persone dimesse dall'ospedale ma ancora positive alla data contenuta nel campo 'giorno'
-nuovi		=> casi identificati da sospetto diagnostico a seguito di tampo molecolare alla data contenuta nel campo 'giorno'
-nuo_screen	=> casi identificati da attività di contact tracing o screening alla data contenuta nel campo 'giorno'
 
 ---
 # Stato clinico della situazione covid-19 nei singoli comuni della Provincia Autonoma di Trento
