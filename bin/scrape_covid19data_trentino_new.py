@@ -1,28 +1,25 @@
 # -*- coding: utf-8 -*-
 import geopandas as gpd
-#import pandas as pd
+import pandas as pd
 import requests
-from pandas.io.json import json_normalize  
 from datetime import datetime,timezone
 
-stato_comuni_geo = 'https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/attuale/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token='
+#stato_comuni_geo = 'https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/attuale/FeatureServer/0/query?where=1%3D1&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=true&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pgeojson&token='
 stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/attuale/FeatureServer/0/query?f=pgeojson&where=contagi%20%3E%200&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=*&maxRecordCountFactor=4&orderByFields=guariti%20DESC&outSR=4326&resultOffset=0&resultRecordCount=8000&cacheHint=true&quantizationParameters=%7B%22mode%22%3A%22view%22%2C%22originPosition%22%3A%22upperLeft%22%2C%22tolerance%22%3A1.0583354500042335%2C%22extent%22%3A%7B%22xmin%22%3A1172990.37869218%2C%22ymin%22%3A5734154.596375577%2C%22xmax%22%3A1330201.2886771664%2C%22ymax%22%3A5862773.329983189%2C%22spatialReference%22%3A%7B%22wkid%22%3A102100%2C%22latestWkid%22%3A3857%7D%7D%7D"
 dati_comuni = gpd.read_file(stato_comuni_geo)
 dati_comuni['lat'] = None
 dati_comuni['lon'] = None
 dati_comuni['lon'] = dati_comuni['geometry'].apply(lambda x: x.x)
-
 dati_comuni['lat'] = dati_comuni['geometry'].apply(lambda x: x.y)
 
-dati_comuni
-andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=riferimen%20asc&resultOffset=0&resultRecordCount=2000&cacheHint=true"
-andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=0=0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=50&cacheHint=true"
-andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0//query?where=0%3D0&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=false&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=riferimen&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
-andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=riferimen%20asc&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true"
+#andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=riferimen%20asc&resultOffset=0&resultRecordCount=2000&cacheHint=true"
+#andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=0=0&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&resultOffset=0&resultRecordCount=50&cacheHint=true"
+#andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0//query?where=0%3D0&objectIds=&time=&geometry=&geometryType=esriGeometryEnvelope&inSR=&spatialRel=esriSpatialRelIntersects&resultType=none&distance=0.0&units=esriSRUnit_Meter&returnGeodetic=false&outFields=*&returnGeometry=false&returnCentroid=false&featureEncoding=esriDefault&multipatchOption=xyFootprint&maxAllowableOffset=&geometryPrecision=&outSR=&datumTransformation=&applyVCSProjection=false&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnExtentOnly=false&returnQueryGeometry=false&returnDistinctValues=false&cacheHint=false&orderByFields=riferimen&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&returnZ=false&returnM=false&returnExceededLimitFeatures=true&quantizationParameters=&sqlFormat=none&f=pjson&token="
+#andamento="https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=riferimen%20asc&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true"
 andamento='https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/pat/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=riferimen%20asc&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true'
 r = requests.get(andamento)
 d = r.json()
-andamento = json_normalize(d['features'])
+andamento = pd.json_normalize(d['features'])
 oldcolumns = andamento.columns
 newcolumns = {}
 for name in oldcolumns:
@@ -35,7 +32,7 @@ for name in oldcolumns:
 
 andamento = andamento.rename(columns=newcolumns)
 andamento.riferimen = andamento.riferimen.apply(str)
-
+ 
 def getDay(x):
   x = x[:10]
   dt_object = datetime.fromtimestamp(int(x)) #p,tz=timezone.utc)
@@ -44,15 +41,9 @@ def getDay(x):
 
 andamento['giorno'] = None
 andamento['giorno'] = andamento['riferimen'].apply(lambda x: getDay(x))
-#andamento = andamento[['giorno','domicilio','infettive','alta_int','terapia_in','guariti','deceduti','totale_pos','totale','pos_att','rsa','tot_prec','incremento']]
-#Index(['FID', 'domicilio', 'infettive', 'alta_int', 'terapia_in', 'guariti',
-#       'deceduti', 'riferimen', 'totale_pos', 'pos_att', 'rsa', 'pubblicare',
-#       'tot_prec', 'incremento', 'casa_cura', 'strut_int', 'tot_rsa',
-#       'dimessi', 'tot_dime', 'nuovi', 'nuo_screen', 'Shape__Area',
-#       'Shape__Length', 'giorno'],
 
-#andamento = andamento[['giorno','domicilio','infettive','alta_int','terapia_in','guariti','deceduti','totale_pos','totale','pos_att','rsa','tot_prec','incremento','casa_cura','strut_int','tot_rsa','dimessi','tot_dime']]
-andamento = andamento[['giorno','domicilio','infettive','alta_int','terapia_in','guariti','deceduti','totale_pos','pos_att','rsa','tot_prec','incremento','casa_cura','strut_int','tot_rsa','dimessi','tot_dime','nuovi','nuo_screen']]
+andamento.drop(['Shape__Area', 'Shape__Length'], axis='columns', inplace=True)
+
 dati_comuni.ins = dati_comuni.ins.apply(str)
 dati_comuni['aggiornamento'] = None
 dati_comuni['aggiornamento'] = dati_comuni['ins'].apply(lambda x: getDay(x))
