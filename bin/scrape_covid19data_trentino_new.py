@@ -42,12 +42,18 @@ def getDay(x):
 andamento['giorno'] = None
 andamento['giorno'] = andamento['riferimen'].apply(lambda x: getDay(x))
 
-andamento.drop(['FID','riferimen','Shape__Area', 'Shape__Length'], axis='columns', inplace=True)
+andamento.drop(['Shape__Area', 'Shape__Length'], axis='columns', inplace=True)
+andamento.drop(['pos_att_in','guariti_in','decedu_in','molecolari','antigenici'],axis='columns', inplace=True)
+dati_comuni.ins = dati_comuni.ins.apply(str)
+andamento = andamento[['giorno','domicilio','infettive','alta_int','terapia_in','guariti','deceduti','totale_pos','pos_att','rsa','tot_prec','incremento','casa_cura','strut_int','tot_rsa','dimessi','tot_dime','nuovi','nuo_screen']]
+dati_comuni.columns
 
 dati_comuni.ins = dati_comuni.ins.apply(str)
 dati_comuni['aggiornamento'] = None
 dati_comuni['aggiornamento'] = dati_comuni['ins'].apply(lambda x: getDay(x))
+
 #dati_comuni = dati_comuni[['codice','nome','contagi','guariti','decessi','aggiornamento','lat','lon']] #,'nome','contagi','guariti','decessi','aggiornamento','lat','lon']]
+dati_comuni.drop(['FID','classid','ins','istat','istatcat','geometry'], axis='columns', inplace=True)
 dati_comuni = dati_comuni[['codice','nome','contagi','guariti','decessi','dimessi','residenti','tot_dime','lat','lon','aggiornamento']]
 andamento.to_csv("stato_clinico_td.csv",index=False)
 dati_comuni.to_csv("stato_comuni_td.csv",index=False)
