@@ -42,7 +42,7 @@ def getDay(x):
 andamento['giorno'] = None
 andamento['giorno'] = andamento['riferimen'].apply(lambda x: getDay(x))
 
-andamento.drop(['Shape__Area', 'Shape__Length'], axis='columns', inplace=True)
+andamento.drop(['FID','riferimen','Shape__Area', 'Shape__Length'], axis='columns', inplace=True)
 
 dati_comuni.ins = dati_comuni.ins.apply(str)
 dati_comuni['aggiornamento'] = None
