@@ -2,7 +2,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
     $(document).ready(function(){
         var markers = []
         dataformap = {}
-    	var indicatore = ""; 
+        var indicatore = ""; 
         $("#mapindicator").text(indicatore);
         $.each(tablecodicicomuni, function(index,row) {
             if (index > 0) {
@@ -10,30 +10,30 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 markers.push(m); 
                 codice = row[0];
                 try {
-   					dataformap[codice]=datasituazionecomuni[codice]['percontagiattuale'];
+                    dataformap[codice]=datasituazionecomuni[codice]['percontagiattuale'];
                 } catch(e) {
                     //console.log(row);
                 }
             }
         });
 
-    $('#map-trentino-svg').vectorMap({
-        map: 'comuni_trentini',
-        zoomButtons : true,
-        zoomOnScroll: true,
-        panOnDrag: true,
-        backgroundColor: 'transparent',
-        onRegionTipShow: function (event, label, index){
-            message = "";
-            data = datasituazionecomuni[index];
-            contagi = data['contagi'];
-            nomecomune = data["nomecomune"];
-            guariti = data["guariti"];
-            decessi = data["decessi"];
-            contagi_attuali = contagi - guariti - decessi;
-            vpercontagiattuale = data["percontagiattuale"];
-            abitanti = data["abitanti"];   
-            if (contagi_attuali == 0) {
+        $('#map-trentino-svg').vectorMap({
+            map: 'comuni_trentini',
+            zoomButtons : true,
+            zoomOnScroll: true,
+            panOnDrag: true,
+            backgroundColor: 'transparent',
+            onRegionTipShow: function (event, label, index){
+                message = "";
+                data = datasituazionecomuni[index];
+                contagi = data['contagi'];
+                nomecomune = data["nomecomune"];
+                guariti = data["guariti"];
+                decessi = data["decessi"];
+                contagi_attuali = contagi - guariti - decessi;
+                vpercontagiattuale = data["percontagiattuale"];
+                abitanti = data["abitanti"];   
+                if (contagi_attuali == 0) {
                 //message = "<strong>" + nomecomune + "</strong><br/><br/>";
                 message += "<br/><br/>attualmente nessun caso positivo<br/><br/>";
                 message += "contagi totali: " + contagi + "<br/>";
@@ -54,7 +54,7 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             }
             label.html(
                 label.html() + message
-            );
+                );
         },
         legend: {
             vertical: true,
@@ -66,8 +66,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                 values: dataformap,
                 scale: ['#EFF3F6', tabler.colors.orange],
                 normalizeFunction: 'linear'
-                }]
-            },
+            }]
+        },
         markerLabelStyle: {
             initial: {
                 'font-family': 'Source Sans Pro',
@@ -90,16 +90,16 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
             }
         },
         regionLabelStyle: {
-                initial: {
-                    'font-family': 'Source Sans Pro',
-                    'fill': '#000000',
-                    'font-weight': 'normal',
-                    'font-size': '9'
-                },
-                hover: {
-                    'fill': '#90E32'
-                }
+            initial: {
+                'font-family': 'Source Sans Pro',
+                'fill': '#000000',
+                'font-weight': 'normal',
+                'font-size': '9'
             },
+            hover: {
+                'fill': '#90E32'
+            }
+        },
         labels: {
             regions: {
                 render: function(code) {
@@ -112,8 +112,8 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                         216: "Alta Valsugana",
                         172: "Val di Cembra",
                         62: "Val di Non",
-                       114: "Val di Sole",
-                       244: "Valli Giudicarie",
+                        114: "Val di Sole",
+                        244: "Valli Giudicarie",
                         191: "Alto Garda",
                         161: "Vallagarina",
                         118: "Val di Fassa",
@@ -122,12 +122,12 @@ require(['jquery', 'vector-map', 'vector-map-trentino'], function(){
                         120: "Paganella",
                         205: "Trento",
                         243: "Valle dei Laghi"
-                        }
-                        v = comunita_valle[code];
-                    return(v);
                     }
+                    v = comunita_valle[code];
+                    return(v);
                 }
             }
+        }
     });
-    });
+});
 });

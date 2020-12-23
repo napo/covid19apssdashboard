@@ -44,11 +44,11 @@ function contagiN() {
   calc_sma.unshift("media mobile")
   chartcontagi.load({
     columns: [
-      chart_nuovi,
-      calc_sma
-      ]
-    });
-  }
+    chart_nuovi,
+    calc_sma
+    ]
+  });
+}
 
 function contagiL() {
   $('#contagichart').html('logaritmica');
@@ -56,10 +56,10 @@ function contagiL() {
   $("#cal").hide();
   chartcontagi.load({
     columns: [
-      chart_data_log_nuovi
+    chart_data_log_nuovi
     ]
-    });
-  }
+  });
+}
 
 function barN() {
   $('#vistabar').html('lineare');
@@ -67,12 +67,10 @@ function barN() {
   $("#bal").show();
   chartbar.load({
     columns: [
-      chart_ltotale,
-      /*
-      chart_nuovi,
-      chart_totali*/    ]
+    chart_ltotale,
+    ]
     });
-  }
+}
 
 function barL() {
   $('#vistabar').html('logaritmica');
@@ -80,10 +78,10 @@ function barL() {
   $("#bal").hide();
   chartbar.load({
     columns: [
-      chart_data_log_totale,
+    chart_data_log_totale,
     ]
-    });
-  }
+  });
+}
 
 function chartN() {
   $('#vistachart').html('assoluta');
@@ -94,9 +92,9 @@ function chartN() {
       //chart_totali,
       chart_deceduti,
       chart_dimessi
-    ]
+      ]
     });
-  }
+}
 
 
 function chartL() {
@@ -105,11 +103,11 @@ function chartL() {
   $("#van").show(); 
   chartlog.load({
     columns: [
-        chart_data_log_deceduti,
-        chart_data_log_dimessi 
+    chart_data_log_deceduti,
+    chart_data_log_dimessi 
     ],
-    });
-  }
+  });
+}
 
 
 function updatesituazionecomuni(intablestatocomuni) {
@@ -125,17 +123,17 @@ function updatesituazionecomuni(intablestatocomuni) {
         data["decessi"] = parseInt(row[4]);
         data["dimessi"] = parseInt(row[5]);
         data["percontagiattuale"] = percontagiattuale(row[0],contagi_attuali);
-        data["latitude"] = row[8];
-        data["longitude"] = row[9];
+        data["latitude"] = row[6];
+        data["longitude"] = row[7];
         data["abitanti"] = abitanticomuni[row[0]];
-        data["lastupdate"] = row[10];
+        data["lastupdate"] = row[8];
         percontagi = ((data["contagi"]/ data["abitanti"] ) * 100).toPrecision(2); 
         data["percontagi"] = percontagi;
-        data["incremento"] = row[12];
+        //data["incremento"] = row[12];
         data["contagi_attuali"] = contagi_attuali;
         situazione[row[0]] = data; 
-    }
-  });
+      }
+    });
   return(situazione);
 }
 
@@ -144,7 +142,7 @@ function percontagiattuale(idc,m) {
   if (m > 0) {
     p = abitanticomuni[idc];
     n = (m / p) * 100;
-    n = n.toPrecision(2) //.toString().replace(".",",") + "%";
+    n = n.toPrecision(2);
   }
   return(n)
 }
@@ -190,7 +188,7 @@ function parseStatoclinico(indata) {
   var dimessi_ieri = 0;
   var guariti = 0;
   var guariti_ieri = 0;
- 
+
   if(typeof(indata) === 'undefined') {
     return null;
   } else {
@@ -205,46 +203,26 @@ function parseStatoclinico(indata) {
     totale_positivi_ieri = parseInt(yesterdaydata[8]);
     oggi = todaydata[0];
     domicilio = parseInt(todaydata[1]);
-    //chart_domicilio[0]='domicilio'
-    //chart_domicilio[1] = domicilio;
     domicilio_ieri = parseInt(yesterdaydata[1]);
     rsa = parseInt(todaydata[9]);
     rsa_ieri = parseInt(yesterdaydata[9]);
-    //chart_rsa[0] = 'rsa';
-    //chart_rsa[1] = rsa;
     infettive = parseInt(todaydata[2]);
-    //chart_infettive[0] = 'malattie infettive';
-    //chart_infettive[1] = infettive
     infettive_ieri = parseInt(yesterdaydata[2]);
     intesita = parseInt(todaydata[3]);
-    //chart_intensita[0] = 'alta intesità';
-    //chart_intensita[1] = intesita;
     intesita_ieri = parseInt(yesterdaydata[3]);
     intensiva = parseInt(todaydata[4]);
-    //chart_intensiva[0] = 'terapia intensiva'
-    //chart_intensiva[1] = intensiva;
     intensiva_ieri = parseInt(yesterdaydata[4]);
     deceduti = parseInt(todaydata[6]);
-    //chart_deceduti_distro[0] = 'deceduti';
     deceduti_ieri = parseInt(yesterdaydata[6]);
-    //chart_deceduti_distro[1] = deceduti-deceduti_ieri;
     guariti = parseInt(todaydata[5]);
-    //chart_guariti_distro[0] = 'guariti';
     guariti_ieri = parseInt(yesterdaydata[5]);
-    //chart_guariti_distro[1] = guariti - guariti_ieri;
-    dimessi = parseInt(todaydata[15]);
-    //chart_dimessi[0] = 'dimessi';
-    //chart_dimessi[1] = dimessi;
-    dimessi_ieri = parseInt(yesterdaydata[15]);
-    casa_cura = parseInt(todaydata[12]);
-    //chart_casa_cura[0] = 'casa di cura';  
-    //chart_casa_cura[1] = casa_cura;
-    casa_cura_ieri = parseInt(yesterdaydata[12]);
-    struttura_intermedia = parseInt(todaydata[13]);   
-    //chart_struttura_intermedia[0]='struttura intermedia';
-    //chart_struttura_intermedia[1]=struttura_intermedia;
-    struttura_intermedia_ieri = parseInt(yesterdaydata[13]);
- }
+    dimessi = parseInt(todaydata[14]);
+    dimessi_ieri = parseInt(yesterdaydata[14]);
+    casa_cura = parseInt(todaydata[11]);
+    casa_cura_ieri = parseInt(yesterdaydata[11]);
+    struttura_intermedia = parseInt(todaydata[12]);   
+    struttura_intermedia_ieri = parseInt(yesterdaydata[12]);
+  }
 
   $("#totale").removeClass("spinner-border");
   $("#positiviattuali").removeClass("spinner-border");
@@ -304,8 +282,8 @@ function parseStatoclinico(indata) {
   indicatori("dimessi",dimessi_ieri,dimessi);
   indicatori("rsa",rsa_ieri,rsa);
   indicatori("casacura",casa_cura_ieri,casa_cura);
-	indicatori("struttura",struttura_intermedia_ieri,struttura_intermedia);
-	indicatori("positiviattuali",totale_positivi_ieri,totale_positivi);
+  indicatori("struttura",struttura_intermedia_ieri,struttura_intermedia);
+  indicatori("positiviattuali",totale_positivi_ieri,totale_positivi);
 }
 
 require(['csv','jquery'], function(csv,$) {
@@ -318,14 +296,14 @@ require(['csv','jquery'], function(csv,$) {
     $('#can').hide();
     $.ajax({
     	async: false, //false,
-        type: "GET",  
-        url: urlstatoclinico,
-        dataType: "text",       
-        success: function(response) {
-            tablestatoclinico = $.csv.toArrays(response);
-            parseStatoclinico(tablestatoclinico);
-            }
-        });
+      type: "GET",  
+      url: urlstatoclinico,
+      dataType: "text",       
+      success: function(response) {
+        tablestatoclinico = $.csv.toArrays(response);
+        parseStatoclinico(tablestatoclinico);
+      }
+    });
 
     $.ajax({
       async: false,
@@ -355,19 +333,19 @@ require(['csv','jquery'], function(csv,$) {
     });
 
     $.ajax({
-		  async: false,
+      async: false,
       type: "GET",  
       url: urlsituazionecomuni,
       dataType: "text",       
       success: function(response) {
-          tablesituazionecomuni = $.csv.toArrays(response);
-          $("#spinmap").removeClass("spinner-border");
-          $("#spinmappoints").removeClass("spinner-border");
-          $("#spintable").removeClass("spinner-border");
-          datasituazionecomuni = updatesituazionecomuni(tablesituazionecomuni);
-          }
-      }); 
-	 });
+        tablesituazionecomuni = $.csv.toArrays(response);
+        $("#spinmap").removeClass("spinner-border");
+        $("#spinmappoints").removeClass("spinner-border");
+        $("#spintable").removeClass("spinner-border");
+        datasituazionecomuni = updatesituazionecomuni(tablesituazionecomuni);
+      }
+    }); 
+  });
 
 });
 

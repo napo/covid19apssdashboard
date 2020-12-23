@@ -17,13 +17,13 @@ require(['c3', 'jquery'], function(c3, $) {
   for (var i = 1; i < tablestatoclinico.length; i++) {
     data = tablestatoclinico[i];
     chart_e.push(data[0]);
-    chart_labels.push(data[0]); //.replace("/2020",""));
+    chart_labels.push(data[0]); 
     chart_ltotale.push(data[7]);
-    chart_nuovi.push(parseInt(data[11]));
-    chart_sma.push(parseInt(data[11]));
-    chart_totali.push(parseInt(data[7]-data[11]));
+    chart_nuovi.push(parseInt(data[10]));
+    chart_sma.push(parseInt(data[10]));
+    chart_totali.push(parseInt(data[7]-data[10]));
     chart_deceduti.push(parseInt(data[6]));
-    chart_dimessi.push(parseInt(data[16]));
+    chart_dimessi.push(parseInt(data[14]));
     chart_infettive.push(parseInt(data[2]));
     chart_alta_intensita.push(parseInt(data[3]));
     chart_terapia_intensiva.push(parseInt(data[4]));
