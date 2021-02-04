@@ -47,4 +47,6 @@ le tabelle presentate sono il risultato di una coversione in formato CSV dai dat
 https://patn.maps.arcgis.com/apps/opsdashboard/index.html#/345e288061094c248e44fd4f5c5cda3a
 canale ufficiale di APSS per la divulgazione dei dati del covid-19
 
+I dati dei contagi sono riferiti ai tamponi molecolari
+
 per segnalazioni: napolitano@fbk.eu
