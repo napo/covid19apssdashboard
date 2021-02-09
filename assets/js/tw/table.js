@@ -34,7 +34,7 @@ function preparedatatable() {
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                ic,
+                /*ic, removec*/
                 row.abitanti,
                 row.percontagi,
                 row.contagi_attuali,
