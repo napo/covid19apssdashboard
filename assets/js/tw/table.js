@@ -69,12 +69,12 @@ function addtooltip() {
                 title = "Totale della popolazione residente a novembre 2019"
                 break;
             case 4:
-                title = "Percentuale della popolazione che è stata contagiata dal 03/03/2020"
+                title = "Percentuale della popolazione domiciliata contagiata dal 03/03/2020 "
                 break;
             case 5:
                 title = 'Numero di persone attualmente contagiate'
             case 6:
-                title = "Percentuale della popolazione attualmente contagiata"
+                title = "Percentuale della popolazione domiciliata attualmente contagiata"
                 break;
             case 7:
                 title = "Totale delle persone guarite"
