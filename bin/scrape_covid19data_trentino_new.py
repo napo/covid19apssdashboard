@@ -24,15 +24,17 @@ stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/se
 stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/dettaglio_poly/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=nome%20asc&outSR=102100&resultOffset=0&resultRecordCount=400&resultType=standard&cacheHint=true"
 stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/dettaglio/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=nome%20asc&outSR=102100&resultOffset=0&resultRecordCount=400&resultType=standard&cacheHint=true"
 stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/dettaglio/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=nome%20asc&outSR=4326&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true"
-stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/dettaglio_poly/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=nome%20asc&outSR=4326&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true"
+#poly
+# stato_comuni_geo = "https://services5.arcgis.com/9T5RxYdubL4b1BrS/arcgis/rest/services/dettaglio_poly/FeatureServer/0/query?f=geojson&where=1%3D1&returnGeometry=true&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=nome%20asc&outSR=4326&resultOffset=0&resultRecordCount=4000&resultType=standard&cacheHint=true"
 
 dati_comuni = gpd.read_file(stato_comuni_geo)
 dati_comuni['lat'] = None
 dati_comuni['lon'] = None
-#dati_comuni['lon'] = dati_comuni['geometry'].apply(lambda x: x.x)
-#dati_comuni['lat'] = dati_comuni['geometry'].apply(lambda x: x.y)
-dati_comuni['lon'] = dati_comuni.geometry.representative_point().x
-dati_comuni['lat'] = dati_comuni.geometry.representative_point().y
+dati_comuni['lon'] = dati_comuni['geometry'].apply(lambda x: x.x)
+dati_comuni['lat'] = dati_comuni['geometry'].apply(lambda x: x.y)
+# poly
+#dati_comuni['lon'] = dati_comuni.geometry.representative_point().x
+#dati_comuni['lat'] = dati_comuni.geometry.representative_point().y
 
 dati_comuni.ins = dati_comuni.ins.apply(str)
 
