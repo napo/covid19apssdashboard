@@ -1,167 +1,167 @@
 codice,comune,abitanti
-1,Ala,8792
-2,Albiano,1500
-3,Aldeno,3187
-5,Andalo,1268
-6,Arco,17798
-7,Avio,4072
-9,Baselga di Pinè,5074
-11,Bedollo,1470
-13,Besenello,2746
-15,Bieno,446
-17,Bleggio Superiore,1516
-18,Bocenago,396
-21,Bondone,639
-22,Borgo Valsugana,6984
-25,Brentonico,4021
-26,Bresimo,250
-29,Caderzone Terme,681
-32,Calceranica al Lago,1376
-33,Caldes,1094
-34,Caldonazzo,3855
-35,Calliano,1996
-36,Campitello di Fassa-Ciampedel,709
-37,Campodenno,1520
-38,Canal San Bovo,1457
-39,Canazei-Cianacëi,2015
-40,Capriana,579
-42,Carisolo,950
-43,Carzano,520
-45,Castel Condino,219
-47,Castello-Molina di Fiemme,2320
-48,Castello Tesino,1167
-49,Castelnuovo,1066
-50,Cavalese,4041
-51,Cavareno,1117
-52,Cavedago,545
-53,Cavedine,3003
-54,Cavizzana,233
-58,Cimone,708
-59,Cinte Tesino,348
-60,Cis,298
-61,Civezzano,4080
-62,Cles,7155
-64,Commezzadura,1019
-68,Croviana,688
-71,Dambel,421
-74,Denno,1211
-78,Drena,574
-79,Dro,5057
-81,Fai della Paganella,914
-83,Fiavè,1055
-85,Fierozzo-Vlarötz,481
-87,Folgaria,3150
+1,Ala,8808
+2,Albiano,1485
+3,Aldeno,3148
+235,Altavalle,1610
+236,Altopiano della Vigolana,5077
+237,Amblar-Don,541
+5,Andalo,1124
+6,Arco,17927
+7,Avio,4119
+9,Baselga di Pinè,5087
+11,Bedollo,1482
+13,Besenello,2709
+15,Bieno,431
+17,Bleggio Superiore,1535
+18,Bocenago,386
+21,Bondone,657
+238,Borgo Chiese,1994
+252,Borgo d'Anaunia,2482
+239,Borgo Lares,712
+22,Borgo Valsugana,6998
+25,Brentonico,4012
+26,Bresimo,254
+29,Caderzone Terme,684
+32,Calceranica al Lago,1352
+33,Caldes,1098
+34,Caldonazzo,3830
+35,Calliano,1981
+36,Campitello di Fassa,707
+37,Campodenno,1519
+38,Canal San Bovo,1477
+39,Canazei,1881
+40,Capriana,584
+42,Carisolo,959
+43,Carzano,526
+45,Castel Condino,221
+240,Castel Ivano,3309
+48,Castello Tesino,1182
+47,Castello-Molina di Fiemme,2319
+49,Castelnuovo,1057
+50,Cavalese,4112
+51,Cavareno,1107
+52,Cavedago,542
+53,Cavedine,3016
+54,Cavizzana,234
+241,Cembra Lisignago,2338
+58,Cimone,694
+59,Cinte Tesino,352
+60,Cis,305
+61,Civezzano,4090
+62,Cles,7031
+228,Comano Terme,2934
+64,Commezzadura,996
+242,Contà,1388
+68,Croviana,679
+71,Dambel,425
+74,Denno,1240
+233,Dimaro Folgarida,2110
+78,Drena,585
+79,Dro,5117
+81,Fai della Paganella,912
+83,Fiavè,1075
+85,Fierozzo,487
+87,Folgaria,3161
 89,Fornace,1319
-90,Frassilongo-Garait,342
-91,Garniga Terme,393
-92,Giovo,2520
-93,Giustino,749
-95,Grigno,2086
-97,Imer,1177
-98,Isera,2754
-102,Lavarone,1186
-103,Lavis,9119
-104,Levico Terme,8003
-106,Livo,790
-108,Lona-Lases,870
-109,Luserna-Lusérn,268
-110,Malé,2219
-112,Massimeno,144
-113,Mazzin-Mazin,598
-114,Mezzana,874
-115,Mezzano,1594
-116,Mezzocorona,5528
-117,Mezzolombardo,7361
-118,Moena-Moena,2682
-120,Molveno,1134
-123,Mori,9974
-124,Nago-Torbole,2847
-127,Nogaredo,2075
-128,Nomi,1312
-129,Novaledo,1095
+90,Frassilongo,338
+91,Garniga Terme,400
+92,Giovo,2519
+93,Giustino,742
+95,Grigno,2136
+97,Imer,1173
+98,Isera,2765
+102,Lavarone,1176
+103,Lavis,9113
+229,Ledro,5274
+104,Levico Terme,8133
+106,Livo,801
+108,Lona-Lases,877
+109,Luserna,260
+243,Madruzzo,2902
+110,Malè,2217
+112,Massimeno,141
+113,Mazzin,585
+114,Mezzana,893
+115,Mezzano,1589
+116,Mezzocorona,5539
+117,Mezzolombardo,7311
+118,Moena,2626
+120,Molveno,1111
+123,Mori,9993
+124,Nago-Torbole,2852
+127,Nogaredo,2068
+128,Nomi,1343
+129,Novaledo,1099
+253,Novella,3618
 130,Ospedaletto,790
 131,Ossana,834
-133,Palù del Fersina-Palai en Bersntol,165
-134,Panchià,824
-135,Ronzo-Chienis,987
-136,Peio,1834
-137,Pellizzano,782
-138,Pelugo,390
-139,Pergine Valsugana,21486
+133,Palù del Fersina,164
+134,Panchià,827
+136,Peio,1836
+137,Pellizzano,785
+138,Pelugo,402
+139,Pergine Valsugana,21548
+234,Pieve di Bono-Prezzo,1443
 142,Pieve Tesino,637
-143,Pinzolo,3150
-144,Pomarolo,2418
-147,Predazzo,4522
-150,Rabbi,1335
-153,Riva del Garda,17646
-155,Romeno,1384
-156,Roncegno Terme,2897
-157,Ronchi Valsugana,460
-159,Ronzone,439
-160,Roverè della Luna,1632
-161,Rovereto,39954
+143,Pinzolo,3041
+144,Pomarolo,2468
+244,Porte di Rendena,1792
+230,Predaia,6668
+147,Predazzo,4528
+245,Primiero San Martino di Castrozza,5363
+150,Rabbi,1343
+153,Riva del Garda,17602
+155,Romeno,1408
+156,Roncegno Terme,2911
+161,Rovereto,40285
+157,Ronchi Valsugana,457
+135,Ronzo-Chienis,994
+159,Ronzone,438
+160,Roverè della Luna,1645
 162,Ruffrè-Mendola,407
-163,Rumo,813
-164,Sagron Mis,179
-165,Samone,554
-167,San Michele all'Adige,3956
-168,Sant'Orsola Terme,1120
-169,Sanzeno,916
-170,Sarnonico,794
-171,Scurelle,1373
-172,Segonzano,1403
-173,Sfruz,364
-176,Soraga di Fassa-Soraga,691
-177,Sover,785
-179,Spiazzo,1244
-180,Spormaggiore,1258
-181,Sporminore,705
-182,Stenico,1178
-183,Storo,4534
-184,Strembo,609
-188,Telve,1898
-189,Telve di Sopra,590
-190,Tenna,1051
-191,Tenno,1992
-193,Terragnolo,696
-195,Terzolas,654
-196,Tesero,2935
-199,Tione di Trento,3665
-200,Ton,1321
-202,Torcegno,673
-203,Trambileno,1468
-205,Trento,118879
-209,Valfloriana,458
-210,Vallarsa,1364
-213,Vermiglio,1846
-216,Vignola-Falesina,180
-222,Villa Lagarina,3825
-224,Volano,3020
-226,Ziano di Fiemme,1755
-228,Comano Terme,2895
-229,Ledro,5248
-230,Predaia,6778
-231,San Lorenzo Dorsino,1554
-232,Valdaone,1141
-233,Dimaro Folgarida,2099
-234,Pieve di Bono-Prezzo,1430
-235,Altavalle,1612
-236,Altopiano della Vigolana,5074
-237,Amblar-Don,546
-238,Borgo Chiese,1963
-239,Borgo Lares,707
-240,Castel Ivano,3277
-241,Cembra Lisignago,2308
-242,Contà,1397
-243,Madruzzo,2933
-244,Porte di Rendena,1752
-245,Primiero San Martino di Castrozza,5278
-246,Sella Giudicarie,2894
-247,Tre Ville,1404
-248,Vallelaghi,5159
-249,Ville d'Anaunia,4736
-250,San Giovanni di Fassa-Sen Jan,3698
-251,Terre d'Adige,3053
-252,Borgo d'Anaunia,2487
-253,Novella,3599
-254,Ville di Fiemme,2631
+163,Rumo,810
+164,Sagron Mis,180
+165,Samone,556
+250,San Giovanni di Fassa-Sèn Jan,3561
+231,San Lorenzo Dorsino,1568
+167,San Michele all'Adige,3904
+168,Sant'Orsola Terme,1116
+169,Sanzeno,912
+170,Sarnonico,796
+171,Scurelle,1400
+172,Segonzano,1422
+246,Sella Giudicarie,2912
+173,Sfruz,372
+176,Soraga di Fassa,683
+177,Sover,802
+179,Spiazzo,1252
+180,Spormaggiore,1276
+181,Sporminore,700
+182,Stenico,1205
+183,Storo,4579
+184,Strembo,592
+188,Telve,1916
+189,Telve di Sopra,592
+190,Tenna,1045
+191,Tenno,2012
+193,Terragnolo,699
+251,Terre D'Adige,3055
+195,Terzolas,642
+196,Tesero,2999
+199,Tione di Trento,3660
+200,Ton,1310
+202,Torcegno,676
+203,Trambileno,1479
+247,Tre Ville,1395
+205,Trento,118902
+232,Valdaone,1150
+209,Valfloriana,462
+210,Vallarsa,1365
+248,Vallelaghi,5103
+213,Vermiglio,1820
+216,Vignola-Falesina,172
+222,Villa Lagarina,3801
+249,Ville d'Anaunia,4801
+254,Ville di Fiemme,2569
+224,Volano,3023
+226,Ziano di Fiemme,1770
