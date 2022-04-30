@@ -27,24 +27,22 @@ function preparedatatable() {
             ieridimessi = dataysituazionecomuni[codice].guariti;
             ieridecessi = dataysituazionecomuni[codice].decessi;
             iericontagi = dataysituazionecomuni[codice].contagi;
-            // rimuovi ic = addSymbolDiff(row.contagi - iericontagi);
-            // rimuovi ig = addSymbolDiff(row.guariti - ieridimessi);
-            // rimuovi id = addSymbolDiff(row.decessi - ieridecessi);
+            ic = addSymbolDiff(row.contagi - iericontagi);
+            ig = addSymbolDiff(row.guariti - ieridimessi);
+            //rimuovi id = addSymbolDiff(row.decessi - ieridecessi);
 
             data4table.push([
                 row.nomecomune,
                 row.contagi,
-                // rimuovi ic,
+                ic,
                 row.abitanti,
                 row.percontagi,
                 row.contagi_attuali,
                 row.percontagiattuale,
                 row.guariti,
-                // rimuovi ig,
-                /*
-                row.decessi,
-                id,
-                */
+                ig,
+                //rimuovi row.decessi,
+                //rimuovi id,
                 row.lastupdate
             ]);
         }
